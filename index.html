@@ -3,100 +3,215 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08090c" />
+  <!-- Set theme before paint (default dark) to avoid a flash -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      document.documentElement.dataset.theme = t === "light" ? "light" : "dark";
+    })();
+  </script>
   <title>Hans Werner A. Huyo | Backend Developer</title>
   <meta name="description" content="Portfolio of Hans Werner A. Huyo, Backend Developer and IT Specialist based in Cebu, Philippines. Automation, large-scale website migration, Python, Java and AI." />
+  <meta property="og:title" content="Hans Werner A. Huyo | Portfolio" />
+  <meta property="og:description" content="Backend Developer & IT Specialist. 4,000+ websites migrated, automation, Python, Java and AI." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%233b82f6'/><text x='50%' y='56%' text-anchor='middle' dominant-baseline='middle' font-family='Arial Black,Arial' font-weight='900' font-size='26' fill='white'>HH</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <a href="#top" class="logo">HWH<span>.</span></a>
-      <button class="menu-btn" aria-label="Open menu" aria-expanded="false">&#9776;</button>
-      <nav class="nav-links">
+  <!-- PRELOADER: two panes split open along a glowing seam -->
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__pane preloader__pane--l"></div>
+    <div class="preloader__pane preloader__pane--r"></div>
+    <div class="preloader__crack"></div>
+    <div class="preloader__content">
+      <div class="preloader__logo">HWH<span>.</span></div>
+      <div class="preloader__count"><span id="loadCount">0</span>%</div>
+    </div>
+  </div>
+
+  <div class="progress" aria-hidden="true"></div>
+  <div class="spotlight" aria-hidden="true"></div>
+
+  <!-- FLOATING GLASS NAVBAR -->
+  <header class="topbar">
+    <div class="topbar__inner">
+      <a href="#top" class="brand">HWH<span>.</span></a>
+      <nav class="topbar__links" aria-label="Main">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-        <button class="theme-btn" aria-label="Toggle dark mode">&#9790;</button>
+        <a href="#education">Education</a>
       </nav>
+      <div class="topbar__right">
+        <button class="iconbtn themebtn" aria-label="Toggle light/dark theme">
+          <svg class="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+        </button>
+        <a href="#contact" class="btn btn--accent btn--sm hide-sm">Let's talk</a>
+        <button class="iconbtn menubtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+      </div>
     </div>
   </header>
 
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <div class="container hero-inner">
-        <div class="photo">
-          <img src="assets/profile.jpg" alt="Hans Werner A. Huyo" onerror="this.remove()" />
-          <span class="initials">HH</span>
-        </div>
-        <div>
-          <p class="eyebrow">Hi, I'm</p>
-          <h1>Hans Werner A. Huyo</h1>
-          <p class="role">Backend Developer &middot; IT Specialist</p>
-          <p class="lead">
-            I build automation and backend systems, and I've migrated more than 4,000 websites
-            onto new infrastructure. I work mostly in Python, Java and AI tooling.
+      <div class="hero__grid-bg" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="status"><span class="status__dot"></span> Open to work &middot; Cebu, PH</p>
+          <h1 class="hero__name">
+            <span class="line"><span class="word">Hans</span></span>
+            <span class="line"><span class="word is-out">Werner</span></span>
+            <span class="line"><span class="word">Huyo<em>.</em></span></span>
+          </h1>
+          <p class="hero__role">
+            <span class="mono">&gt;</span> <span id="typed"></span><span class="caret"></span>
           </p>
-          <div class="cta">
-            <a href="#projects" class="btn primary">View my work</a>
-            <a href="#contact" class="btn">Get in touch</a>
+          <p class="hero__lead">
+            I build automation and backend systems, and I've migrated
+            <strong>4,000+ websites</strong> onto new infrastructure. I work mostly in Python, Java and AI tooling.
+          </p>
+          <div class="hero__cta">
+            <a href="#projects" class="btn btn--accent magnetic">View my work <span class="arrow">&rarr;</span></a>
+            <a href="#contact" class="btn btn--ghost magnetic">Get in touch</a>
           </div>
         </div>
+
+        <div class="hero__visual">
+          <div class="portrait tilt">
+            <div class="portrait__ring"></div>
+            <div class="portrait__img">
+              <img src="assets/profile.jpg" alt="Hans Werner A. Huyo" onerror="this.remove()" />
+              <span class="portrait__initials">HH</span>
+            </div>
+            <!-- Rotating text badge -->
+            <svg class="badge" viewBox="0 0 200 200" aria-hidden="true">
+              <defs><path id="circlePath" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
+              <text><textPath href="#circlePath" textLength="468" lengthAdjust="spacing">BACKEND DEV • IT SPECIALIST • AUTOMATION • </textPath></text>
+            </svg>
+            <div class="badge__core">&#10022;</div>
+          </div>
+          <!-- Floating, draggable tech chips -->
+          <div class="floatchip" style="--x:-8%;--y:8%;--d:0s">Py</div>
+          <div class="floatchip" style="--x:88%;--y:2%;--d:-1.4s">Java</div>
+          <div class="floatchip" style="--x:92%;--y:70%;--d:-2.6s">AI</div>
+          <div class="floatchip" style="--x:-4%;--y:78%;--d:-.8s">JS</div>
+          <div class="floatchip" style="--x:40%;--y:-10%;--d:-3.2s">SSL</div>
+        </div>
       </div>
+
+      <a href="#about" class="scrollcue" aria-label="Scroll down"><span></span></a>
     </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-label="Tools and technologies">
+      <div class="marquee__track">
+        <!-- items are duplicated by script.js for a seamless loop -->
+        <span class="marquee__item">Python</span><span class="marquee__item">Java</span>
+        <span class="marquee__item">React.js</span><span class="marquee__item">HTML / CSS</span>
+        <span class="marquee__item">Web Scraping</span><span class="marquee__item">OpenCV</span>
+        <span class="marquee__item">Prompt Engineering</span><span class="marquee__item">DNS / SSL</span>
+        <span class="marquee__item">Web Hosting</span><span class="marquee__item">IMAP / POP3</span>
+        <span class="marquee__item">WordPress</span><span class="marquee__item">Photoshop</span>
+        <span class="marquee__item">Illustrator</span><span class="marquee__item">Git / GitHub</span>
+      </div>
+    </div>
 
     <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container">
-        <h2 class="title">About</h2>
-        <p class="about-text">
-          I'm a Cebu-based developer who graduated from Cebu Institute of Technology &ndash; University.
-          I'm looking for a role as a <strong>Backend Developer</strong> or <strong>IT Specialist</strong>
-          where I can put my experience in automation, large-scale data migration and technical
-          infrastructure to work, and use Python and AI to make things run faster and fix hard problems.
-        </p>
-        <div class="stats">
-          <div><strong>4,000+</strong><span>websites migrated</span></div>
-          <div><strong>3 / day</strong><span>full-site migration quota met</span></div>
-          <div><strong>3.5 mo</strong><span>migration timeline delivered</span></div>
+        <div class="sechead reveal">
+          <span class="eyebrow">01 &mdash; About me</span>
+          <h2 class="sectitle">Backend developer with a <span class="grad">migration-scale</span> track record.</h2>
+        </div>
+        <div class="about">
+          <div class="about__text reveal">
+            <p>
+              I'm a Cebu-based developer and a graduate of <strong>Cebu Institute of Technology &ndash; University</strong>.
+              At IONOS I moved thousands of live websites from legacy platforms onto new hosting under a tight deadline.
+              That job taught me DNS, SSL, email protocols and how to keep a site running while it's being moved.
+            </p>
+            <p>
+              Before that I built web scrapers and AI-assisted data pipelines. I'm looking for a role as a
+              <strong>Backend Developer</strong> or <strong>IT Specialist</strong> where I can use Python, automation and AI
+              to make things run faster.
+            </p>
+          </div>
+          <div class="stats">
+            <div class="stat reveal tilt"><strong><span class="count" data-to="4000">0</span>+</strong><span>websites migrated</span></div>
+            <div class="stat reveal tilt"><strong><span class="count" data-to="3">0</span>/day</strong><span>full-site migration quota</span></div>
+            <div class="stat reveal tilt"><strong><span class="count" data-to="3.5" data-dec="1">0</span> mo</strong><span>migration timeline delivered</span></div>
+            <div class="stat reveal tilt"><strong><span class="count" data-to="0">0</span></strong><span>sites with data loss</span></div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="section alt">
+    <section id="skills" class="section section--alt">
       <div class="container">
-        <h2 class="title">Skills</h2>
-        <div class="grid cards-3">
-          <div class="card">
+        <div class="sechead reveal">
+          <span class="eyebrow">02 &mdash; Skills</span>
+          <h2 class="sectitle">What I work with.</h2>
+        </div>
+        <div class="bento">
+          <article class="skillcard reveal tilt bento--wide">
+            <div class="skillcard__icon">
+              <svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
+            </div>
             <h3>Programming &amp; Automation</h3>
+            <p>Writing backend logic and scripts that take repetitive work off people's hands.</p>
             <div class="tags"><span>Java</span><span>Python</span><span>React.js</span><span>HTML/CSS</span><span>Web Scraping</span></div>
-          </div>
-          <div class="card">
+          </article>
+          <article class="skillcard reveal tilt">
+            <div class="skillcard__icon">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01"/></svg>
+            </div>
             <h3>Infrastructure</h3>
-            <div class="tags"><span>DNS / SSL</span><span>Web Hosting</span><span>IMAP / POP3</span><span>Website Migration</span></div>
-          </div>
-          <div class="card">
+            <p>Hosting, domains, certificates and mail.</p>
+            <div class="tags"><span>DNS / SSL</span><span>Web Hosting</span><span>IMAP / POP3</span></div>
+          </article>
+          <article class="skillcard reveal tilt">
+            <div class="skillcard__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
             <h3>AI &amp; Data</h3>
+            <p>Getting AI tools to do real work on real datasets.</p>
             <div class="tags"><span>Prompt Engineering</span><span>Data Processing</span><span>OpenCV</span></div>
-          </div>
-          <div class="card">
+          </article>
+          <article class="skillcard reveal tilt">
+            <div class="skillcard__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg>
+            </div>
             <h3>Design &amp; Tools</h3>
-            <div class="tags"><span>WordPress / CMS</span><span>Photoshop</span><span>Illustrator</span><span>MS Office</span></div>
-          </div>
-          <div class="card">
-            <h3>Soft Skills</h3>
-            <div class="tags"><span>Problem Solving</span><span>Project Management</span><span>Technical Writing</span><span>Client Support</span></div>
-          </div>
-          <div class="card">
+            <p>Fixing CMS sites and making the graphics they need.</p>
+            <div class="tags"><span>WordPress</span><span>Photoshop</span><span>Illustrator</span><span>MS Office</span></div>
+          </article>
+          <article class="skillcard reveal tilt">
+            <div class="skillcard__icon">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+            </div>
             <h3>Languages</h3>
-            <div class="tags"><span>English</span><span>Filipino</span><span>Cebuano</span></div>
-          </div>
+            <p>Comfortable working with local and international teams.</p>
+            <div class="tags"><span>English &middot; Fluent</span><span>Filipino &middot; Fluent</span><span>Cebuano &middot; Fluent</span></div>
+          </article>
+          <article class="skillcard reveal tilt bento--full">
+            <div class="skillcard__icon">
+              <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18.5 20a6.5 6.5 0 0 0-3-5.5"/></svg>
+            </div>
+            <h3>Soft Skills</h3>
+            <p>Tracking down server-side and automation problems, keeping a high-volume queue moving on deadline, and explaining technical fixes clearly to clients.</p>
+            <div class="tags"><span>Problem Solving</span><span>Project Management</span><span>Technical Writing</span><span>Client Support</span></div>
+          </article>
         </div>
       </div>
     </section>
@@ -104,61 +219,99 @@
     <!-- EXPERIENCE -->
     <section id="experience" class="section">
       <div class="container">
-        <h2 class="title">Experience</h2>
+        <div class="sechead reveal">
+          <span class="eyebrow">03 &mdash; Experience</span>
+          <h2 class="sectitle">Where I've worked.</h2>
+        </div>
         <div class="timeline">
-          <article class="item">
-            <div class="item-head">
-              <div>
-                <h3>Representative, Website Administration (Website Migration)</h3>
-                <p class="org">IONOS Philippines Inc.</p>
+          <div class="timeline__rail"><div class="timeline__fill"></div></div>
+
+          <article class="tl reveal">
+            <span class="tl__dot"></span>
+            <div class="tl__card tilt">
+              <div class="tl__top">
+                <span class="tl__dates">Sep 2025 &ndash; Feb 2026</span>
+                <span class="tl__badge">Full-time</span>
               </div>
-              <span class="date">Sep 2025 &ndash; Feb 2026</span>
+              <h3 class="tl__role">Representative, Website Administration</h3>
+              <p class="tl__org">IONOS Philippines Inc. &middot; Website Migration</p>
+              <ul>
+                <li>Migrated <strong>4,000+ websites</strong> from legacy platforms to IONOS infrastructure within a strict <strong>3.5-month</strong> timeline.</li>
+                <li>Met a quota of <strong>3 full-site migrations per day</strong>, working around tool limitations and server-side delays.</li>
+                <li>Checked every site after migration so that no data was lost and DNS changes didn't take live websites offline.</li>
+              </ul>
+              <div class="tags"><span>DNS</span><span>SSL</span><span>Hosting</span><span>QA</span></div>
             </div>
-            <ul>
-              <li>Migrated 4,000+ websites from legacy platforms to IONOS infrastructure within a strict 3.5-month timeline.</li>
-              <li>Met a quota of 3 full-site migrations per day, working around tool limitations and server-side delays.</li>
-              <li>Checked every site after migration so that no data was lost and DNS changes didn't take live websites offline.</li>
-            </ul>
           </article>
-          <article class="item">
-            <div class="item-head">
-              <div>
-                <h3>IT Intern</h3>
-                <p class="org">Lifewood Data Technology Philippines</p>
+
+          <article class="tl reveal">
+            <span class="tl__dot"></span>
+            <div class="tl__card tilt">
+              <div class="tl__top">
+                <span class="tl__dates">Jan 2025 &ndash; Apr 2025</span>
+                <span class="tl__badge">Internship</span>
               </div>
-              <span class="date">Jan 2025 &ndash; Apr 2025</span>
+              <h3 class="tl__role">IT Intern</h3>
+              <p class="tl__org">Lifewood Data Technology Philippines</p>
+              <ul>
+                <li>Wrote <strong>web scraping scripts</strong> that automated data collection and cut down manual work.</li>
+                <li>Used AI tools and <strong>prompt engineering</strong> to speed up data processing and genealogy workflows.</li>
+                <li>Worked on design and backend data entry for genealogy-focused web projects.</li>
+                <li>Managed large genealogy datasets and kept them accurate and easy to search.</li>
+              </ul>
+              <div class="tags"><span>Python</span><span>Scraping</span><span>AI</span><span>Data</span></div>
             </div>
-            <ul>
-              <li>Wrote web scraping scripts that automated data collection and cut down manual work.</li>
-              <li>Used AI tools and prompt engineering to speed up data processing and genealogy workflows.</li>
-              <li>Worked on design and backend data entry for genealogy-focused web projects.</li>
-              <li>Managed large genealogy datasets and kept them accurate and easy to search.</li>
-            </ul>
           </article>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="section alt">
+    <section id="projects" class="section section--alt">
       <div class="container">
-        <h2 class="title">Projects</h2>
-        <div class="grid cards-2">
-          <article class="card project">
-            <span class="date">Jan 2024 &ndash; Dec 2024 &middot; Capstone</span>
-            <h3>CITU-Secure</h3>
-            <p class="org">Backend Developer</p>
-            <p>A visitor management system that improves security on the CIT-U campus. It tracks each visitor's personal information, purpose of visit, and entry and exit times.</p>
-            <p>I built the backend for visitor management and tracking.</p>
-            <div class="tags"><span>Backend</span><span>Visitor Tracking</span><span>Security</span></div>
+        <div class="sechead reveal">
+          <span class="eyebrow">04 &mdash; Projects</span>
+          <h2 class="sectitle">Things I've built.</h2>
+        </div>
+        <div class="projects">
+          <article class="pcard reveal tilt">
+            <div class="pcard__media pcard__media--secure">
+              <span class="pcard__tagline">Capstone</span>
+              <!-- Visitor log mockup -->
+              <div class="mock">
+                <div class="mock__bar"><i></i><i></i><i></i><span>citu-secure / visitors</span></div>
+                <div class="mock__row"><b>J. Dela Cruz</b><span>Registrar</span><em class="in">IN 08:42</em></div>
+                <div class="mock__row"><b>M. Santos</b><span>Library</span><em class="out">OUT 09:15</em></div>
+                <div class="mock__row"><b>A. Reyes</b><span>Admissions</span><em class="in">IN 09:31</em></div>
+                <div class="mock__row"><b>K. Lim</b><span>Engineering</span><em class="in">IN 09:47</em></div>
+              </div>
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__meta">Jan 2024 &ndash; Dec 2024 &middot; Backend Developer</span>
+              <h3>CITU-Secure</h3>
+              <p>A visitor management system that improves security on the CIT-U campus. It tracks each visitor's personal information, purpose of visit, and entry and exit times.</p>
+              <p class="pcard__role">My part: the backend for visitor management and tracking.</p>
+              <div class="tags"><span>Backend</span><span>Visitor Tracking</span><span>Security</span></div>
+            </div>
           </article>
-          <article class="card project">
-            <span class="date">2023 &ndash; 2024</span>
-            <h3>Real-Time Face Recognition</h3>
-            <p class="org">Backend Development &amp; Data Collection</p>
-            <p>A face recognition system built with OpenCV and Python that identifies faces in live video in real time.</p>
-            <p>I built the backend and collected the training data that made the recognition model more accurate.</p>
-            <div class="tags"><span>Python</span><span>OpenCV</span><span>Computer Vision</span></div>
+
+          <article class="pcard reveal tilt">
+            <div class="pcard__media pcard__media--face">
+              <span class="pcard__tagline">Computer Vision</span>
+              <!-- Face detection mockup -->
+              <div class="facebox">
+                <svg class="facebox__face" viewBox="0 0 100 120"><ellipse cx="50" cy="52" rx="30" ry="38"/><circle cx="39" cy="46" r="3.5"/><circle cx="61" cy="46" r="3.5"/><path d="M40 70q10 8 20 0"/><path d="M14 120q36-34 72 0"/></svg>
+                <div class="facebox__frame"><span>MATCH 97.4%</span></div>
+                <div class="facebox__scan"></div>
+              </div>
+            </div>
+            <div class="pcard__body">
+              <span class="pcard__meta">2023 &ndash; 2024 &middot; Backend &amp; Data Collection</span>
+              <h3>Real-Time Face Recognition</h3>
+              <p>A face recognition system built with OpenCV and Python that identifies faces in live video in real time.</p>
+              <p class="pcard__role">My part: the backend, plus collecting the training data that made the model more accurate.</p>
+              <div class="tags"><span>Python</span><span>OpenCV</span><span>Computer Vision</span></div>
+            </div>
           </article>
         </div>
       </div>
@@ -167,31 +320,57 @@
     <!-- EDUCATION -->
     <section id="education" class="section">
       <div class="container">
-        <h2 class="title">Education</h2>
-        <div class="card edu">
-          <div>
-            <h3>Cebu Institute of Technology &ndash; University</h3>
-            <p class="org">College &middot; N. Bacalso Ave, Cebu City</p>
-          </div>
-          <span class="date">2019 &ndash; 2025</span>
+        <div class="sechead reveal">
+          <span class="eyebrow">05 &mdash; Education</span>
+          <h2 class="sectitle">Where I studied.</h2>
         </div>
+        <article class="degree reveal tilt">
+          <div class="degree__icon">
+            <svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/><path d="M22 9v6"/></svg>
+          </div>
+          <div class="degree__body">
+            <span class="tl__dates">2019 &ndash; 2025</span>
+            <h3>Cebu Institute of Technology &ndash; University</h3>
+            <p class="tl__org">College &middot; N. Bacalso Ave, Cebu City</p>
+          </div>
+        </article>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section alt">
-      <div class="container contact">
-        <h2 class="title">Let's work together</h2>
-        <p>I'm open to Backend Developer and IT Specialist roles. The quickest way to reach me is by email.</p>
-        <a class="btn primary" href="mailto:hanswernerhuyo@gmail.com">hanswernerhuyo@gmail.com</a>
-        <p class="muted">Mandaue City, Cebu, Philippines</p>
+    <section id="contact" class="section contact">
+      <div class="container">
+        <div class="contact__card reveal">
+          <div class="contact__glow" aria-hidden="true"></div>
+          <span class="eyebrow">06 &mdash; Contact</span>
+          <h2 class="contact__title">Let's build something<br /><span class="grad">that runs itself.</span></h2>
+          <p>I'm open to Backend Developer and IT Specialist roles. The quickest way to reach me is by email.</p>
+          <div class="contact__actions">
+            <a class="btn btn--accent btn--lg magnetic" href="mailto:hanswernerhuyo@gmail.com">Send an email <span class="arrow">&rarr;</span></a>
+            <button class="btn btn--ghost btn--lg copybtn" data-copy="hanswernerhuyo@gmail.com">
+              <span class="mono">hanswernerhuyo@gmail.com</span>
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            </button>
+          </div>
+          <p class="muted">Mandaue City, Cebu, Philippines</p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">&copy; <span id="year"></span> Hans Werner A. Huyo</div>
+    <div class="container footer__top">
+      <span class="status"><span class="status__dot"></span> Available for new opportunities</span>
+      <a href="#top" class="footer__totop">Back to top &uarr;</a>
+    </div>
+    <div class="footer__wordmark" aria-hidden="true">HUYO</div>
+    <div class="container footer__bottom">
+      <span>&copy; <span id="year"></span> Hans Werner A. Huyo</span>
+      <span>Built with HTML, CSS &amp; JS &middot; Hosted on Vercel</span>
+    </div>
   </footer>
+
+  <div class="toast" role="status" aria-live="polite"></div>
 
   <script src="script.js"></script>
 </body>
