@@ -102,7 +102,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
   transition: opacity 0.35s;
 }
 .preloader__logo { font-family: var(--font-display); font-weight: 900; font-size: clamp(40px, 8vw, 72px); letter-spacing: -0.03em; }
-.preloader__logo span, .brand span { color: var(--accent); }
+
 .preloader__count { font-family: var(--font-mono); color: #8a93a3; font-size: 14px; }
 .preloader.is-cracking .preloader__crack { transform: scaleY(1); }
 .preloader.is-open .preloader__content { opacity: 0; }
@@ -214,7 +214,6 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .hero__name .line:nth-child(2) .word { transition-delay: 0.08s; }
 .hero__name .line:nth-child(3) .word { transition-delay: 0.16s; }
 .hero__name .is-out { color: transparent; -webkit-text-stroke: 2px var(--outline); }
-.hero__name em { font-style: normal; color: var(--accent); }
 .is-ready .hero__name .word { transform: translateY(0); }
 
 .hero__role { font-family: var(--font-mono); font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--accent-ink); min-height: 1.8em; }
