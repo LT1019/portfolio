@@ -46,6 +46,7 @@
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
+        <a href="#security">Security</a>
         <a href="#education">Education</a>
       </nav>
       <div class="topbar__right">
@@ -130,6 +131,8 @@
         <span class="marquee__item">Web Hosting</span><span class="marquee__item">IMAP / POP3</span>
         <span class="marquee__item">WordPress</span><span class="marquee__item">Photoshop</span>
         <span class="marquee__item">Illustrator</span><span class="marquee__item">Git / GitHub</span>
+        <span class="marquee__item">Splunk</span><span class="marquee__item">Wireshark</span>
+        <span class="marquee__item">Nmap</span><span class="marquee__item">Kali Linux</span>
       </div>
     </div>
 
@@ -211,7 +214,15 @@
             <p>Comfortable working with local and international teams.</p>
             <div class="tags"><span>English &middot; Fluent</span><span>Filipino &middot; Fluent</span><span>Cebuano &middot; Fluent</span></div>
           </article>
-          <article class="skillcard reveal tilt bento--full">
+          <article class="skillcard reveal tilt bento--wide">
+            <div class="skillcard__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3>Cybersecurity &amp; SOC</h3>
+            <p>Watching traffic and logs, triaging alerts, and writing incidents up clearly for the next tier.</p>
+            <div class="tags"><span>Splunk</span><span>Wireshark</span><span>Nmap</span><span>Kali Linux</span><span>MITRE ATT&amp;CK</span><span>Fortinet NSE 1&ndash;3</span></div>
+          </article>
+          <article class="skillcard reveal tilt">
             <div class="skillcard__icon">
               <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18.5 20a6.5 6.5 0 0 0-3-5.5"/></svg>
             </div>
@@ -324,11 +335,138 @@
       </div>
     </section>
 
-    <!-- EDUCATION -->
-    <section id="education" class="section">
+    <!-- SECURITY LAB WORK -->
+    <section id="security" class="section">
       <div class="container">
         <div class="sechead reveal">
-          <span class="eyebrow">05 &mdash; Education</span>
+          <span class="eyebrow">05 &mdash; Cybersecurity</span>
+          <h2 class="sectitle">Hands-on <span class="grad">security lab</span> work.</h2>
+          <p class="seclead">SOC analyst training: watching traffic, triaging alerts, writing incident tickets and scanning lab machines. Every lab ran on my own network or on purpose-built vulnerable VMs. Open any card to see the screenshots.</p>
+        </div>
+
+        <h3 class="labgroup reveal"><span class="labgroup__num">01</span> Cyber Threat Monitoring</h3>
+        <div class="labs">
+          <article class="labcard reveal tilt">
+            <button class="labcard__cover" data-gallery="splunk" data-start="11" aria-label="View Splunk dashboard screenshots">
+              <img src="assets/labs/splunk/12.webp" alt="Splunk BOTS v2 Security Overview dashboard filtered to one sourcetype" loading="lazy" width="1600" height="827" />
+              <span class="labcard__count">19 screenshots</span>
+            </button>
+            <div class="labcard__body">
+              <span class="pcard__meta">Splunk Enterprise &middot; BOTS v2 dataset</span>
+              <h3>SOC Overview Dashboard</h3>
+              <p>A filterable dashboard with KPI, breakdown and detail panels, all tied to shared Sourcetype, Host and Time inputs.</p>
+              <ul class="labcard__list">
+                <li>Three detection panels: high-volume accounts, network scanning and web path enumeration</li>
+                <li>Turned the scanning detection into a scheduled alert that sends an email</li>
+              </ul>
+              <div class="tags"><span>Splunk</span><span>SPL</span><span>Dashboards</span><span>Alerting</span></div>
+              <button class="labcard__open" data-gallery="splunk">View screenshots <span class="arrow">&rarr;</span></button>
+            </div>
+          </article>
+
+          <article class="labcard reveal tilt">
+            <button class="labcard__cover" data-gallery="wireshark" data-start="17" aria-label="View Wireshark lab screenshots">
+              <img src="assets/labs/wireshark/18.webp" alt="Wireshark Follow HTTP Stream showing a Basic Auth request with test credentials" loading="lazy" width="1600" height="860" />
+              <span class="labcard__count">36 screenshots</span>
+            </button>
+            <div class="labcard__body">
+              <span class="pcard__meta">Wireshark &middot; Beginner to advanced</span>
+              <h3>Network Traffic Analysis</h3>
+              <p>Six activities and a capstone. I covered capture vs. display filters, TCP handshakes, DHCP and ARP, and cleartext credential exposure.</p>
+              <ul class="labcard__list">
+                <li>Pulled test credentials out of HTTP Basic Auth and FTP, then showed that HTTPS and SFTP hide them</li>
+                <li>Capstone incident report with my own display filters and recommendations</li>
+              </ul>
+              <div class="tags"><span>Wireshark</span><span>TCP/IP</span><span>DNS / DHCP / ARP</span><span>TLS / SSH</span></div>
+              <button class="labcard__open" data-gallery="wireshark">View screenshots <span class="arrow">&rarr;</span></button>
+            </div>
+          </article>
+
+          <article class="labcard labcard--text reveal tilt">
+            <div class="labcard__body">
+              <span class="pcard__meta">Incident Reporting &middot; Training exercise</span>
+              <h3>&ldquo;Operation Manila Fog&rdquo;</h3>
+              <p>Three alerts on a domain controller: an after-hours privileged login, a new Domain Admin account, and 2.1&nbsp;GB leaving over HTTPS. I worked them into a single incident.</p>
+              <ul class="labcard__list">
+                <li>Mapped to MITRE ATT&amp;CK T1078.002, T1136.002, T1098 and T1041; rated <strong class="sev">Critical</strong></li>
+                <li>Checked the external IP on VirusTotal, AbuseIPDB and Shodan; it had WinRM (5986) exposed</li>
+                <li>Wrote the incident ticket and a verbal SBAR escalation to Tier 2</li>
+              </ul>
+              <div class="tags"><span>Incident Response</span><span>MITRE ATT&amp;CK</span><span>Threat Intel</span><span>SBAR</span></div>
+            </div>
+          </article>
+
+          <article class="labcard labcard--text reveal tilt">
+            <div class="labcard__body">
+              <span class="pcard__meta">Triage &middot; Splunk Tier 1 workbook</span>
+              <h3>Alert Triage on BOTS v2</h3>
+              <p>15 lessons and 10 labs of Tier 1 triage across 68.9M events and 103 sourcetypes. Each finding got an evidence-based verdict and an escalate-or-close decision.</p>
+              <ul class="labcard__list">
+                <li>Found a crafted <code>&lt;script&gt;</code> payload that tried to create a user on an admin panel</li>
+                <li>Flagged 10.0.1.120 hitting 5,769 distinct ports as likely reconnaissance</li>
+                <li>Cleared PowerShell activity as benign Splunk forwarder behaviour after checking the parent process</li>
+              </ul>
+              <div class="tags"><span>Triage</span><span>SPL</span><span>DNS / HTTP analysis</span><span>Escalation</span></div>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="labgroup reveal"><span class="labgroup__num">02</span> Kali Linux</h3>
+        <div class="labs">
+          <article class="labcard reveal tilt">
+            <button class="labcard__cover" data-gallery="nmap" data-start="10" aria-label="View Nmap lab screenshots">
+              <img src="assets/labs/nmap/11.webp" alt="Nmap NSE script confirming the vsFTPd 2.3.4 backdoor on Metasploitable 2" loading="lazy" width="1600" height="994" />
+              <span class="labcard__count">11 screenshots</span>
+            </button>
+            <div class="labcard__body">
+              <span class="pcard__meta">Nmap &middot; Kali Linux &amp; Metasploitable 2</span>
+              <h3>Network Scanning &amp; Enumeration</h3>
+              <p>Host discovery on my home network, full service enumeration of a Metasploitable 2 VM, and NSE scripts from the safe, discovery, auth and vuln categories.</p>
+              <ul class="labcard__list">
+                <li>Timed SYN, Connect and UDP scans and compared their packets in Wireshark</li>
+                <li>Confirmed the vsFTPd 2.3.4 backdoor (CVE-2011-2523), anonymous FTP and an empty MySQL root password</li>
+              </ul>
+              <div class="tags"><span>Nmap</span><span>NSE</span><span>Kali Linux</span><span>Enumeration</span></div>
+              <button class="labcard__open" data-gallery="nmap">View screenshots <span class="arrow">&rarr;</span></button>
+            </div>
+          </article>
+
+          <article class="labcard labcard--text labcard--soon reveal tilt">
+            <div class="labcard__body">
+              <span class="pcard__meta">Blue / Red / Purple Team <em class="soon">In progress</em></span>
+              <h3>GoPhish &amp; Honeypot</h3>
+              <p>A phishing simulation with GoPhish and a honeypot deployment. Each is looked at from the attacker's side, the defender's side, and the two working together.</p>
+              <div class="tags"><span>GoPhish</span><span>Honeypot</span><span>Red Team</span><span>Blue Team</span><span>Purple Team</span></div>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="labgroup reveal"><span class="labgroup__num">03</span> Certificates</h3>
+        <div class="certs">
+          <article class="cert reveal tilt">
+            <span class="cert__level">NSE 1</span>
+            <h4>Fortinet Network Security Expert&nbsp;1</h4>
+            <p>Information security awareness and the threat landscape.</p>
+          </article>
+          <article class="cert reveal tilt">
+            <span class="cert__level">NSE 2</span>
+            <h4>Fortinet Network Security Expert&nbsp;2</h4>
+            <p>The evolution of security products and how they answer threats.</p>
+          </article>
+          <article class="cert reveal tilt">
+            <span class="cert__level">NSE 3</span>
+            <h4>Fortinet Network Security Expert&nbsp;3</h4>
+            <p>Fortinet's core products and the Security Fabric.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section section--alt">
+      <div class="container">
+        <div class="sechead reveal">
+          <span class="eyebrow">06 &mdash; Education</span>
           <h2 class="sectitle">Where I studied.</h2>
         </div>
         <article class="degree reveal tilt">
@@ -349,7 +487,7 @@
       <div class="container">
         <div class="contact__card reveal">
           <div class="contact__glow" aria-hidden="true"></div>
-          <span class="eyebrow">06 &mdash; Contact</span>
+          <span class="eyebrow">07 &mdash; Contact</span>
           <h2 class="contact__title">Let's build something<br /><span class="grad">that runs itself.</span></h2>
           <p>I'm open to Backend Developer and IT Specialist roles. The quickest way to reach me is by email.</p>
           <div class="contact__actions">
@@ -379,6 +517,21 @@
 
   <div class="toast" role="status" aria-live="polite"></div>
 
+  <dialog class="lightbox" aria-label="Screenshot viewer">
+    <div class="lightbox__bar">
+      <span class="lightbox__title"></span>
+      <span class="lightbox__count mono"></span>
+      <button class="iconbtn lightbox__close" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <figure class="lightbox__fig">
+      <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+      <img class="lightbox__img" alt="" />
+      <button class="lightbox__nav lightbox__nav--next" aria-label="Next screenshot"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+      <figcaption class="lightbox__cap"></figcaption>
+    </figure>
+  </dialog>
+
+  <script src="labs.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

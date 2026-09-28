@@ -35,7 +35,7 @@ if (reduceMotion) {
 
 /* ---------- Typewriter role ---------- */
 const typed = document.getElementById("typed");
-const roles = ["Backend Developer", "IT Specialist", "Automation Engineer", "Website Migration Specialist", "AI & Python Enthusiast"];
+const roles = ["Backend Developer", "IT Specialist", "Automation Engineer", "Website Migration Specialist", "SOC Analyst (Tier 1)", "AI & Python Enthusiast"];
 
 function startTyping() {
   if (reduceMotion) { typed.textContent = roles[0]; return; }
@@ -217,3 +217,54 @@ document.querySelectorAll(".copybtn").forEach((btn) =>
     }
   })
 );
+
+/* ---------- Security lab screenshot lightbox ---------- */
+const lightbox = document.querySelector(".lightbox");
+if (lightbox && window.LAB_GALLERIES) {
+  const lbImg = lightbox.querySelector(".lightbox__img");
+  const lbCap = lightbox.querySelector(".lightbox__cap");
+  const lbTitle = lightbox.querySelector(".lightbox__title");
+  const lbCount = lightbox.querySelector(".lightbox__count");
+  let gallery = null, index = 0;
+
+  const src = (g, i) => `${g.dir}${String(i + 1).padStart(2, "0")}.webp`;
+
+  function show(i) {
+    const n = gallery.shots.length;
+    index = (i + n) % n;
+    lbImg.src = src(gallery, index);
+    lbImg.alt = gallery.shots[index];
+    lbCap.textContent = gallery.shots[index];
+    lbCount.textContent = `${index + 1} / ${n}`;
+    new Image().src = src(gallery, (index + 1) % n); // preload the next shot
+  }
+
+  document.querySelectorAll("[data-gallery]").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      gallery = window.LAB_GALLERIES[btn.dataset.gallery];
+      lbTitle.textContent = gallery.title;
+      show(Number(btn.dataset.start || 0));
+      lightbox.showModal();
+    })
+  );
+
+  lightbox.querySelector(".lightbox__nav--prev").addEventListener("click", () => show(index - 1));
+  lightbox.querySelector(".lightbox__nav--next").addEventListener("click", () => show(index + 1));
+  lightbox.querySelector(".lightbox__close").addEventListener("click", () => lightbox.close());
+  // Close when the backdrop (the dialog element itself) is clicked
+  lightbox.addEventListener("click", (e) => { if (e.target === lightbox) lightbox.close(); });
+  lightbox.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") show(index - 1);
+    if (e.key === "ArrowRight") show(index + 1);
+  });
+
+  // Swipe between screenshots on touch screens
+  let touchX = null;
+  lbImg.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  lbImg.addEventListener("touchend", (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
+    touchX = null;
+  });
+}
