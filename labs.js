@@ -1,4 +1,5 @@
-/* Screenshot galleries for the Security section, opened by [data-gallery] buttons. */
+/* Image galleries for the Security and Certificates sections, opened by [data-gallery] buttons.
+   A shot is either a caption (image at dir/NN.webp) or { src, cap }. */
 window.LAB_GALLERIES = {
   wireshark: {
     title: "Wireshark Lab Series",
@@ -83,5 +84,54 @@ window.LAB_GALLERIES = {
       "Detection 3: drilling into a raw stream:http event",
       "Scanning detection saved as a scheduled alert with an email action"
     ]
+  },
+  certs: {
+    title: "Certificates",
+    shots: [
+        {
+              "src": "assets/certs/cisco-network-defense.webp",
+              "cap": "Cisco Networking Academy · Network Defense · Sep 28, 2026"
+        },
+        {
+              "src": "assets/certs/fortinet-nse1.webp",
+              "cap": "Fortinet Training Institute · Cybersecurity and Cloud Fundamentals 1.0 (NSE 1) · Sep 29, 2026"
+        },
+        {
+              "src": "assets/certs/huawei-hcia-datacom.webp",
+              "cap": "Huawei Talent Online · HCIA-Datacom Course · Jun 9, 2022"
+        },
+        {
+              "src": "assets/certs/accenture-backend.webp",
+              "cap": "Accenture Technology Academy · Back End Development · Sep – Dec 2023 · 138 hrs"
+        },
+        {
+              "src": "assets/certs/udemy-java-masterclass.webp",
+              "cap": "Udemy · Tim Buchalka · Java Programming Masterclass (Java 17) · Oct 1, 2023 · 132 hrs"
+        },
+        {
+              "src": "assets/certs/udemy-spring-hibernate.webp",
+              "cap": "Udemy · Chad Darby · Spring Boot 3, Spring 6 & Hibernate for Beginners · Oct 12, 2023 · 33.5 hrs"
+        },
+        {
+              "src": "assets/certs/udemy-docker.webp",
+              "cap": "Udemy · KodeKloud · Docker for the Absolute Beginner – Hands On · Nov 10, 2023 · 4.5 hrs"
+        },
+        {
+              "src": "assets/certs/udemy-junit-mockito.webp",
+              "cap": "Udemy · in28Minutes · Java Unit Testing with JUnit & Mockito · Oct 3, 2023 · 5 hrs"
+        },
+        {
+              "src": "assets/certs/udemy-git.webp",
+              "cap": "Udemy · Jason Taylor · Git Complete: The Definitive Guide to Git · Sep 26, 2023 · 6.5 hrs"
+        },
+        {
+              "src": "assets/certs/udemy-maven.webp",
+              "cap": "Udemy · Jason Taylor · Maven Crash Course for Beginners · Sep 26, 2023 · 2.5 hrs"
+        },
+        {
+              "src": "assets/certs/udemy-eclipse.webp",
+              "cap": "Udemy · in28Minutes · Eclipse Tutorial: Learn Java IDE in 10 Steps · Sep 27, 2023 · 1.5 hrs"
+        }
+  ]
   }
 };

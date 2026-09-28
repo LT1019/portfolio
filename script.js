@@ -227,14 +227,15 @@ if (lightbox && window.LAB_GALLERIES) {
   const lbCount = lightbox.querySelector(".lightbox__count");
   let gallery = null, index = 0;
 
-  const src = (g, i) => `${g.dir}${String(i + 1).padStart(2, "0")}.webp`;
+  const src = (g, i) => g.shots[i].src || `${g.dir}${String(i + 1).padStart(2, "0")}.webp`;
+  const cap = (g, i) => g.shots[i].cap || g.shots[i];
 
   function show(i) {
     const n = gallery.shots.length;
     index = (i + n) % n;
     lbImg.src = src(gallery, index);
-    lbImg.alt = gallery.shots[index];
-    lbCap.textContent = gallery.shots[index];
+    lbImg.alt = cap(gallery, index);
+    lbCap.textContent = cap(gallery, index);
     lbCount.textContent = `${index + 1} / ${n}`;
     new Image().src = src(gallery, (index + 1) % n); // preload the next shot
   }
