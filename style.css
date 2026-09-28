@@ -348,6 +348,29 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .tilt-glare > * { position: relative; z-index: 1; }
 
 /* ============ ABOUT ============ */
+/* Auto-switching About: slides stack in one grid cell so the height never jumps */
+.aboutswitch__head { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 14px; }
+.aboutswitch__head .eyebrow { margin-bottom: 0; }
+.aboutswitch__tabs { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
+.aboutswitch__tab {
+  position: relative; overflow: hidden; padding: 7px 16px; border-radius: 999px;
+  font-size: 0.84rem; font-weight: 700; color: var(--muted); transition: color 0.3s, background 0.3s;
+}
+.aboutswitch__tab:hover { color: var(--ink); }
+.aboutswitch__tab.is-active { color: var(--ink); background: var(--accent-tint); }
+.aboutswitch__bar {
+  position: absolute; left: 12px; right: 12px; bottom: 3px; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2)); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.1s linear;
+}
+.aboutswitch__stage { display: grid; }
+.aboutslide {
+  grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translateY(14px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), visibility 0s linear 0.9s;
+}
+.aboutslide.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 0.9s var(--ease) 0.25s, transform 0.9s var(--ease) 0.25s, visibility 0s; }
+.aboutslide .sectitle { max-width: 780px; margin-bottom: clamp(36px, 5vw, 60px); }
+
 .about { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
 .about__text p { font-size: 1.1rem; color: var(--ink-soft); margin-bottom: 18px; }
 .about__text strong { color: var(--ink); }

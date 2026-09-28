@@ -137,31 +137,69 @@
       </div>
     </div>
 
-    <!-- ABOUT -->
+    <!-- ABOUT: two slides (web migration / cybersecurity) that cross-fade on a loop -->
     <section id="about" class="section">
       <div class="container">
-        <div class="sechead reveal">
-          <span class="eyebrow">01 &mdash; About me</span>
-          <h2 class="sectitle">Backend developer with a <span class="grad">migration-scale</span> track record.</h2>
-        </div>
-        <div class="about">
-          <div class="about__text reveal">
-            <p>
-              I'm a Cebu-based developer and a graduate of <strong>Cebu Institute of Technology &ndash; University</strong>.
-              At IONOS I moved thousands of live websites from legacy platforms onto new hosting under a tight deadline.
-              That job taught me DNS, SSL, email protocols and how to keep a site running while it's being moved.
-            </p>
-            <p>
-              Before that I built web scrapers and AI-assisted data pipelines. I'm looking for a role as a
-              <strong>Backend Developer</strong> or <strong>IT Specialist</strong> where I can use Python, automation and AI
-              to make things run faster.
-            </p>
+        <div class="aboutswitch reveal" data-interval="9000">
+          <div class="aboutswitch__head">
+            <span class="eyebrow">01 &mdash; About me</span>
+            <div class="aboutswitch__tabs" role="tablist" aria-label="About me topics">
+              <button class="aboutswitch__tab is-active" role="tab" aria-selected="true" aria-controls="about-web" id="tab-web">
+                Web Migration<span class="aboutswitch__bar"></span>
+              </button>
+              <button class="aboutswitch__tab" role="tab" aria-selected="false" aria-controls="about-sec" id="tab-sec" tabindex="-1">
+                Cybersecurity<span class="aboutswitch__bar"></span>
+              </button>
+            </div>
           </div>
-          <div class="stats">
-            <div class="stat reveal tilt"><strong><span class="count" data-to="4000">0</span>+</strong><span>websites migrated</span></div>
-            <div class="stat reveal tilt"><strong><span class="count" data-to="3">0</span>/day</strong><span>full-site migration quota</span></div>
-            <div class="stat reveal tilt"><strong><span class="count" data-to="3.5" data-dec="1">0</span> mo</strong><span>migration timeline delivered</span></div>
-            <div class="stat reveal tilt"><strong><span class="count" data-to="0">0</span></strong><span>sites with data loss</span></div>
+
+          <div class="aboutswitch__stage">
+            <div class="aboutslide is-active" id="about-web" role="tabpanel" aria-labelledby="tab-web">
+              <h2 class="sectitle">Backend developer with a <span class="grad">migration-scale</span> track record.</h2>
+              <div class="about">
+                <div class="about__text">
+                  <p>
+                    I'm a Cebu-based developer and a graduate of <strong>Cebu Institute of Technology &ndash; University</strong>.
+                    At IONOS I moved thousands of live websites from legacy platforms onto new hosting under a tight deadline.
+                    That job taught me DNS, SSL, email protocols and how to keep a site running while it's being moved.
+                  </p>
+                  <p>
+                    Before that I built web scrapers and AI-assisted data pipelines. I'm looking for a role as a
+                    <strong>Backend Developer</strong> or <strong>IT Specialist</strong> where I can use Python, automation and AI
+                    to make things run faster.
+                  </p>
+                </div>
+                <div class="stats">
+                  <div class="stat tilt"><strong><span class="count" data-to="4000">0</span>+</strong><span>websites migrated</span></div>
+                  <div class="stat tilt"><strong><span class="count" data-to="3">0</span>/day</strong><span>full-site migration quota</span></div>
+                  <div class="stat tilt"><strong><span class="count" data-to="3.5" data-dec="1">0</span> mo</strong><span>migration timeline delivered</span></div>
+                  <div class="stat tilt"><strong><span class="count" data-to="0">0</span></strong><span>sites with data loss</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="aboutslide" id="about-sec" role="tabpanel" aria-labelledby="tab-sec" aria-hidden="true">
+              <h2 class="sectitle">Training as a <span class="grad">SOC analyst</span>, hands-on.</h2>
+              <div class="about">
+                <div class="about__text">
+                  <p>
+                    I'm training as a <strong>Tier 1 SOC analyst</strong>. I analyse traffic in Wireshark, build detections,
+                    dashboards and alerts in Splunk, and scan lab machines with Nmap on Kali Linux.
+                  </p>
+                  <p>
+                    I triage alerts and write incidents up mapped to MITRE ATT&amp;CK, with a clear escalation to the next tier.
+                    I hold <strong>Cisco Network Defense</strong> and <strong>Fortinet NSE</strong> certificates, and I'm looking for a
+                    <strong>SOC Analyst</strong> or <strong>IT Security</strong> role.
+                  </p>
+                </div>
+                <div class="stats">
+                  <div class="stat tilt"><strong><span class="count" data-to="5">0</span></strong><span>hands-on security labs</span></div>
+                  <div class="stat tilt"><strong><span class="count" data-to="68.9" data-dec="1">0</span>M</strong><span>Splunk events investigated</span></div>
+                  <div class="stat tilt"><strong><span class="count" data-to="4">0</span></strong><span>ATT&amp;CK techniques mapped</span></div>
+                  <div class="stat tilt"><strong><span class="count" data-to="11">0</span></strong><span>certificates earned</span></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

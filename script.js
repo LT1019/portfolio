@@ -269,3 +269,51 @@ if (lightbox && window.LAB_GALLERIES) {
     touchX = null;
   });
 }
+
+/* ---------- About me: cross-fade between web migration and cybersecurity on a loop ---------- */
+const aboutSwitch = document.querySelector(".aboutswitch");
+if (aboutSwitch) {
+  const tabs = [...aboutSwitch.querySelectorAll(".aboutswitch__tab")];
+  const slides = [...aboutSwitch.querySelectorAll(".aboutslide")];
+  const bars = tabs.map((t) => t.querySelector(".aboutswitch__bar"));
+  const interval = Number(aboutSwitch.dataset.interval) || 9000;
+  const TICK = 100;
+  let current = 0, elapsed = 0;
+
+  function showAbout(i) {
+    current = (i + slides.length) % slides.length;
+    elapsed = 0;
+    tabs.forEach((t, j) => {
+      const on = j === current;
+      t.classList.toggle("is-active", on);
+      t.setAttribute("aria-selected", on);
+      t.tabIndex = on ? 0 : -1;
+      bars[j].style.transform = "scaleX(0)";
+    });
+    slides.forEach((s, j) => {
+      s.classList.toggle("is-active", j === current);
+      s.setAttribute("aria-hidden", j !== current);
+    });
+    slides[current].querySelectorAll(".count").forEach(countUp);
+  }
+
+  tabs.forEach((t, i) => t.addEventListener("click", () => showAbout(i)));
+
+  // Hold the timer while the reader hovers or focuses inside (so text never changes mid-read),
+  // and while the section is off screen (so visitors arrive at the start of a cycle)
+  const hold = { hover: false, focus: false, offscreen: true };
+  const paused = () => hold.hover || hold.focus || hold.offscreen;
+  aboutSwitch.addEventListener("mouseenter", () => { hold.hover = true; });
+  aboutSwitch.addEventListener("mouseleave", () => { hold.hover = false; });
+  aboutSwitch.addEventListener("focusin", () => { hold.focus = true; });
+  aboutSwitch.addEventListener("focusout", (e) => { hold.focus = aboutSwitch.contains(e.relatedTarget); });
+  new IntersectionObserver(([e]) => { hold.offscreen = !e.isIntersecting; }, { threshold: 0.3 }).observe(aboutSwitch);
+
+  // The active tab's bar fills as the timer runs; when it is full, move to the next slide
+  setInterval(() => {
+    if (paused()) return;
+    elapsed += TICK;
+    bars[current].style.transform = `scaleX(${Math.min(1, elapsed / interval)})`;
+    if (elapsed >= interval) showAbout(current + 1);
+  }, TICK);
+}
