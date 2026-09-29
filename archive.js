@@ -222,16 +222,8 @@
 
   function toolChip(name) {
     const chip = el("span", "tool");
-    const icon = (window.TOOL_ICONS || {})[name];
-    if (icon) {
-      // near-black brand colours (Splunk, Vercel...) follow the text colour so they stay visible in dark mode
-      const hex = parseInt(icon.hex, 16);
-      const dark = ((hex >> 16) & 255) * 0.3 + ((hex >> 8) & 255) * 0.59 + (hex & 255) * 0.11 < 60;
-      chip.insertAdjacentHTML("afterbegin",
-        `<svg class="tool__icon" viewBox="0 0 24 24" aria-hidden="true" style="fill:${dark ? "currentColor" : "#" + icon.hex}"><path d="${icon.path}"/></svg>`);
-    } else {
-      chip.insertAdjacentHTML("afterbegin", '<span class="tool__dot" aria-hidden="true"></span>');
-    }
+    const icon = window.toolIcon ? window.toolIcon(name) : "";
+    chip.insertAdjacentHTML("afterbegin", icon || '<span class="tool__dot" aria-hidden="true"></span>');
     chip.append(name);
     return chip;
   }
