@@ -45,10 +45,15 @@
   /* ----- Language of the visitor (en / tl / ceb) ----- */
   const CEB = ["kinsa", "unsa", "unsay", "asa", "kanus-a", "giunsa", "unsaon", "pila", "nimo", "imong", "iyang", "karon", "dili", "naa", "ug", "og", "nga", "bahin", "man", "diay", "kang", "daghang", "nagtuon", "nagpuyo", "maayong", "sapayan", "kaayo", "ana", "mao"];
   const TL = ["sino", "ano", "anong", "saan", "kailan", "paano", "ilan", "kaniya", "ba", "po", "mga", "ng", "nang", "tungkol", "meron", "mayroon", "gusto", "kay", "nag-aral", "nakatira", "magandang", "anuman", "talaga", "siya", "yung", "yan", "ito"];
+  let lastLang = "en"; // language of the conversation so far, for words shared by Tagalog and Cebuano
   function detectLang(tokens) {
     const c = tokens.filter((t) => CEB.includes(t)).length;
     const t = tokens.filter((x) => TL.includes(x)).length;
-    if (c === 0 && t === 0) return tokens.includes("salamat") ? "tl" : "en";
+    if (c === 0 && t === 0) {
+      // "salamat" etc. are both Tagalog and Cebuano: keep the conversation's language
+      if (tokens.some((x) => ["salamat", "kumusta", "musta", "kamusta", "paalam", "ingat"].includes(x))) return lastLang === "en" ? "tl" : lastLang;
+      return "en";
+    }
     return c >= t ? "ceb" : "tl"; // Cebu-based site: a tie goes to Cebuano
   }
 
@@ -142,6 +147,7 @@
     const text = normalize(question);
     const tokens = text.split(/\s+/).filter(Boolean);
     const lang = detectLang(tokens);
+    lastLang = lang;
 
     const scored = INTENTS
       .map((it) => { const h = hits(it.kw, text, tokens); return { it, h, s: h * (it.w || 1) }; })
