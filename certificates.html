@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08090c" />
+  <!-- Set theme before paint (default dark) to avoid a flash -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      document.documentElement.dataset.theme = t === "light" ? "light" : "dark";
+    })();
+  </script>
+  <title>Certificates | Hans Werner A. Huyo</title>
+  <meta name="description" content="Certificates earned by Hans Werner A. Huyo: Fortinet NSE, Cisco Network Defense, Huawei HCIA-Datacom, Accenture and Udemy courses." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%233b82f6'/><text x='50%' y='56%' text-anchor='middle' dominant-baseline='middle' font-family='Arial Black,Arial' font-weight='900' font-size='26' fill='white'>HH</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-archive-page>
+  <a class="skiplink" href="#main">Skip to content</a>
+  <header class="topbar topbar--archive">
+    <div class="topbar__inner">
+      <a href="index.html" class="brand">HWH</a>
+      <nav class="topbar__links topbar__links--static" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="certificates.html" class="is-active" aria-current="page">Certificates</a>
+      </nav>
+      <div class="topbar__right">
+        <button class="iconbtn themebtn" aria-label="Toggle light/dark theme">
+          <svg class="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="archive section" data-archive="certificates">
+    <div class="container">
+      <a class="backlink" href="index.html#certificates"><span class="arrow">&larr;</span> Back to portfolio</a>
+      <div class="sechead">
+        <span class="eyebrow">Archive &mdash; Certificates</span>
+        <h1 class="sectitle">Every <span class="grad">certificate.</span></h1>
+        <p class="seclead">Security, networking and development certificates. Click one to view it, or use the verify link to check it with the issuer.</p>
+      </div>
+
+      <div class="archive__filters" role="region" aria-label="Filters">
+        <div class="archive__row">
+          <span class="archive__label">Category</span>
+          <div class="archive__cats fchips"></div>
+        </div>
+        <div class="archive__row">
+          <span class="archive__label">Date</span>
+          <select class="archive__sort" aria-label="Date order">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="custom">Custom date range&hellip;</option>
+          </select>
+          <div class="archive__range" hidden>
+            <label>From <input class="archive__from" type="month" /></label>
+            <label>To <input class="archive__to" type="month" /></label>
+          </div>
+        </div>
+        <div class="archive__row">
+          <span class="archive__label">Year</span>
+          <div class="archive__years fchips"></div>
+        </div>
+        <div class="archive__status">
+          <span class="archive__count" aria-live="polite"></span>
+          <span class="archive__kind" hidden><span></span><button type="button" aria-label="Remove this filter">&times;</button></span>
+          <button type="button" class="archive__clear" hidden>Clear filters</button>
+        </div>
+      </div>
+
+      <div class="archive__grid archive__grid--certs"></div>
+      <p class="archive__empty" hidden>Nothing matches these filters. Try another year or <strong>Clear filters</strong>.</p>
+    </div>
+  </main>
+
+  <footer class="footer footer--archive">
+    <div class="container footer__bottom">
+      <span>&copy; <span id="year"></span> Hans Werner A. Huyo</span>
+      <a href="projects.html">Projects &rarr;</a>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" aria-label="Screenshot viewer">
+    <div class="lightbox__bar">
+      <span class="lightbox__title"></span>
+      <span class="lightbox__count mono"></span>
+      <button class="iconbtn lightbox__close" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <figure class="lightbox__fig">
+      <button class="lightbox__nav lightbox__nav--prev" aria-label="Previous screenshot"><svg viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></svg></button>
+      <img class="lightbox__img" alt="" />
+      <button class="lightbox__nav lightbox__nav--next" aria-label="Next screenshot"><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg></button>
+      <figcaption class="lightbox__cap"></figcaption>
+    </figure>
+  </dialog>
+
+  <!-- ASK HANS: AI chat about Hans (see chat.js and api/chat.js) -->
+  <button class="chatfab" aria-label="Ask Hans's AI assistant" aria-expanded="false" aria-controls="chat">
+    <svg class="chatfab__icon" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg>
+    <svg class="chatfab__close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    <span class="chatfab__label">Ask Hans</span>
+  </button>
+  <section class="chat" id="chat" role="dialog" aria-label="Ask Hans chat" hidden>
+    <header class="chat__head">
+      <div class="chat__avatar"><img src="assets/profile.webp" alt="" width="40" height="40" /></div>
+      <div class="chat__who">
+        <strong>Ask Hans</strong>
+        <span><span class="status__dot"></span> AI assistant &middot; answers from his portfolio</span>
+      </div>
+      <button class="iconbtn chat__close" aria-label="Close chat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </header>
+    <div class="chat__log" aria-live="polite">
+      <div class="chat__msg chat__msg--assistant"><p>Hi! I'm Hans's AI assistant. Ask me about his experience, projects, skills, security labs or certificates.</p></div>
+    </div>
+    <div class="chat__suggest">
+      <button type="button">What did he do at IONOS?</button>
+      <button type="button">What security labs has he done?</button>
+      <button type="button">Which certificates does he have?</button>
+      <button type="button">How can I contact him?</button>
+    </div>
+    <form class="chat__form">
+      <input class="chat__input" type="text" maxlength="600" placeholder="Ask about Hans..." aria-label="Your question" autocomplete="off" />
+      <button class="chat__send" type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </form>
+    <p class="chat__foot">AI can make mistakes. For anything important, email Hans.</p>
+  </section>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="data.js"></script>
+  <script src="labs.js"></script>
+  <script src="lightbox.js"></script>
+  <script src="archive.js"></script>
+  <script src="chat.js"></script>
+</body>
+</html>
