@@ -403,6 +403,50 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .skillcard h3 { font-size: 1.3rem; margin-bottom: 8px; }
 .skillcard p { color: var(--muted); margin-bottom: 18px; }
 
+/* Skills view switcher: normal (bento), compact (small tiles), list (rows) */
+.skills__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; margin-bottom: clamp(36px, 5vw, 60px); }
+.skills__head .sechead { margin-bottom: 0; }
+.viewtoggle { display: inline-flex; gap: 4px; padding: 4px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); }
+.viewtoggle__btn {
+  display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 10px;
+  font-size: 0.84rem; font-weight: 700; color: var(--muted); transition: color 0.2s, background 0.2s;
+}
+.viewtoggle__btn svg { width: 16px; height: 16px; }
+.viewtoggle__btn:hover { color: var(--ink); }
+.viewtoggle__btn.is-active { color: var(--accent-ink); background: var(--accent-tint); }
+.bento.is-switching { opacity: 0; transform: translateY(8px); }
+.bento { transition: opacity 0.25s, transform 0.25s var(--ease); }
+
+/* Compact: small tiles with icon + title and tags, no description */
+.bento[data-view="compact"] { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+.bento[data-view="compact"] .skillcard { grid-column: auto; padding: 18px; display: grid; grid-template-columns: 38px 1fr; column-gap: 12px; row-gap: 12px; align-items: center; }
+.bento[data-view="compact"] .skillcard__icon { width: 38px; height: 38px; border-radius: 11px; margin: 0; }
+.bento[data-view="compact"] .skillcard__icon svg { width: 19px; height: 19px; }
+.bento[data-view="compact"] .skillcard h3 { font-size: 1.02rem; margin: 0; }
+.bento[data-view="compact"] .skillcard p { display: none; }
+.bento[data-view="compact"] .skillcard .tags { grid-column: 1 / -1; gap: 6px; }
+.bento[data-view="compact"] .skillcard .tags span { font-size: 0.72rem; padding: 3px 9px; }
+
+/* List: one row per skill area inside a single panel */
+.bento[data-view="list"] {
+  grid-template-columns: 1fr; gap: 0; border-radius: var(--r-lg); overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line);
+}
+.bento[data-view="list"] .skillcard {
+  grid-column: auto; display: grid; grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.1fr); grid-template-areas: "icon title tags" "icon desc tags";
+  column-gap: 18px; align-items: center; padding: 18px 24px; border: 0; border-radius: 0; background: transparent; box-shadow: none !important;
+  transform: none !important;
+}
+.bento[data-view="list"] .skillcard + .skillcard { border-top: 1px solid var(--line); }
+.bento[data-view="list"] .skillcard:hover { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+.bento[data-view="list"] .skillcard__icon { grid-area: icon; width: 44px; height: 44px; border-radius: 12px; margin: 0; align-self: center; }
+.bento[data-view="list"] .skillcard__icon svg { width: 21px; height: 21px; }
+.bento[data-view="list"] .skillcard h3 { grid-area: title; font-size: 1.08rem; margin: 0; align-self: end; }
+.bento[data-view="list"] .skillcard p { grid-area: desc; margin: 2px 0 0; font-size: 0.9rem; align-self: start; }
+.bento[data-view="list"] .skillcard .tags { grid-area: tags; justify-content: flex-end; gap: 6px; }
+.bento[data-view="list"] .skillcard .tags span { font-size: 0.74rem; padding: 3px 10px; }
+.bento[data-view="list"] .tilt-glare::before { display: none; }
+
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
 .tags span {
   padding: 5px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 700;
@@ -583,7 +627,15 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .labcard__list strong { color: var(--ink); }
 .labcard code { font-family: var(--font-mono); font-size: 0.85em; color: var(--accent-ink); }
 .labcard .tags { margin-top: auto; }
-.labcard__open { align-self: flex-start; margin-top: 18px; font-weight: 700; color: var(--accent-ink); }
+.labcard__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; margin-top: 18px; }
+.labcard__open { font-weight: 700; color: var(--accent-ink); }
+.labcard__doc {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px;
+  font-size: 0.88rem; font-weight: 700; color: var(--ink); border: 1px solid var(--line-strong); transition: border-color 0.2s, background 0.2s;
+}
+.labcard__doc:hover { border-color: var(--accent); background: var(--accent-tint); }
+.labcard__doc svg { width: 16px; height: 16px; color: var(--accent-ink); }
+.labcard__doc .mono { font-size: 0.68rem; color: var(--muted); }
 .labcard__open:hover .arrow { transform: translateX(4px); }
 .labcard__open .arrow { display: inline-block; transition: transform 0.3s var(--ease); }
 .labcard--soon { align-self: start; }
@@ -624,6 +676,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .certcard .tags span { font-size: 0.72rem; padding: 4px 10px; }
 .certcard__verify { align-self: flex-start; margin-top: 12px; font-size: 0.88rem; font-weight: 700; color: var(--accent-ink); }
 .certcard__verify:hover { text-decoration: underline; }
+.certcard__vnote { font-size: 0.7rem; color: var(--muted); }
 
 /* Screenshot lightbox */
 .lightbox {
@@ -688,6 +741,11 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
   .scrollcue { display: none; }
   .bento { grid-template-columns: 1fr; }
   .bento--wide, .bento--full { grid-column: auto; }
+  .viewtoggle__btn span { display: none; }
+  .viewtoggle__btn { padding: 9px 12px; }
+  .bento[data-view="list"] .skillcard { grid-template-columns: 40px minmax(0, 1fr); grid-template-areas: "icon title" "desc desc" "tags tags"; row-gap: 8px; padding: 16px 18px; }
+  .bento[data-view="list"] .skillcard p { margin-top: 4px; }
+  .bento[data-view="list"] .skillcard .tags { justify-content: flex-start; }
   .degree { flex-direction: column; align-items: flex-start; }
   .lightbox__nav { top: auto; bottom: 64px; width: 38px; height: 38px; }
   .mock { width: 90%; font-size: 0.72rem; }

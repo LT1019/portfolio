@@ -89,12 +89,20 @@ window.LAB_GALLERIES = {
     title: "Certificates",
     shots: [
         {
+              "src": "assets/certs/fortinet-nse1-certified.webp",
+              "cap": "Fortinet Training Institute · Fortinet NSE 1 Certified in Cybersecurity · Sep 28, 2026 · valid to Sep 2028"
+        },
+        {
+              "src": "assets/certs/fortinet-nse2-certified.webp",
+              "cap": "Fortinet Training Institute · Fortinet NSE 2 Certified in Cybersecurity · Sep 29, 2026 · valid to Sep 2028"
+        },
+        {
               "src": "assets/certs/cisco-network-defense.webp",
               "cap": "Cisco Networking Academy · Network Defense · Sep 28, 2026"
         },
         {
               "src": "assets/certs/fortinet-nse1.webp",
-              "cap": "Fortinet Training Institute · Cybersecurity and Cloud Fundamentals 1.0 (NSE 1) · Sep 29, 2026"
+              "cap": "Fortinet Training Institute · Cybersecurity and Cloud Fundamentals 1.0 · Sep 29, 2026"
         },
         {
               "src": "assets/certs/huawei-hcia-datacom.webp",

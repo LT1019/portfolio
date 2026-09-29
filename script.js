@@ -317,3 +317,35 @@ if (aboutSwitch) {
     if (elapsed >= interval) showAbout(current + 1);
   }, TICK);
 }
+
+/* ---------- Skills view switcher: normal / compact / list (remembered per visitor) ---------- */
+const skillGrid = document.querySelector(".bento[data-view]");
+const viewBtns = [...document.querySelectorAll(".viewtoggle__btn")];
+if (skillGrid && viewBtns.length) {
+  function setView(view, animate) {
+    const apply = () => {
+      skillGrid.dataset.view = view;
+      viewBtns.forEach((b) => {
+        const on = b.dataset.view === view;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-checked", on);
+      });
+      skillGrid.classList.remove("is-switching");
+    };
+    if (!animate || reduceMotion) return apply();
+    skillGrid.classList.add("is-switching");
+    setTimeout(apply, 220);
+  }
+
+  viewBtns.forEach((b) =>
+    b.addEventListener("click", () => {
+      if (b.dataset.view === skillGrid.dataset.view) return;
+      setView(b.dataset.view, true);
+      try { localStorage.setItem("skillsView", b.dataset.view); } catch (e) {}
+    })
+  );
+
+  let saved = null;
+  try { saved = localStorage.getItem("skillsView"); } catch (e) {}
+  if (viewBtns.some((b) => b.dataset.view === saved)) setView(saved, false);
+}

@@ -196,7 +196,7 @@
                   <div class="stat tilt"><strong><span class="count" data-to="5">0</span></strong><span>hands-on security labs</span></div>
                   <div class="stat tilt"><strong><span class="count" data-to="68.9" data-dec="1">0</span>M</strong><span>Splunk events investigated</span></div>
                   <div class="stat tilt"><strong><span class="count" data-to="4">0</span></strong><span>ATT&amp;CK techniques mapped</span></div>
-                  <div class="stat tilt"><strong><span class="count" data-to="11">0</span></strong><span>certificates earned</span></div>
+                  <div class="stat tilt"><strong><span class="count" data-to="13">0</span></strong><span>certificates earned</span></div>
                 </div>
               </div>
             </div>
@@ -208,11 +208,24 @@
     <!-- SKILLS -->
     <section id="skills" class="section section--alt">
       <div class="container">
-        <div class="sechead reveal">
-          <span class="eyebrow">02 &mdash; Skills</span>
-          <h2 class="sectitle">What I work with.</h2>
+        <div class="skills__head">
+          <div class="sechead reveal">
+            <span class="eyebrow">02 &mdash; Skills</span>
+            <h2 class="sectitle">What I work with.</h2>
+          </div>
+          <div class="viewtoggle reveal" role="radiogroup" aria-label="Skills layout">
+            <button class="viewtoggle__btn is-active" role="radio" aria-checked="true" data-view="normal" title="Normal view">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="11" height="8" rx="2"/><rect x="17" y="3" width="4" height="8" rx="1.5"/><rect x="3" y="14" width="18" height="7" rx="2"/></svg><span>Normal</span>
+            </button>
+            <button class="viewtoggle__btn" role="radio" aria-checked="false" data-view="compact" title="Compact view">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Compact</span>
+            </button>
+            <button class="viewtoggle__btn" role="radio" aria-checked="false" data-view="list" title="List view">
+              <svg viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12"/><circle cx="4.5" cy="6" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="18" r="1.2"/></svg><span>List</span>
+            </button>
+          </div>
         </div>
-        <div class="bento">
+        <div class="bento" data-view="normal">
           <article class="skillcard reveal tilt bento--wide">
             <div class="skillcard__icon">
               <svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
@@ -380,7 +393,7 @@
         <div class="sechead reveal">
           <span class="eyebrow">05 &mdash; Cybersecurity</span>
           <h2 class="sectitle">Hands-on <span class="grad">security lab</span> work.</h2>
-          <p class="seclead">SOC analyst training: watching traffic, triaging alerts, writing incident tickets and scanning lab machines. Every lab ran on my own network or on purpose-built vulnerable VMs. Open any card to see the screenshots.</p>
+          <p class="seclead">SOC analyst training: watching traffic, triaging alerts, writing incident tickets and scanning lab machines. Every lab ran on my own network or on purpose-built vulnerable VMs. Open any card to see the screenshots or read the full write-up.</p>
         </div>
 
         <h3 class="labgroup reveal"><span class="labgroup__num">01</span> Cyber Threat Monitoring</h3>
@@ -399,7 +412,10 @@
                 <li>Turned the scanning detection into a scheduled alert that sends an email</li>
               </ul>
               <div class="tags"><span>Splunk</span><span>SPL</span><span>Dashboards</span><span>Alerting</span></div>
-              <button class="labcard__open" data-gallery="splunk">View screenshots <span class="arrow">&rarr;</span></button>
+              <div class="labcard__actions">
+                <button class="labcard__open" data-gallery="splunk">View screenshots <span class="arrow">&rarr;</span></button>
+                <a class="labcard__doc" href="assets/docs/splunk-soc-dashboard.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Full documentation <span class="mono">PDF</span></a>
+              </div>
             </div>
           </article>
 
@@ -417,7 +433,10 @@
                 <li>Capstone incident report with my own display filters and recommendations</li>
               </ul>
               <div class="tags"><span>Wireshark</span><span>TCP/IP</span><span>DNS / DHCP / ARP</span><span>TLS / SSH</span></div>
-              <button class="labcard__open" data-gallery="wireshark">View screenshots <span class="arrow">&rarr;</span></button>
+              <div class="labcard__actions">
+                <button class="labcard__open" data-gallery="wireshark">View screenshots <span class="arrow">&rarr;</span></button>
+                <a class="labcard__doc" href="assets/docs/wireshark-lab-series.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Full documentation <span class="mono">PDF</span></a>
+              </div>
             </div>
           </article>
 
@@ -432,6 +451,9 @@
                 <li>Wrote the incident ticket and a verbal SBAR escalation to Tier 2</li>
               </ul>
               <div class="tags"><span>Incident Response</span><span>MITRE ATT&amp;CK</span><span>Threat Intel</span><span>SBAR</span></div>
+              <div class="labcard__actions">
+                <a class="labcard__doc" href="assets/docs/incident-response-manila-fog.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Read the write-up <span class="mono">PDF</span></a>
+              </div>
             </div>
           </article>
 
@@ -446,6 +468,9 @@
                 <li>Cleared PowerShell activity as benign Splunk forwarder behaviour after checking the parent process</li>
               </ul>
               <div class="tags"><span>Triage</span><span>SPL</span><span>DNS / HTTP analysis</span><span>Escalation</span></div>
+              <div class="labcard__actions">
+                <a class="labcard__doc" href="assets/docs/splunk-tier1-triage-workbook.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Read the write-up <span class="mono">PDF</span></a>
+              </div>
             </div>
           </article>
         </div>
@@ -466,7 +491,10 @@
                 <li>Confirmed the vsFTPd 2.3.4 backdoor (CVE-2011-2523), anonymous FTP and an empty MySQL root password</li>
               </ul>
               <div class="tags"><span>Nmap</span><span>NSE</span><span>Kali Linux</span><span>Enumeration</span></div>
-              <button class="labcard__open" data-gallery="nmap">View screenshots <span class="arrow">&rarr;</span></button>
+              <div class="labcard__actions">
+                <button class="labcard__open" data-gallery="nmap">View screenshots <span class="arrow">&rarr;</span></button>
+                <a class="labcard__doc" href="assets/docs/nmap-activities.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Full documentation <span class="mono">PDF</span></a>
+              </div>
             </div>
           </article>
 
@@ -494,7 +522,33 @@
         <h3 class="labgroup reveal"><span class="labgroup__num">01</span> Security &amp; Networking</h3>
         <div class="certgrid">
           <article class="certcard reveal tilt">
-            <button class="certcard__thumb" data-gallery="certs" data-start="0" aria-label="View certificate: Network Defense">
+            <button class="certcard__thumb" data-gallery="certs" data-start="0" aria-label="View certificate: Fortinet NSE 1 Certified in Cybersecurity">
+              <img src="assets/certs/fortinet-nse1-certified.webp" alt="Fortinet NSE 1 Certified in Cybersecurity certificate" loading="lazy" width="1600" height="1132" />
+            </button>
+            <div class="certcard__body">
+              <span class="certcard__issuer">Fortinet Training Institute</span>
+              <h4>Fortinet NSE&nbsp;1 Certified in Cybersecurity</h4>
+              <span class="certcard__meta">Sep 28, 2026 &middot; valid to Sep 2028</span>
+              <div class="tags"><span>Certification</span><span>Cybersecurity</span></div>
+              <a class="certcard__verify" href="https://training.fortinet.com/admin/tool/certificate/index.php" target="_blank" rel="noopener">Verify <span class="arrow">&nearr;</span></a>
+              <span class="certcard__vnote mono">Validation no. 5590515085HW</span>
+            </div>
+          </article>
+          <article class="certcard reveal tilt">
+            <button class="certcard__thumb" data-gallery="certs" data-start="1" aria-label="View certificate: Fortinet NSE 2 Certified in Cybersecurity">
+              <img src="assets/certs/fortinet-nse2-certified.webp" alt="Fortinet NSE 2 Certified in Cybersecurity certificate" loading="lazy" width="1600" height="1132" />
+            </button>
+            <div class="certcard__body">
+              <span class="certcard__issuer">Fortinet Training Institute</span>
+              <h4>Fortinet NSE&nbsp;2 Certified in Cybersecurity</h4>
+              <span class="certcard__meta">Sep 29, 2026 &middot; valid to Sep 2028</span>
+              <div class="tags"><span>Certification</span><span>Cybersecurity</span></div>
+              <a class="certcard__verify" href="https://training.fortinet.com/admin/tool/certificate/index.php" target="_blank" rel="noopener">Verify <span class="arrow">&nearr;</span></a>
+              <span class="certcard__vnote mono">Validation no. 1964637097HW</span>
+            </div>
+          </article>
+          <article class="certcard reveal tilt">
+            <button class="certcard__thumb" data-gallery="certs" data-start="2" aria-label="View certificate: Network Defense">
               <img src="assets/certs/cisco-network-defense.webp" alt="Network Defense certificate" loading="lazy" width="1600" height="1237" />
             </button>
             <div class="certcard__body">
@@ -505,23 +559,26 @@
             </div>
           </article>
           <article class="certcard reveal tilt">
-            <button class="certcard__thumb" data-gallery="certs" data-start="1" aria-label="View certificate: Cybersecurity and Cloud Fundamentals 1.0 (NSE 1)">
-              <img src="assets/certs/fortinet-nse1.webp" alt="Cybersecurity and Cloud Fundamentals 1.0 (NSE 1) certificate" loading="lazy" width="1600" height="1164" />
+            <button class="certcard__thumb" data-gallery="certs" data-start="3" aria-label="View certificate: Cybersecurity and Cloud Fundamentals 1.0">
+              <img src="assets/certs/fortinet-nse1.webp" alt="Cybersecurity and Cloud Fundamentals 1.0 certificate" loading="lazy" width="1600" height="1164" />
             </button>
             <div class="certcard__body">
               <span class="certcard__issuer">Fortinet Training Institute</span>
-              <h4>Cybersecurity and Cloud Fundamentals 1.0 (NSE&nbsp;1)</h4>
+              <h4>Cybersecurity and Cloud Fundamentals 1.0</h4>
               <span class="certcard__meta">Sep 29, 2026</span>
               <div class="tags"><span>Security awareness</span><span>Cloud</span><span>Threat landscape</span></div>
             </div>
           </article>
-          <article class="certcard certcard--noimg reveal tilt">
-            <div class="certcard__thumb certcard__thumb--badge" aria-hidden="true"><span class="cert__level">NSE&nbsp;2</span></div>
+          <article class="certcard reveal tilt">
+            <button class="certcard__thumb certcard__thumb--portrait" data-gallery="certs" data-start="4" aria-label="View certificate: HCIA-Datacom Course">
+              <img src="assets/certs/huawei-hcia-datacom.webp" alt="HCIA-Datacom Course certificate" loading="lazy" width="1131" height="1600" />
+            </button>
             <div class="certcard__body">
-              <span class="certcard__issuer">Fortinet Training Institute</span>
-              <h4>NSE&nbsp;2</h4>
-              <span class="certcard__meta">Fortinet NSE</span>
-              <div class="tags"><span>Security products</span></div>
+              <span class="certcard__issuer">Huawei Talent Online</span>
+              <h4>HCIA-Datacom Course</h4>
+              <span class="certcard__meta">Jun 9, 2022</span>
+              <div class="tags"><span>Routing</span><span>Switching</span><span>Datacom</span></div>
+              <a class="certcard__verify" href="https://ilearningx.huawei.com/portal/certificates/e516957cbd524729b1a90fcea7887dd6" target="_blank" rel="noopener">Verify <span class="arrow">&nearr;</span></a>
             </div>
           </article>
           <article class="certcard certcard--noimg reveal tilt">
@@ -533,24 +590,12 @@
               <div class="tags"><span>Security Fabric</span></div>
             </div>
           </article>
-          <article class="certcard reveal tilt">
-            <button class="certcard__thumb certcard__thumb--portrait" data-gallery="certs" data-start="2" aria-label="View certificate: HCIA-Datacom Course">
-              <img src="assets/certs/huawei-hcia-datacom.webp" alt="HCIA-Datacom Course certificate" loading="lazy" width="1131" height="1600" />
-            </button>
-            <div class="certcard__body">
-              <span class="certcard__issuer">Huawei Talent Online</span>
-              <h4>HCIA-Datacom Course</h4>
-              <span class="certcard__meta">Jun 9, 2022</span>
-              <div class="tags"><span>Routing</span><span>Switching</span><span>Datacom</span></div>
-              <a class="certcard__verify" href="https://ilearningx.huawei.com/portal/certificates/e516957cbd524729b1a90fcea7887dd6" target="_blank" rel="noopener">Verify <span class="arrow">&nearr;</span></a>
-            </div>
-          </article>
         </div>
 
         <h3 class="labgroup reveal"><span class="labgroup__num">02</span> Software Development</h3>
         <div class="certgrid">
           <article class="certcard reveal tilt">
-            <button class="certcard__thumb" data-gallery="certs" data-start="3" aria-label="View certificate: Back End Development">
+            <button class="certcard__thumb" data-gallery="certs" data-start="5" aria-label="View certificate: Back End Development">
               <img src="assets/certs/accenture-backend.webp" alt="Back End Development certificate" loading="lazy" width="1600" height="900" />
             </button>
             <div class="certcard__body">
@@ -561,7 +606,7 @@
             </div>
           </article>
           <article class="certcard reveal tilt">
-            <button class="certcard__thumb" data-gallery="certs" data-start="4" aria-label="View certificate: Java Programming Masterclass (Java 17)">
+            <button class="certcard__thumb" data-gallery="certs" data-start="6" aria-label="View certificate: Java Programming Masterclass (Java 17)">
               <img src="assets/certs/udemy-java-masterclass.webp" alt="Java Programming Masterclass (Java 17) certificate" loading="lazy" width="1600" height="1190" />
             </button>
             <div class="certcard__body">
@@ -573,7 +618,7 @@
             </div>
           </article>
           <article class="certcard reveal tilt">
-            <button class="certcard__thumb" data-gallery="certs" data-start="5" aria-label="View certificate: Spring Boot 3, Spring 6 & Hibernate for Beginners">
+            <button class="certcard__thumb" data-gallery="certs" data-start="7" aria-label="View certificate: Spring Boot 3, Spring 6 & Hibernate for Beginners">
               <img src="assets/certs/udemy-spring-hibernate.webp" alt="Spring Boot 3, Spring 6 & Hibernate for Beginners certificate" loading="lazy" width="1600" height="1190" />
             </button>
             <div class="certcard__body">
@@ -585,7 +630,7 @@
             </div>
           </article>
           <article class="certcard reveal tilt">
-            <button class="certcard__thumb" data-gallery="certs" data-start="6" aria-label="View certificate: Docker for the Absolute Beginner – Hands On">
+            <button class="certcard__thumb" data-gallery="certs" data-start="8" aria-label="View certificate: Docker for the Absolute Beginner – Hands On">
               <img src="assets/certs/udemy-docker.webp" alt="Docker for the Absolute Beginner – Hands On certificate" loading="lazy" width="1600" height="1190" />
             </button>
             <div class="certcard__body">
@@ -597,7 +642,7 @@
             </div>
           </article>
           <article class="certcard reveal tilt">
-            <button class="certcard__thumb" data-gallery="certs" data-start="7" aria-label="View certificate: Java Unit Testing with JUnit & Mockito">
+            <button class="certcard__thumb" data-gallery="certs" data-start="9" aria-label="View certificate: Java Unit Testing with JUnit & Mockito">
               <img src="assets/certs/udemy-junit-mockito.webp" alt="Java Unit Testing with JUnit & Mockito certificate" loading="lazy" width="1600" height="1190" />
             </button>
             <div class="certcard__body">
@@ -609,7 +654,7 @@
             </div>
           </article>
           <article class="certcard reveal tilt">
-            <button class="certcard__thumb" data-gallery="certs" data-start="8" aria-label="View certificate: Git Complete: The Definitive Guide to Git">
+            <button class="certcard__thumb" data-gallery="certs" data-start="10" aria-label="View certificate: Git Complete: The Definitive Guide to Git">
               <img src="assets/certs/udemy-git.webp" alt="Git Complete: The Definitive Guide to Git certificate" loading="lazy" width="1600" height="1190" />
             </button>
             <div class="certcard__body">
@@ -621,7 +666,7 @@
             </div>
           </article>
           <article class="certcard reveal tilt">
-            <button class="certcard__thumb" data-gallery="certs" data-start="9" aria-label="View certificate: Maven Crash Course for Beginners">
+            <button class="certcard__thumb" data-gallery="certs" data-start="11" aria-label="View certificate: Maven Crash Course for Beginners">
               <img src="assets/certs/udemy-maven.webp" alt="Maven Crash Course for Beginners certificate" loading="lazy" width="1600" height="1190" />
             </button>
             <div class="certcard__body">
@@ -633,7 +678,7 @@
             </div>
           </article>
           <article class="certcard reveal tilt">
-            <button class="certcard__thumb" data-gallery="certs" data-start="10" aria-label="View certificate: Eclipse Tutorial: Learn Java IDE in 10 Steps">
+            <button class="certcard__thumb" data-gallery="certs" data-start="12" aria-label="View certificate: Eclipse Tutorial: Learn Java IDE in 10 Steps">
               <img src="assets/certs/udemy-eclipse.webp" alt="Eclipse Tutorial: Learn Java IDE in 10 Steps certificate" loading="lazy" width="1600" height="1190" />
             </button>
             <div class="certcard__body">
