@@ -54,7 +54,11 @@
           <div class="archive__cats fchips"></div>
         </div>
         <div class="archive__row">
-          <span class="archive__label">Date</span>
+          <span class="archive__label">Year</span>
+          <select class="archive__year" aria-label="Year">
+            <option value="">All years</option>
+          </select>
+          <span class="archive__label archive__label--inline">Date</span>
           <select class="archive__sort" aria-label="Date order">
             <option value="newest">Newest first</option>
             <option value="oldest">Oldest first</option>
@@ -65,13 +69,8 @@
             <label>To <input class="archive__to" type="month" /></label>
           </div>
         </div>
-        <div class="archive__row">
-          <span class="archive__label">Year</span>
-          <div class="archive__years fchips"></div>
-        </div>
         <div class="archive__status">
           <span class="archive__count" aria-live="polite"></span>
-          <span class="archive__kind" hidden><span></span><button type="button" aria-label="Remove this filter">&times;</button></span>
           <button type="button" class="archive__clear" hidden>Clear filters</button>
         </div>
       </div>

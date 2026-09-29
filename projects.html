@@ -13,7 +13,7 @@
     })();
   </script>
   <title>Projects | Hans Werner A. Huyo</title>
-  <meta name="description" content="Projects and hands-on security labs by Hans Werner A. Huyo: backend systems, website migration, automation, Splunk, Wireshark and Nmap." />
+  <meta name="description" content="Projects by Hans Werner A. Huyo: backend systems, website migration, automation, Splunk, Wireshark and Nmap." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%233b82f6'/><text x='50%' y='56%' text-anchor='middle' dominant-baseline='middle' font-family='Arial Black,Arial' font-weight='900' font-size='26' fill='white'>HH</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,8 +44,8 @@
       <a class="backlink" href="index.html#projects"><span class="arrow">&larr;</span> Back to portfolio</a>
       <div class="sechead">
         <span class="eyebrow">Archive &mdash; Projects</span>
-        <h1 class="sectitle">Projects &amp; <span class="grad">hands-on labs.</span></h1>
-        <p class="seclead">Everything I've built or worked on: work projects, school projects and hands-on security labs, plus things I make for fun.</p>
+        <h1 class="sectitle">Every <span class="grad">project.</span></h1>
+        <p class="seclead">Everything I've built or worked on: work, school and personal projects, including my hands-on security labs.</p>
       </div>
 
       <div class="archive__filters" role="region" aria-label="Filters">
@@ -54,7 +54,11 @@
           <div class="archive__cats fchips"></div>
         </div>
         <div class="archive__row">
-          <span class="archive__label">Date</span>
+          <span class="archive__label">Year</span>
+          <select class="archive__year" aria-label="Year">
+            <option value="">All years</option>
+          </select>
+          <span class="archive__label archive__label--inline">Date</span>
           <select class="archive__sort" aria-label="Date order">
             <option value="newest">Newest first</option>
             <option value="oldest">Oldest first</option>
@@ -65,13 +69,8 @@
             <label>To <input class="archive__to" type="month" /></label>
           </div>
         </div>
-        <div class="archive__row">
-          <span class="archive__label">Year</span>
-          <div class="archive__years fchips"></div>
-        </div>
         <div class="archive__status">
           <span class="archive__count" aria-live="polite"></span>
-          <span class="archive__kind" hidden><span></span><button type="button" aria-label="Remove this filter">&times;</button></span>
           <button type="button" class="archive__clear" hidden>Clear filters</button>
         </div>
       </div>

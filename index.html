@@ -46,7 +46,6 @@
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#security">Security</a>
         <a href="#certificates">Certificates</a>
         <a href="#education">Education</a>
       </nav>
@@ -55,6 +54,7 @@
           <svg class="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
           <svg class="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 1 1 9.5 3.5a7 7 0 0 0 11 11z"/></svg>
         </button>
+        <a href="assets/docs/Hans-Werner-Huyo-Resume.pdf" class="btn btn--ghost btn--sm btn--icon hide-sm" target="_blank" rel="noopener">Résumé</a>
         <a href="#contact" class="btn btn--accent btn--sm hide-sm">Let's talk</a>
         <button class="iconbtn menubtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
       </div>
@@ -85,6 +85,7 @@
           <div class="hero__cta">
             <a href="#projects" class="btn btn--accent magnetic">View my work <span class="arrow">&rarr;</span></a>
             <a href="#contact" class="btn btn--ghost magnetic">Get in touch</a>
+            <a href="assets/docs/Hans-Werner-Huyo-Resume.pdf" class="btn btn--ghost btn--icon magnetic" download="Hans-Werner-Huyo-Resume.pdf"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download résumé</a>
           </div>
         </div>
 
@@ -283,6 +284,7 @@
             <div class="tags"><span>Problem Solving</span><span>Project Management</span><span>Technical Writing</span><span>Client Support</span></div>
           </article>
         </div>
+        <p class="skills__more" aria-hidden="true">Scroll inside the list for more &darr;</p>
       </div>
     </section>
 
@@ -342,11 +344,12 @@
         <div class="sechead reveal">
           <span class="eyebrow">04 &mdash; Projects</span>
           <h2 class="sectitle">Things I've built.</h2>
+          <p class="seclead">School and personal projects, plus hands-on security labs from my SOC analyst training. Every lab ran on my own network or on purpose-built vulnerable VMs.</p>
         </div>
         <div class="projects">
           <article class="pcard reveal tilt">
             <div class="pcard__media pcard__media--secure">
-              <span class="pcard__tagline">Capstone</span>
+              <span class="pcard__tagline">School</span>
               <!-- Visitor log mockup -->
               <div class="mock">
                 <div class="mock__bar"><i></i><i></i><i></i><span>citu-secure / visitors</span></div>
@@ -367,7 +370,7 @@
 
           <article class="pcard reveal tilt">
             <div class="pcard__media pcard__media--face">
-              <span class="pcard__tagline">Computer Vision</span>
+              <span class="pcard__tagline">School</span>
               <!-- Face detection mockup -->
               <div class="facebox">
                 <svg class="facebox__face" viewBox="0 0 100 120"><ellipse cx="50" cy="52" rx="30" ry="38"/><circle cx="39" cy="46" r="3.5"/><circle cx="61" cy="46" r="3.5"/><path d="M40 70q10 8 20 0"/><path d="M14 120q36-34 72 0"/></svg>
@@ -386,7 +389,7 @@
 
           <article class="pcard reveal tilt">
             <div class="pcard__media pcard__media--img">
-              <span class="pcard__tagline">Hobby</span>
+              <span class="pcard__tagline">Personal</span>
               <img src="assets/projects/portfolio.webp" alt="This portfolio's home page" loading="lazy" width="1280" height="800" />
             </div>
             <div class="pcard__body">
@@ -397,6 +400,60 @@
               <div class="tags"><span>JavaScript</span><span>Vercel</span><span>Claude API</span></div>
             </div>
           </article>
+
+          <article class="pcard reveal tilt">
+            <button class="pcard__media pcard__media--img" data-gallery="splunk" data-start="11" aria-label="View Splunk dashboard screenshots">
+              <span class="pcard__tagline">Project</span>
+              <img src="assets/labs/splunk/12.webp" alt="SOC Overview Dashboard screenshot" loading="lazy" width="1600" height="827" />
+              <span class="labcard__count">19 screenshots</span>
+            </button>
+            <div class="pcard__body">
+              <span class="pcard__meta">Sep 2026 &middot; Splunk &middot; BOTS v2</span>
+              <h3>SOC Overview Dashboard</h3>
+              <p>A filterable Splunk dashboard with KPI, breakdown and detail panels, three detection panels, and a scheduled email alert.</p>
+              <div class="tags"><span>Splunk</span><span>SPL</span><span>Dashboards</span></div>
+              <div class="labcard__actions">
+                <button class="labcard__open" data-gallery="splunk" data-start="11">View screenshots <span class="arrow">&rarr;</span></button>
+                <a class="labcard__doc" href="assets/docs/splunk-soc-dashboard.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Full documentation <span class="mono">PDF</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard reveal tilt">
+            <button class="pcard__media pcard__media--img" data-gallery="wireshark" data-start="17" aria-label="View Wireshark screenshots">
+              <span class="pcard__tagline">Project</span>
+              <img src="assets/labs/wireshark/18.webp" alt="Network Traffic Analysis screenshot" loading="lazy" width="1600" height="860" />
+              <span class="labcard__count">36 screenshots</span>
+            </button>
+            <div class="pcard__body">
+              <span class="pcard__meta">Sep 2026 &middot; Wireshark</span>
+              <h3>Network Traffic Analysis</h3>
+              <p>Six activities and a capstone: filters, TCP handshakes, DHCP and ARP, and pulling test credentials out of HTTP and FTP to show why HTTPS and SFTP matter.</p>
+              <div class="tags"><span>Wireshark</span><span>TCP/IP</span><span>TLS / SSH</span></div>
+              <div class="labcard__actions">
+                <button class="labcard__open" data-gallery="wireshark" data-start="17">View screenshots <span class="arrow">&rarr;</span></button>
+                <a class="labcard__doc" href="assets/docs/wireshark-lab-series.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Full documentation <span class="mono">PDF</span></a>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard reveal tilt">
+            <button class="pcard__media pcard__media--img" data-gallery="nmap" data-start="10" aria-label="View Nmap screenshots">
+              <span class="pcard__tagline">Project</span>
+              <img src="assets/labs/nmap/11.webp" alt="Network Scanning  Enumeration screenshot" loading="lazy" width="1600" height="994" />
+              <span class="labcard__count">11 screenshots</span>
+            </button>
+            <div class="pcard__body">
+              <span class="pcard__meta">Sep 2026 &middot; Nmap &middot; Kali Linux</span>
+              <h3>Network Scanning &amp; Enumeration</h3>
+              <p>Host discovery, full service enumeration of Metasploitable 2, scan types compared in Wireshark, and NSE scripts that confirmed the vsFTPd 2.3.4 backdoor.</p>
+              <div class="tags"><span>Nmap</span><span>NSE</span><span>Kali Linux</span></div>
+              <div class="labcard__actions">
+                <button class="labcard__open" data-gallery="nmap" data-start="10">View screenshots <span class="arrow">&rarr;</span></button>
+                <a class="labcard__doc" href="assets/docs/nmap-activities.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Full documentation <span class="mono">PDF</span></a>
+              </div>
+            </div>
+          </article>
         </div>
         <div class="viewmore reveal">
           <a class="btn btn--ghost magnetic" href="projects.html">View More Projects <span class="arrow">&rarr;</span></a>
@@ -404,90 +461,11 @@
       </div>
     </section>
 
-    <!-- SECURITY LAB WORK -->
-    <section id="security" class="section">
-      <div class="container">
-        <div class="sechead reveal">
-          <span class="eyebrow">05 &mdash; Cybersecurity</span>
-          <h2 class="sectitle">Hands-on <span class="grad">security lab</span> work.</h2>
-          <p class="seclead">SOC analyst training: watching traffic, triaging alerts, writing incident tickets and scanning lab machines. Every lab ran on my own network or on purpose-built vulnerable VMs. Open a card for screenshots and the full write-up, or browse all labs.</p>
-        </div>
-
-        <div class="labs labs--three">
-          <article class="labcard reveal tilt">
-            <button class="labcard__cover" data-gallery="splunk" data-start="11" aria-label="View Splunk dashboard screenshots">
-              <img src="assets/labs/splunk/12.webp" alt="Splunk BOTS v2 Security Overview dashboard filtered to one sourcetype" loading="lazy" width="1600" height="827" />
-              <span class="labcard__count">19 screenshots</span>
-            </button>
-            <div class="labcard__body">
-              <span class="pcard__meta">Splunk Enterprise &middot; BOTS v2 dataset</span>
-              <h3>SOC Overview Dashboard</h3>
-              <p>A filterable dashboard with KPI, breakdown and detail panels, all tied to shared Sourcetype, Host and Time inputs.</p>
-              <ul class="labcard__list">
-                <li>Three detection panels: high-volume accounts, network scanning and web path enumeration</li>
-                <li>Turned the scanning detection into a scheduled alert that sends an email</li>
-              </ul>
-              <div class="tags"><span>Splunk</span><span>SPL</span><span>Dashboards</span><span>Alerting</span></div>
-              <div class="labcard__actions">
-                <button class="labcard__open" data-gallery="splunk">View screenshots <span class="arrow">&rarr;</span></button>
-                <a class="labcard__doc" href="assets/docs/splunk-soc-dashboard.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Full documentation <span class="mono">PDF</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="labcard reveal tilt">
-            <button class="labcard__cover" data-gallery="wireshark" data-start="17" aria-label="View Wireshark lab screenshots">
-              <img src="assets/labs/wireshark/18.webp" alt="Wireshark Follow HTTP Stream showing a Basic Auth request with test credentials" loading="lazy" width="1600" height="860" />
-              <span class="labcard__count">36 screenshots</span>
-            </button>
-            <div class="labcard__body">
-              <span class="pcard__meta">Wireshark &middot; Beginner to advanced</span>
-              <h3>Network Traffic Analysis</h3>
-              <p>Six activities and a capstone. I covered capture vs. display filters, TCP handshakes, DHCP and ARP, and cleartext credential exposure.</p>
-              <ul class="labcard__list">
-                <li>Pulled test credentials out of HTTP Basic Auth and FTP, then showed that HTTPS and SFTP hide them</li>
-                <li>Capstone incident report with my own display filters and recommendations</li>
-              </ul>
-              <div class="tags"><span>Wireshark</span><span>TCP/IP</span><span>DNS / DHCP / ARP</span><span>TLS / SSH</span></div>
-              <div class="labcard__actions">
-                <button class="labcard__open" data-gallery="wireshark">View screenshots <span class="arrow">&rarr;</span></button>
-                <a class="labcard__doc" href="assets/docs/wireshark-lab-series.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Full documentation <span class="mono">PDF</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="labcard reveal tilt">
-            <button class="labcard__cover" data-gallery="nmap" data-start="10" aria-label="View Nmap lab screenshots">
-              <img src="assets/labs/nmap/11.webp" alt="Nmap NSE script confirming the vsFTPd 2.3.4 backdoor on Metasploitable 2" loading="lazy" width="1600" height="994" />
-              <span class="labcard__count">11 screenshots</span>
-            </button>
-            <div class="labcard__body">
-              <span class="pcard__meta">Nmap &middot; Kali Linux &amp; Metasploitable 2</span>
-              <h3>Network Scanning &amp; Enumeration</h3>
-              <p>Host discovery on my home network, full service enumeration of a Metasploitable 2 VM, and NSE scripts from the safe, discovery, auth and vuln categories.</p>
-              <ul class="labcard__list">
-                <li>Timed SYN, Connect and UDP scans and compared their packets in Wireshark</li>
-                <li>Confirmed the vsFTPd 2.3.4 backdoor (CVE-2011-2523), anonymous FTP and an empty MySQL root password</li>
-              </ul>
-              <div class="tags"><span>Nmap</span><span>NSE</span><span>Kali Linux</span><span>Enumeration</span></div>
-              <div class="labcard__actions">
-                <button class="labcard__open" data-gallery="nmap">View screenshots <span class="arrow">&rarr;</span></button>
-                <a class="labcard__doc" href="assets/docs/nmap-activities.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Full documentation <span class="mono">PDF</span></a>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="viewmore reveal">
-          <a class="btn btn--ghost magnetic" href="projects.html?kind=lab">View all hands-on labs <span class="arrow">&rarr;</span></a>
-        </div>
-      </div>
-    </section>
-
     <!-- CERTIFICATES -->
-    <section id="certificates" class="section section--alt">
+    <section id="certificates" class="section">
       <div class="container">
         <div class="sechead reveal">
-          <span class="eyebrow">06 &mdash; Certificates</span>
+          <span class="eyebrow">05 &mdash; Certificates</span>
           <h2 class="sectitle">Courses I've <span class="grad">completed.</span></h2>
           <p class="seclead">Security, networking and backend development. Click a certificate to view it, or use the verify link to check it with the issuer.</p>
         </div>
@@ -549,10 +527,10 @@
     </section>
 
     <!-- EDUCATION -->
-    <section id="education" class="section">
+    <section id="education" class="section section--alt">
       <div class="container">
         <div class="sechead reveal">
-          <span class="eyebrow">07 &mdash; Education</span>
+          <span class="eyebrow">06 &mdash; Education</span>
           <h2 class="sectitle">Where I studied.</h2>
         </div>
         <article class="degree reveal tilt">
@@ -573,7 +551,7 @@
       <div class="container">
         <div class="contact__card reveal">
           <div class="contact__glow" aria-hidden="true"></div>
-          <span class="eyebrow">08 &mdash; Contact</span>
+          <span class="eyebrow">07 &mdash; Contact</span>
           <h2 class="contact__title">Let's build something<br /><span class="grad">that runs itself.</span></h2>
           <p>I'm open to Backend Developer and IT Specialist roles. The quickest way to reach me is by email.</p>
           <div class="contact__actions">
@@ -582,6 +560,14 @@
               <span class="mono">hanswernerhuyo@gmail.com</span>
               <svg viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
             </button>
+          </div>
+          <div class="resumebox">
+            <div class="resumebox__icon"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div>
+            <div class="resumebox__text"><strong>Hiring? Grab my résumé.</strong><span>One page: experience, projects, skills and education (PDF).</span></div>
+            <div class="resumebox__actions">
+              <a class="btn btn--ghost btn--sm" href="assets/docs/Hans-Werner-Huyo-Resume.pdf" target="_blank" rel="noopener">View</a>
+              <a class="btn btn--accent btn--sm btn--icon" href="assets/docs/Hans-Werner-Huyo-Resume.pdf" download="Hans-Werner-Huyo-Resume.pdf"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Download</a>
+            </div>
           </div>
           <p class="muted">Mandaue City, Cebu, Philippines</p>
         </div>

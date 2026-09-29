@@ -169,6 +169,8 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .btn .arrow { transition: transform 0.25s var(--ease); }
 .btn:hover .arrow { transform: translateX(4px); }
 .btn svg { width: 18px; height: 18px; }
+.btn--icon { gap: 8px; }
+.btn--sm svg { width: 16px; height: 16px; }
 
 /* ============ HERO ============ */
 .hero {
@@ -484,6 +486,9 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 /* ============ PROJECTS ============ */
 .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .pcard__media--img { background: var(--surface-2); }
+button.pcard__media { width: 100%; padding: 0; cursor: zoom-in; }
+.pcard .labcard__actions { margin-top: 16px; }
+.pcard .labcard__count { z-index: 2; }
 .pcard__media--img img { width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform 0.6s var(--ease); }
 .pcard:hover .pcard__media--img img { transform: scale(1.04); }
 .pcard:nth-child(3) { transition-delay: 0.2s; }
@@ -531,9 +536,9 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 
 /* Face-recognition mockup */
 /* Three-across home cards: shrink the mockups so they sit clear of the tagline */
-.projects .mock { width: 80%; font-size: 0.74rem; margin-top: 26px; }
+.projects .mock { width: 80%; font-size: 0.72rem; margin-top: 48px; }
 .projects .mock__row { padding: 7px 10px; }
-.projects .facebox { width: 34%; margin-top: 18px; }
+.projects .facebox { width: 30%; margin-top: 56px; }
 .facebox { position: relative; width: 44%; aspect-ratio: 100 / 120; transition: transform 0.6s var(--ease); }
 .pcard:hover .facebox { transform: scale(1.05); }
 .facebox__face { width: 100%; height: 100%; color: var(--muted); stroke-width: 1.4; }
@@ -713,6 +718,27 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 .lightbox__nav--prev { left: 12px; }
 .lightbox__nav--next { right: 12px; }
 
+/* Résumé call-out in the contact card */
+.resumebox {
+  display: flex; align-items: center; gap: 16px; max-width: 620px; margin: 0 auto 22px; padding: 16px 18px; text-align: left;
+  border-radius: 16px; background: color-mix(in srgb, var(--ground) 55%, transparent); border: 1px solid var(--line-strong);
+}
+.resumebox__icon { width: 44px; height: 44px; flex: none; display: grid; place-items: center; border-radius: 12px; background: var(--accent-tint); color: var(--accent-ink); }
+.resumebox__icon svg { width: 22px; height: 22px; }
+.resumebox__text { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.resumebox__text span { font-size: 0.86rem; color: var(--muted); }
+.resumebox__actions { display: flex; gap: 8px; flex: none; }
+@media (max-width: 560px) {
+  .resumebox { flex-wrap: wrap; }
+  .resumebox__actions { width: 100%; }
+  .resumebox__actions .btn { flex: 1; justify-content: center; }
+}
+
+/* Skills list view: the panel shows five rows, the rest scroll inside it */
+.bento[data-view="list"] { position: relative; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; }
+.skills__more { display: none; margin-top: 10px; text-align: center; font-size: 0.8rem; color: var(--muted); }
+.bento[data-view="list"] + .skills__more { display: block; }
+
 /* ============ HOME: "view all" links under previews ============ */
 .viewmore { display: flex; justify-content: center; margin-top: clamp(28px, 4vw, 44px); }
 
@@ -739,23 +765,20 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 }
 .fchip:hover { border-color: var(--accent); color: var(--ink); }
 .fchip.is-active { background: var(--accent); border-color: var(--accent); color: #fff; }
-.archive__sort, .archive__range input {
+.archive__sort, .archive__year, .archive__range input {
   height: 36px; padding: 0 12px; border-radius: 10px; font: inherit; font-size: 0.88rem; font-weight: 600;
   color: var(--ink); background: var(--ground); border: 1px solid var(--line-strong); color-scheme: dark;
 }
-:root[data-theme="light"] .archive__sort, :root[data-theme="light"] .archive__range input { color-scheme: light; }
-.archive__sort:focus, .archive__range input:focus { outline: none; border-color: var(--accent); }
+:root[data-theme="light"] .archive__sort, :root[data-theme="light"] .archive__year, :root[data-theme="light"] .archive__range input { color-scheme: light; }
+.archive__sort:focus, .archive__year:focus, .archive__range input:focus { outline: none; border-color: var(--accent); }
 .archive__range { display: flex; gap: 10px; flex-wrap: wrap; }
 .archive__range[hidden] { display: none; }
 .archive__range label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.84rem; color: var(--muted); }
 .archive__status { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding-top: 12px; border-top: 1px solid var(--line); }
 .archive__count { font-size: 0.88rem; color: var(--muted); }
-.archive__kind { display: inline-flex; align-items: center; gap: 6px; padding: 3px 4px 3px 12px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; color: var(--accent-ink); background: var(--accent-tint); }
-.archive__kind[hidden] { display: none; }
-.archive__kind button { width: 22px; height: 22px; border-radius: 50%; font-size: 1rem; line-height: 1; color: var(--accent-ink); }
-.archive__kind button:hover { background: color-mix(in srgb, var(--accent) 25%, transparent); }
 .archive__clear { margin-left: auto; font-size: 0.86rem; font-weight: 700; color: var(--accent-ink); }
 .archive__clear:hover { text-decoration: underline; }
+.archive__label--inline { width: auto; margin-left: 12px; }
 .archive__empty { padding: 48px 0; text-align: center; color: var(--muted); }
 
 .archive__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
@@ -891,6 +914,7 @@ body.is-loading .chatfab { opacity: 0; pointer-events: none; }
   .topbar--archive .topbar__links--static a { padding: 8px 10px; font-size: 0.88rem; }
   .archive { padding-top: 100px; }
   .archive__label { width: 100%; }
+  .archive__label--inline { margin-left: 0; }
   .archive__grid, .archive__grid--certs { grid-template-columns: 1fr; }
   .hide-sm { display: none; }
   .topbar { top: 8px; padding: 0 10px; }

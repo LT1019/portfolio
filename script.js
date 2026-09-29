@@ -279,11 +279,22 @@ if (skillGrid && viewBtns.length) {
         b.setAttribute("aria-checked", on);
       });
       skillGrid.classList.remove("is-switching");
+      fitList();
     };
     if (!animate || reduceMotion) return apply();
     skillGrid.classList.add("is-switching");
     setTimeout(apply, 220);
   }
+
+  // List view shows the first five rows; the rest scroll inside the panel
+  const LIST_ROWS = 5;
+  function fitList() {
+    if (skillGrid.dataset.view !== "list") { skillGrid.style.maxHeight = ""; return; }
+    const rows = [...skillGrid.children].slice(0, LIST_ROWS);
+    const last = rows[rows.length - 1];
+    skillGrid.style.maxHeight = last.offsetTop + last.offsetHeight + 1 + "px";
+  }
+  window.addEventListener("resize", fitList);
 
   viewBtns.forEach((b) =>
     b.addEventListener("click", () => {

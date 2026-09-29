@@ -7,6 +7,7 @@ export const KNOWLEDGE = `
 - Full name: Hans Werner Almendras Huyo (goes by Hans).
 - Based in Mandaue City, Cebu, Philippines. Open to work.
 - Email: hanswernerhuyo@gmail.com (the best way to reach him).
+- Résumé: visitors can view or download it with the Résumé button at the top of the page or in the Contact section.
 - Education: Cebu Institute of Technology - University (CIT-U), N. Bacalso Ave, Cebu City, 2019-2025.
 - Languages: English, Filipino and Cebuano, all fluent.
 - Looking for: Backend Developer or IT Specialist roles; also training as a Tier 1 SOC analyst.

@@ -8,21 +8,19 @@
   const items = window.PORTFOLIO[type];
 
   const CATEGORIES = {
-    projects: [["all", "All"], ["work", "Work"], ["school", "School"], ["hobby", "Hobby"]],
+    projects: [["all", "All"], ["work", "Work"], ["school", "School"], ["project", "Project"], ["personal", "Personal"]],
     certificates: [["all", "All"], ["security", "Security"], ["networking", "Networking"], ["development", "Development"]],
   }[type];
-  const KINDS = { lab: "Hands-on lab", project: "Project", work: "Work project" };
 
   const $ = (sel) => root.querySelector(sel);
   const grid = $(".archive__grid");
   const catBox = $(".archive__cats");
-  const yearBox = $(".archive__years");
+  const yearSel = $(".archive__year");
   const sortSel = $(".archive__sort");
   const range = $(".archive__range");
   const fromIn = $(".archive__from");
   const toIn = $(".archive__to");
   const countEl = $(".archive__count");
-  const kindPill = $(".archive__kind");
   const clearBtn = $(".archive__clear");
   const empty = $(".archive__empty");
 
@@ -48,7 +46,6 @@
     year: years.includes(params.get("year")) ? params.get("year") : null,
     from: /^\d{4}-\d{2}$/.test(params.get("from") || "") ? params.get("from") : "",
     to: /^\d{4}-\d{2}$/.test(params.get("to") || "") ? params.get("to") : "",
-    kind: KINDS[params.get("kind")] ? params.get("kind") : null,
   };
   if (state.sort !== "custom") state.from = state.to = "";
 
@@ -59,7 +56,6 @@
     if (state.year) p.set("year", state.year);
     if (state.from) p.set("from", state.from);
     if (state.to) p.set("to", state.to);
-    if (state.kind) p.set("kind", state.kind);
     const q = p.toString();
     history.replaceState(null, "", q ? `?${q}` : location.pathname);
   }
@@ -77,26 +73,24 @@
   function renderControls() {
     catBox.replaceChildren(...CATEGORIES.map(([v, label]) =>
       chip(label, state.cat === v, () => { state.cat = v; update(); })));
-    yearBox.replaceChildren(
-      chip("All years", !state.year, () => { state.year = null; update(); }),
-      ...years.map((y) => chip(y, state.year === y, () => {
-        state.year = state.year === y ? null : y;
-        if (state.year && state.sort === "custom") state.sort = "newest"; // a year replaces a custom range
-        update();
-      }))
-    );
+    yearSel.value = state.year || "";
     sortSel.value = state.sort;
     range.hidden = state.sort !== "custom";
     fromIn.value = state.from;
     toIn.value = state.to;
-    kindPill.hidden = !state.kind;
-    if (state.kind) kindPill.querySelector("span").textContent = KINDS[state.kind] + "s only";
   }
+
+  yearSel.append(...years.map((y) => new Option(y, y)));
+  yearSel.addEventListener("change", () => {
+    state.year = yearSel.value || null;
+    if (state.year && state.sort === "custom") { state.sort = "newest"; state.from = state.to = ""; } // a year replaces a custom range
+    update();
+  });
 
   sortSel.addEventListener("change", () => {
     state.sort = sortSel.value;
     if (state.sort === "custom") {
-      state.year = null; // a custom range replaces the year chip
+      state.year = null; // a custom range replaces the year
       if (!state.from && !state.to) { state.from = years[years.length - 1] + "-01"; state.to = years[0] + "-12"; }
     } else {
       state.from = state.to = "";
@@ -105,9 +99,8 @@
   });
   fromIn.addEventListener("change", () => { state.from = fromIn.value; update(); });
   toIn.addEventListener("change", () => { state.to = toIn.value; update(); });
-  kindPill.querySelector("button").addEventListener("click", () => { state.kind = null; update(); });
   clearBtn.addEventListener("click", () => {
-    Object.assign(state, { cat: "all", sort: "newest", year: null, from: "", to: "", kind: null });
+    Object.assign(state, { cat: "all", sort: "newest", year: null, from: "", to: "" });
     update();
   });
 
@@ -115,7 +108,6 @@
   function visible() {
     const list = items.filter((it) => {
       if (state.cat !== "all" && it.category !== state.cat) return false;
-      if (state.kind && it.kind !== KINDS[state.kind]) return false;
       const s = span(it);
       if (state.year) {
         if (!s || s[0].slice(0, 4) > state.year || s[1].slice(0, 4) < state.year) return false;
@@ -183,7 +175,7 @@
       m.insertAdjacentHTML("beforeend", `<svg viewBox="0 0 24 24">${ICONS[it.visual.icon] || ICONS.code}</svg>`);
       m.append(el("span", "acard__visual-label mono", it.visual.label));
     }
-    if (type === "projects") m.append(el("span", "pcard__tagline", it.kind));
+    if (type === "projects") m.append(el("span", "pcard__tagline", catLabel(it.category)));
     if (it.status) m.append(el("span", "acard__status", it.status));
     return m;
   }
@@ -192,7 +184,7 @@
     const c = el("article", "acard");
     c.append(media(it));
     const body = el("div", "acard__body");
-    body.append(el("span", "pcard__meta", `${catLabel(it.category)} · ${it.dateLabel}`));
+    body.append(el("span", "pcard__meta", type === "certificates" ? `${catLabel(it.category)} · ${it.dateLabel}` : it.dateLabel));
     body.append(el("h3", null, it.title));
     body.append(el("p", "acard__org", type === "certificates" ? it.issuer : it.org));
     if (it.summary) body.append(el("p", "acard__summary", it.summary));
@@ -230,7 +222,7 @@
     grid.replaceChildren(...list.map(card));
     countEl.textContent = `Showing ${list.length} of ${items.length}`;
     empty.hidden = list.length > 0;
-    const filtered = state.cat !== "all" || state.year || state.sort !== "newest" || state.kind;
+    const filtered = state.cat !== "all" || state.year || state.sort !== "newest";
     clearBtn.hidden = !filtered;
   }
 

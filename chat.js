@@ -28,7 +28,7 @@
     [/cert|nse|fortinet|cisco|udemy|huawei|accenture|course/i,
       "Hans holds Fortinet NSE 1 and NSE 2 (Certified in Cybersecurity), Cisco Network Defense, Fortinet Cybersecurity and Cloud Fundamentals, Huawei HCIA-Datacom, Accenture Back End Development (138 h), and Udemy courses in Java, Spring Boot, Docker, JUnit, Git and Maven."],
     [/splunk|wireshark|nmap|kali|soc\b|security|cyber|incident|triage|attack|lab/i,
-      "Hans is training as a Tier 1 SOC analyst:\n- Splunk: a SOC dashboard, detections and a scheduled alert on BOTS v2, plus alert triage\n- Wireshark: traffic analysis and cleartext credential exposure\n- Nmap on Kali Linux: enumeration and NSE vuln scans\n- An incident report mapped to MITRE ATT&CK\nSee the Cybersecurity section for screenshots and full write-ups."],
+      "Hans is training as a Tier 1 SOC analyst:\n- Splunk: a SOC dashboard, detections and a scheduled alert on BOTS v2, plus alert triage\n- Wireshark: traffic analysis and cleartext credential exposure\n- Nmap on Kali Linux: enumeration and NSE vuln scans\n- An incident report mapped to MITRE ATT&CK\nSee the Projects section for screenshots and full write-ups."],
     [/project|capstone|citu|secure|face|opencv|built/i,
       "- CITU-Secure (2024): a campus visitor management system; Hans built the backend for visitor tracking\n- Real-Time Face Recognition (2023-2024): OpenCV + Python; Hans built the backend and collected training data"],
     [/speak|english|filipino|cebuano|tagalog/i,
@@ -43,6 +43,8 @@
       "Hans is based in Mandaue City, Cebu, Philippines."],
     [/hire|availab|open to|role|looking|position|salary|rate/i,
       `Hans is open to Backend Developer and IT Specialist roles, and is training toward Tier 1 SOC analyst work. For availability or pay, email him at ${EMAIL}.`],
+    [/resume|résumé|\bcv\b|curriculum/i,
+      "You can view or download Hans's résumé from the Résumé button at the top of the page or in the Contact section."],
     [/contact|email|reach|message|touch|call|phone|linkedin/i,
       `The quickest way to reach Hans is email: ${EMAIL}.`],
   ];
