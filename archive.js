@@ -180,7 +180,93 @@
     return m;
   }
 
+  /* ----- Project case cards (image left, details right, four action buttons) ----- */
+  const BTN_ICONS = {
+    live: '<path d="M7 17 17 7M9 7h8v8"/>',
+    doc: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+    video: '<rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/>',
+    shots: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
+    github: '<path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>',
+    lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+    study: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+  };
+  const svg = (name) => `<svg viewBox="0 0 24 24" aria-hidden="true">${BTN_ICONS[name]}</svg>`;
+
+  // One action slot: a link/button when available, otherwise a greyed-out, non-interactive label
+  function action(opts) {
+    let b;
+    if (opts.href) {
+      b = link("pbtn" + (opts.primary ? " pbtn--primary" : ""), opts.href, "", true);
+    } else if (opts.gallery) {
+      b = el("button", "pbtn" + (opts.primary ? " pbtn--primary" : ""));
+      b.type = "button";
+      b.dataset.gallery = opts.gallery.key;
+      b.dataset.start = opts.gallery.start;
+    } else {
+      b = el("span", "pbtn is-disabled");
+      b.setAttribute("aria-disabled", "true");
+    }
+    b.insertAdjacentHTML("afterbegin", svg(opts.icon));
+    b.append(el("span", null, opts.label));
+    return b;
+  }
+
+  function toolChip(name) {
+    const chip = el("span", "tool");
+    const icon = (window.TOOL_ICONS || {})[name];
+    if (icon) {
+      // near-black brand colours (Splunk, Vercel...) follow the text colour so they stay visible in dark mode
+      const hex = parseInt(icon.hex, 16);
+      const dark = ((hex >> 16) & 255) * 0.3 + ((hex >> 8) & 255) * 0.59 + (hex & 255) * 0.11 < 60;
+      chip.insertAdjacentHTML("afterbegin",
+        `<svg class="tool__icon" viewBox="0 0 24 24" aria-hidden="true" style="fill:${dark ? "currentColor" : "#" + icon.hex}"><path d="${icon.path}"/></svg>`);
+    } else {
+      chip.insertAdjacentHTML("afterbegin", '<span class="tool__dot" aria-hidden="true"></span>');
+    }
+    chip.append(name);
+    return chip;
+  }
+
+  function projectCard(it) {
+    const no = String(items.indexOf(it) + 1).padStart(2, "0");
+    const c = el("article", "pcase");
+    const m = media(it);
+    m.classList.add("pcase__media");
+    m.querySelector(".pcard__tagline")?.remove(); // the category shows as [tag] in the card header instead
+    c.append(m);
+
+    const body = el("div", "pcase__body");
+    const top = el("div", "pcase__top");
+    top.append(el("span", "pcase__no mono", `project/${no}`), el("span", "pcase__tag mono", `[${catLabel(it.category).toLowerCase()}]`));
+    body.append(top);
+    body.append(el("span", "pcase__cat mono", `${it.org} · ${it.dateLabel}`));
+    body.append(el("h3", null, it.title));
+    body.append(el("p", "pcase__summary", it.summary));
+    const tools = el("div", "pcase__tools");
+    it.tags.forEach((t) => tools.append(toolChip(t)));
+    body.append(tools);
+
+    const shots = it.gallery && window.LAB_GALLERIES[it.gallery.key] ? window.LAB_GALLERIES[it.gallery.key].shots.length : 0;
+    const acts = el("div", "pcase__actions");
+    acts.append(
+      it.live ? action({ href: it.live, icon: "live", label: "Live Demo", primary: true })
+        : it.doc ? action({ href: it.doc, icon: "doc", label: "View Documentation", primary: true })
+        : action({ icon: "live", label: "Live Demo — Unavailable" }),
+      it.video ? action({ href: it.video, icon: "video", label: "Video Demo" })
+        : it.gallery ? action({ gallery: it.gallery, icon: "shots", label: `Screenshots (${shots})` })
+        : action({ icon: "video", label: "Video Demo — Unavailable" }),
+      it.github && it.github !== "private" ? action({ href: it.github, icon: "github", label: "GitHub" })
+        : action({ icon: it.github === "private" ? "lock" : "github", label: it.github === "private" ? "GitHub — Private" : "GitHub — Unavailable" }),
+      it.caseStudy ? action({ href: it.caseStudy, icon: "study", label: "View Case Study" })
+        : action({ icon: "study", label: "Case Study — Unavailable" })
+    );
+    body.append(acts);
+    c.append(body);
+    return c;
+  }
+
   function card(it) {
+    if (type === "projects") return projectCard(it);
     const c = el("article", "acard");
     c.append(media(it));
     const body = el("div", "acard__body");

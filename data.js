@@ -1,6 +1,9 @@
 /* Everything shown on the Projects and Certificates archive pages (projects.html, certificates.html).
    Dates are "YYYY-MM" (projects) or "YYYY-MM-DD" (certificates); `end` is omitted for single-date items.
-   `category` drives the category filter (work / school / project / personal for projects); `featured` items also appear on the home page. */
+   `category` drives the category filter (work / school / project / personal for projects); `featured` items also appear on the home page.
+   Project buttons: `live` (URL) or `doc` (PDF) -> Live Demo / View Documentation; `video` (URL) or `gallery` -> Video Demo / Screenshots;
+   `github` (URL, or "private"); `caseStudy` (URL). Anything missing shows as a disabled "Unavailable" button.
+   `tags` are the tool chips; names matching icons.js get that tool's icon. */
 window.PORTFOLIO = {
   projects: [
     {
@@ -14,28 +17,28 @@ window.PORTFOLIO = {
       id: "wireshark", category: "project", start: "2026-09", dateLabel: "Sep 2026",
       title: "Network Traffic Analysis", org: "Wireshark · Beginner to advanced",
       summary: "Six activities and a capstone: capture vs. display filters, TCP handshakes, DHCP and ARP, and pulling test credentials out of HTTP and FTP to show why HTTPS and SFTP matter.",
-      tags: ["Wireshark", "TCP/IP", "DNS / DHCP / ARP", "TLS / SSH"],
+      tags: ["Wireshark", "curl", "TCP/IP", "DNS / DHCP / ARP", "TLS / SSH"],
       image: "assets/labs/wireshark/18.webp", gallery: { key: "wireshark", start: 17 }, doc: "assets/docs/wireshark-lab-series.pdf"
     },
     {
       id: "nmap", category: "project", start: "2026-09", dateLabel: "Sep 2026",
       title: "Network Scanning & Enumeration", org: "Nmap · Kali Linux & Metasploitable 2",
       summary: "Home network discovery, full service enumeration of Metasploitable 2, SYN vs. Connect vs. UDP scans compared in Wireshark, and NSE scripts that confirmed the vsFTPd 2.3.4 backdoor.",
-      tags: ["Nmap", "NSE", "Kali Linux", "Enumeration"],
+      tags: ["Nmap", "Kali Linux", "VirtualBox", "Wireshark", "NSE"],
       image: "assets/labs/nmap/11.webp", gallery: { key: "nmap", start: 10 }, doc: "assets/docs/nmap-activities.pdf"
     },
     {
       id: "manila-fog", category: "project", start: "2026-09", dateLabel: "Sep 2026",
       title: "Operation Manila Fog", org: "Incident reporting · Training exercise",
       summary: "Three alerts on a domain controller worked into one incident: mapped to MITRE ATT&CK, rated Critical, the external IP checked on VirusTotal, AbuseIPDB and Shodan, and escalated with an SBAR briefing.",
-      tags: ["Incident Response", "MITRE ATT&CK", "Threat Intel", "SBAR"],
+      tags: ["VirusTotal", "AbuseIPDB", "Shodan", "MITRE ATT&CK", "SBAR"],
       visual: { icon: "alert", label: "INC-0915-001 · CRITICAL" }, doc: "assets/docs/incident-response-manila-fog.pdf"
     },
     {
       id: "bots-triage", category: "project", start: "2026-09", dateLabel: "Sep 2026",
       title: "Alert Triage on BOTS v2", org: "Splunk · Tier 1 SOC workbook",
       summary: "15 lessons and 10 labs of Tier 1 triage across 68.9M events: a crafted script payload on an admin panel, likely port-scan reconnaissance, and PowerShell activity cleared as benign.",
-      tags: ["Triage", "SPL", "DNS / HTTP analysis", "Escalation"],
+      tags: ["Splunk", "SPL", "Triage", "Escalation"],
       visual: { icon: "search", label: "index=botsv2 | stats count" }, doc: "assets/docs/splunk-tier1-triage-workbook.pdf"
     },
     {
@@ -49,14 +52,14 @@ window.PORTFOLIO = {
       id: "portfolio", category: "personal", start: "2026-09", dateLabel: "Sep 2026", featured: true,
       title: "This Portfolio + Ask Hans AI", org: "Personal project",
       summary: "The site you're on: hand-written HTML, CSS and JavaScript with a screenshot viewer, filterable archives, and an AI chat assistant powered by Claude through a Vercel serverless function.",
-      tags: ["HTML/CSS", "JavaScript", "Vercel", "Claude API"],
-      image: "assets/projects/portfolio.webp", links: [{ label: "Source on GitHub", href: "https://github.com/LT1019/portfolio" }]
+      tags: ["HTML5", "CSS", "JavaScript", "Vercel", "Claude API"],
+      image: "assets/projects/portfolio.webp", github: "private"
     },
     {
       id: "ionos-migration", category: "work", start: "2025-09", end: "2026-02", dateLabel: "Sep 2025 – Feb 2026",
       title: "Large-Scale Website Migration", org: "IONOS Philippines Inc.",
       summary: "Migrated 4,000+ websites from legacy platforms to IONOS infrastructure in 3.5 months at 3 full-site migrations a day, checking every site so no data was lost and DNS changes didn't take live sites offline.",
-      tags: ["DNS", "SSL", "Hosting", "QA"],
+      tags: ["IONOS", "DNS", "SSL", "Hosting", "QA"],
       visual: { icon: "server", label: "4,000+ sites · 0 data loss" }
     },
     {

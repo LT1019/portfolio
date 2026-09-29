@@ -821,6 +821,41 @@ button.acard__media { cursor: zoom-in; }
 .footer--archive .footer__bottom { border-top: 0; }
 .footer--archive .footer__bottom a { font-weight: 700; color: var(--accent-ink); }
 
+/* Project case cards (projects.html): image left, details right */
+.archive__grid--cases { grid-template-columns: 1fr; gap: 22px; }
+.pcase {
+  display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); border-radius: var(--r-lg); overflow: hidden;
+  background: var(--surface); border: 1px solid var(--line); animation: acardIn 0.45s var(--ease) both;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.pcase:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); box-shadow: var(--shadow-lg); }
+.pcase__media.acard__media img[src*="assets/projects/"] { object-position: center; }
+.pcase__media.acard__media { aspect-ratio: auto; height: 100%; min-height: 300px; border-bottom: 0; border-right: 1px solid var(--line); }
+.pcase__body { display: flex; flex-direction: column; padding: 24px 26px 26px; min-width: 0; }
+.pcase__top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--line); }
+.pcase__no { font-size: 0.82rem; color: var(--accent-ink); background: var(--accent-tint); padding: 2px 8px; border-radius: 6px; }
+.pcase__tag { font-size: 0.78rem; color: var(--muted); padding: 3px 10px; border: 1px solid var(--line-strong); border-radius: 6px; }
+.pcase__cat { font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.pcase h3 { font-size: clamp(1.35rem, 2.2vw, 1.7rem); margin: 8px 0 10px; }
+.pcase__summary { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 18px; }
+.pcase__tools { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 16px; margin-top: auto; border-top: 1px solid var(--line); }
+.tool {
+  display: inline-flex; align-items: center; gap: 7px; padding: 6px 11px; border-radius: 8px;
+  font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-soft); background: var(--ground); border: 1px solid var(--line-strong);
+}
+.tool__icon { width: 15px; height: 15px; flex: none; stroke: none; }
+.tool__dot { width: 8px; height: 8px; border-radius: 2px; flex: none; background: var(--faint); transform: rotate(45deg); }
+.pcase__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.pbtn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 10px 14px; border-radius: 10px;
+  font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; text-align: center; color: var(--ink);
+  border: 1px solid var(--line-strong); background: transparent; transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+.pbtn svg { width: 17px; height: 17px; flex: none; }
+a.pbtn:hover, button.pbtn:hover { border-color: var(--accent); background: var(--accent-tint); }
+.pbtn--primary { border-color: color-mix(in srgb, var(--accent) 60%, var(--line-strong)); }
+.pbtn.is-disabled { color: var(--faint); border-color: var(--line); background: color-mix(in srgb, var(--ground) 40%, transparent); cursor: not-allowed; font-weight: 500; }
+
 /* ============ ASK HANS CHAT ============ */
 .chatfab {
   position: fixed; right: 20px; bottom: 20px; z-index: 70; display: inline-flex; align-items: center; gap: 10px;
@@ -916,6 +951,9 @@ body.is-loading .chatfab { opacity: 0; pointer-events: none; }
   .archive__label { width: 100%; }
   .archive__label--inline { margin-left: 0; }
   .archive__grid, .archive__grid--certs { grid-template-columns: 1fr; }
+  .pcase { grid-template-columns: 1fr; }
+  .pcase__media.acard__media { min-height: 0; aspect-ratio: 16 / 10; border-right: 0; border-bottom: 1px solid var(--line); }
+  .pcase__actions { grid-template-columns: 1fr; }
   .hide-sm { display: none; }
   .topbar { top: 8px; padding: 0 10px; }
   .topbar__inner { height: 56px; border-radius: 16px; padding: 0 8px 0 16px; }
