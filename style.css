@@ -846,6 +846,12 @@ button.acard__media { cursor: zoom-in; }
 .tool__icon { width: 17px; height: 17px; flex: none; stroke: none; }
 .tool__icon--line { stroke: var(--accent-ink); fill: none; stroke-width: 1.9; }
 .tags span.has-icon { display: inline-flex; align-items: center; gap: 6px; }
+.tl__org.has-icon { display: flex; align-items: center; gap: 8px; }
+.tl__org .tool__icon { width: 20px; height: 20px; }
+.certcard__actions { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 14px; }
+.certcard__actions .pbtn { min-height: 40px; padding: 8px 12px; gap: 8px; font-size: 0.78rem; }
+.certcard__actions .pbtn svg { width: 15px; height: 15px; }
+.acard .certcard__actions { margin-top: 16px; }
 .tags span.has-icon .tool__icon { width: 16px; height: 16px; }
 .tool__dot { width: 8px; height: 8px; border-radius: 2px; flex: none; background: var(--faint); transform: rotate(45deg); }
 .pcase__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }

@@ -50,6 +50,7 @@
     check: '<circle cx="12" cy="12" r="8.5"/><path d="m8 12.5 2.8 2.8L16.5 9.5"/>',
     cpu: '<rect x="6.5" y="6.5" width="11" height="11" rx="1.5"/><path d="M9.5 3v3.5M14.5 3v3.5M9.5 17.5V21M14.5 17.5V21M3 9.5h3.5M3 14.5h3.5M17.5 9.5H21M17.5 14.5H21"/>',
     eye: '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>',
+    building: '<path d="M4 21V5.5L12 3v18M12 8.5l8 2.5v10M3 21h18M7.5 8h1.5M7.5 12h1.5M7.5 16h1.5M15.5 14h1.5M15.5 17.5h1.5"/>',
     users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 20a6.5 6.5 0 0 0-3-5.5"/>',
   };
 
@@ -71,6 +72,7 @@
     "blue team": "line:shield", "dns": "line:globe", "ssl": "line:lock", "hosting": "line:server", "qa": "line:check",
     "ai": "line:cpu", "data": "line:database", "backend": "line:code", "visitor tracking": "line:users",
     "security": "line:shield", "computer vision": "line:eye",
+    "scraping": "line:scrape", "company": "line:building",
   };
 
   const wrap = (inner) => '<svg class="tool__icon" viewBox="0 0 24 24" aria-hidden="true" style="stroke:none">' + inner + "</svg>";
@@ -96,8 +98,13 @@
 
   window.toolIcon = toolIcon;
 
-  // Skill chips on the home page: put the icon in front of each label
-  document.querySelectorAll(".skillcard .tags span").forEach((chip) => {
+  // Home page: skill and experience chips get the icon in front of the label,
+  // and experience entries get the company logo (data-logo on .tl__org)
+  document.querySelectorAll(".tl__org[data-logo]").forEach((org) => {
+    const svg = toolIcon(org.dataset.logo);
+    if (svg) { org.insertAdjacentHTML("afterbegin", svg); org.classList.add("has-icon"); }
+  });
+  document.querySelectorAll(".skillcard .tags span, .tl__card .tags span").forEach((chip) => {
     const svg = toolIcon(chip.textContent);
     if (svg) { chip.insertAdjacentHTML("afterbegin", svg); chip.classList.add("has-icon"); }
   });

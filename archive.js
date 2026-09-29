@@ -144,7 +144,6 @@
     server: '<rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01"/>',
     code: '<path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/>',
   };
-  const DOC_ICON = '<svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>';
   const catLabel = (v) => (CATEGORIES.find(([c]) => c === v) || [, v])[1];
 
   function el(tag, cls, text) {
@@ -197,6 +196,8 @@
     shots: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
     github: '<path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>',
     lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+    cert: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 9h10M7 12.5h6"/><path d="m15 17 1 4 1.5-1 1.5 1 1-4"/>',
+    verify: '<path d="M12 3 4.5 6v6c0 4.3 3.2 8.1 7.5 9 4.3-.9 7.5-4.7 7.5-9V6z"/><path d="m8.8 12.2 2.3 2.3 4.2-4.4"/>',
     study: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
   };
   const svg = (name) => `<svg viewBox="0 0 24 24" aria-hidden="true">${BTN_ICONS[name]}</svg>`;
@@ -279,24 +280,14 @@
     it.tags.forEach((t) => tags.append(el("span", null, t)));
     body.append(tags);
 
-    const actions = el("div", "labcard__actions");
-    if (it.gallery != null) {
-      const b = el("button", "labcard__open", type === "certificates" ? "View certificate " : "View screenshots ");
-      b.type = "button";
-      b.dataset.gallery = type === "certificates" ? "certs" : it.gallery.key;
-      b.dataset.start = type === "certificates" ? it.gallery : it.gallery.start;
-      b.append(el("span", "arrow", "→"));
-      actions.append(b);
-    }
-    if (it.doc) {
-      const d = link("labcard__doc", it.doc, "", true);
-      d.insertAdjacentHTML("beforeend", DOC_ICON);
-      d.append("Full documentation ", el("span", "mono", "PDF"));
-      actions.append(d);
-    }
-    (it.links || []).forEach((l) => actions.append(link("labcard__open", l.href, l.label + " ↗", true)));
-    if (it.verify) actions.append(link("certcard__verify", it.verify, "Verify ↗", true));
-    if (actions.children.length) body.append(actions);
+    const acts = el("div", "certcard__actions");
+    acts.append(
+      it.gallery != null ? action({ gallery: { key: "certs", start: it.gallery }, icon: "cert", label: "View certificate", primary: true })
+        : action({ icon: "cert", label: "No image" }),
+      it.verify ? action({ href: it.verify, icon: "verify", label: "Verify" })
+        : action({ icon: "verify", label: "Verify — Unavailable" })
+    );
+    body.append(acts);
     if (it.note) body.append(el("span", "certcard__vnote mono", it.note));
     c.append(body);
     return c;
