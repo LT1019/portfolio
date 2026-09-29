@@ -27,13 +27,21 @@ export const KNOWLEDGE = `
 - CITU-Secure (capstone, Jan 2024 - Dec 2024, Backend Developer): a visitor management system for the CIT-U campus that tracks each visitor's personal information, purpose of visit, and entry/exit times. Hans built the backend for visitor management and tracking.
 - Real-Time Face Recognition (2023 - 2024, Backend & Data Collection): OpenCV + Python system that identifies faces in live video. Hans built the backend and collected the training data that improved accuracy.
 
-## Skills
-- Programming & automation: Java, Python, React.js, HTML/CSS, web scraping, n8n (workflow automation).
-- Infrastructure: DNS/SSL, web hosting, IMAP/POP3.
+## Skills (what he can do)
+- Backend development in Java and Python (e.g. the CITU-Secure visitor-tracking backend).
+- Automation: web scrapers and n8n workflows.
+- Website migration & hosting: DNS, SSL, email (IMAP/POP3), WordPress/CMS fixes.
+- Security monitoring: Splunk detections and dashboards, Wireshark, Nmap, incident write-ups mapped to MITRE ATT&CK.
 - AI & data: prompt engineering, data processing, OpenCV.
-- Design & tools: WordPress, Photoshop, Illustrator, MS Office, Git/GitHub.
-- Cybersecurity & SOC: Splunk (SPL, dashboards, alerts), Wireshark, Nmap, Kali Linux, MITRE ATT&CK, incident reporting and triage.
-- Soft skills: problem solving, project management, technical writing, client support.
+- Communication: technical writing, client support; English, Filipino and Cebuano (all fluent).
+
+## Tech stack
+- Languages: Java, Python, JavaScript, HTML/CSS.
+- Frameworks & build: React.js, Spring Boot, Hibernate, JUnit, Maven, Docker, OpenCV (several from Udemy/Accenture coursework).
+- Automation & AI: n8n, web scraping, Claude, prompt engineering.
+- Security: Splunk, Wireshark, Nmap, Kali Linux, VirtualBox, MITRE ATT&CK.
+- Hosting & web: IONOS, Vercel, WordPress, DNS/SSL, IMAP/POP3.
+- Design & tools: Git/GitHub, Photoshop, Illustrator, MS Office.
 
 ## Cybersecurity lab work (SOC analyst training)
 - Splunk SOC Overview Dashboard on the BOTS v2 dataset: KPI, breakdown and detail panels wired to shared Sourcetype/Host/Time filters; detections for high-volume accounts, network scanning and web path enumeration; the scanning detection saved as a scheduled email alert.

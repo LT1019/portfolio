@@ -44,6 +44,7 @@
       <nav class="topbar__links" aria-label="Main">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
+        <a href="#stack">Stack</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#certificates">Certificates</a>
@@ -206,15 +207,59 @@
       </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- SKILLS: what I can do (capabilities) -->
     <section id="skills" class="section section--alt">
+      <div class="container">
+        <div class="sechead reveal">
+          <span class="eyebrow">02 &mdash; Skills</span>
+          <h2 class="sectitle">What I can do <span class="grad">for you.</span></h2>
+          <p class="seclead">The capabilities I bring, from the backend code to the systems that keep it online and secure.</p>
+        </div>
+        <div class="capgrid">
+          <article class="capcard reveal">
+            <span class="capcard__ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.6"/><rect x="3" y="13" width="18" height="7" rx="1.6"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
+            <h3>Backend development</h3>
+            <p>Server-side logic in Java and Python, like the visitor-tracking backend I built for CITU-Secure.</p>
+          </article>
+          <article class="capcard reveal">
+            <span class="capcard__ic"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5"/></svg></span>
+            <h3>Automation</h3>
+            <p>Web scrapers and n8n workflows that take repetitive work off people's hands.</p>
+          </article>
+          <article class="capcard reveal">
+            <span class="capcard__ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5a13 13 0 0 1 0 17M12 3.5a13 13 0 0 0 0 17"/></svg></span>
+            <h3>Website migration &amp; hosting</h3>
+            <p>Moved 4,000+ live sites with no data loss, handling DNS, SSL, email and WordPress/CMS fixes along the way.</p>
+          </article>
+          <article class="capcard reveal">
+            <span class="capcard__ic"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.3 3.2 8.1 7.5 9 4.3-.9 7.5-4.7 7.5-9V6z"/><path d="m8.8 12.2 2.3 2.3 4.2-4.4"/></svg></span>
+            <h3>Security monitoring</h3>
+            <p>Splunk detections and dashboards, traffic analysis, scanning, and incident write-ups mapped to MITRE ATT&amp;CK.</p>
+          </article>
+          <article class="capcard reveal">
+            <span class="capcard__ic"><svg viewBox="0 0 24 24"><path d="M11 3.5l1.6 4.4L17 9.5l-4.4 1.6L11 15.5l-1.6-4.4L5 9.5l4.4-1.6z"/><path d="M18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8z"/></svg></span>
+            <h3>AI &amp; data</h3>
+            <p>Prompt engineering and AI tools on real datasets, plus computer vision with OpenCV.</p>
+          </article>
+          <article class="capcard reveal">
+            <span class="capcard__ic"><svg viewBox="0 0 24 24"><path d="M20 12a7.5 7.5 0 0 1-10.9 6.7L4.5 20l1.3-4.3A7.5 7.5 0 1 1 20 12z"/></svg></span>
+            <h3>Communication</h3>
+            <p>Clear technical writing and client support, in English, Filipino and Cebuano.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK: the tools, grouped, with brand logos -->
+    <section id="stack" class="section">
       <div class="container">
         <div class="skills__head">
           <div class="sechead reveal">
-            <span class="eyebrow">02 &mdash; Skills</span>
-            <h2 class="sectitle">What I work with.</h2>
+            <span class="eyebrow">03 &mdash; Tech stack</span>
+            <h2 class="sectitle">Technologies I work with.</h2>
+            <p class="seclead">My toolkit across languages, frameworks, automation and AI, security, hosting and design.</p>
           </div>
-          <div class="viewtoggle reveal" role="radiogroup" aria-label="Skills layout">
+          <div class="viewtoggle reveal" role="radiogroup" aria-label="Tech stack layout">
             <button class="viewtoggle__btn is-active" role="radio" aria-checked="true" data-view="normal" title="Normal view">
               <svg viewBox="0 0 24 24"><rect x="3" y="3" width="11" height="8" rx="2"/><rect x="17" y="3" width="4" height="8" rx="1.5"/><rect x="3" y="14" width="18" height="7" rx="2"/></svg><span>Normal</span>
             </button>
@@ -227,61 +272,53 @@
           </div>
         </div>
         <div class="bento" data-view="normal">
-          <article class="skillcard reveal tilt bento--wide">
+          <article class="skillcard reveal tilt">
             <div class="skillcard__icon">
               <svg viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
             </div>
-            <h3>Programming &amp; Automation</h3>
-            <p>Writing backend logic and scripts that take repetitive work off people's hands.</p>
-            <div class="tags"><span>Java</span><span>Python</span><span>React.js</span><span>HTML/CSS</span><span>Web Scraping</span><span>n8n</span></div>
+            <h3>Languages</h3>
+            <p>What I write code in.</p>
+            <div class="tags"><span>Java</span><span>Python</span><span>JavaScript</span><span>HTML/CSS</span></div>
           </article>
           <article class="skillcard reveal tilt">
             <div class="skillcard__icon">
-              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="2"/><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 7h.01M7 17h.01"/></svg>
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
             </div>
-            <h3>Infrastructure</h3>
-            <p>Hosting, domains, certificates and mail.</p>
-            <div class="tags"><span>DNS / SSL</span><span>Web Hosting</span><span>IMAP / POP3</span></div>
+            <h3>Frameworks &amp; build</h3>
+            <p>Libraries and tooling from projects and coursework.</p>
+            <div class="tags"><span>React.js</span><span>Spring Boot</span><span>Hibernate</span><span>JUnit</span><span>Maven</span><span>Docker</span><span>OpenCV</span></div>
           </article>
           <article class="skillcard reveal tilt">
             <div class="skillcard__icon">
-              <svg viewBox="0 0 24 24"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="3"/></svg>
+              <svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5"/></svg>
             </div>
-            <h3>AI &amp; Data</h3>
-            <p>Getting AI tools to do real work on real datasets.</p>
-            <div class="tags"><span>Prompt Engineering</span><span>Data Processing</span><span>OpenCV</span></div>
+            <h3>Automation &amp; AI</h3>
+            <p>Workflows, scrapers and the AI in between.</p>
+            <div class="tags"><span>n8n</span><span>Web Scraping</span><span>Claude</span><span>Prompt Engineering</span></div>
+          </article>
+          <article class="skillcard reveal tilt">
+            <div class="skillcard__icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.3 3.2 8.1 7.5 9 4.3-.9 7.5-4.7 7.5-9V6z"/></svg>
+            </div>
+            <h3>Security</h3>
+            <p>SOC analyst tooling.</p>
+            <div class="tags"><span>Splunk</span><span>Wireshark</span><span>Nmap</span><span>Kali Linux</span><span>VirtualBox</span><span>MITRE ATT&amp;CK</span></div>
+          </article>
+          <article class="skillcard reveal tilt">
+            <div class="skillcard__icon">
+              <svg viewBox="0 0 24 24"><rect x="3.5" y="4" width="17" height="6.5" rx="2"/><rect x="3.5" y="13.5" width="17" height="6.5" rx="2"/><path d="M7.5 7.25h.01M7.5 16.75h.01"/></svg>
+            </div>
+            <h3>Hosting &amp; web</h3>
+            <p>Where sites live and how they are reached.</p>
+            <div class="tags"><span>IONOS</span><span>Vercel</span><span>WordPress</span><span>DNS / SSL</span><span>IMAP / POP3</span></div>
           </article>
           <article class="skillcard reveal tilt">
             <div class="skillcard__icon">
               <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg>
             </div>
-            <h3>Design &amp; Tools</h3>
-            <p>Fixing CMS sites and making the graphics they need.</p>
-            <div class="tags"><span>WordPress</span><span>Photoshop</span><span>Illustrator</span><span>MS Office</span></div>
-          </article>
-          <article class="skillcard reveal tilt">
-            <div class="skillcard__icon">
-              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-            </div>
-            <h3>Languages</h3>
-            <p>Comfortable working with local and international teams.</p>
-            <div class="tags"><span>English &middot; Fluent</span><span>Filipino &middot; Fluent</span><span>Cebuano &middot; Fluent</span></div>
-          </article>
-          <article class="skillcard reveal tilt bento--wide">
-            <div class="skillcard__icon">
-              <svg viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
-            </div>
-            <h3>Cybersecurity &amp; SOC</h3>
-            <p>Watching traffic and logs, triaging alerts, and writing incidents up clearly for the next tier.</p>
-            <div class="tags"><span>Splunk</span><span>Wireshark</span><span>Nmap</span><span>Kali Linux</span><span>MITRE ATT&amp;CK</span><span>Fortinet NSE 1&ndash;3</span></div>
-          </article>
-          <article class="skillcard reveal tilt">
-            <div class="skillcard__icon">
-              <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18.5 20a6.5 6.5 0 0 0-3-5.5"/></svg>
-            </div>
-            <h3>Soft Skills</h3>
-            <p>Tracking down server-side and automation problems, keeping a high-volume queue moving on deadline, and explaining technical fixes clearly to clients.</p>
-            <div class="tags"><span>Problem Solving</span><span>Project Management</span><span>Technical Writing</span><span>Client Support</span></div>
+            <h3>Design &amp; tools</h3>
+            <p>Everyday tools for code, graphics and docs.</p>
+            <div class="tags"><span>Git / GitHub</span><span>Photoshop</span><span>Illustrator</span><span>MS Office</span></div>
           </article>
         </div>
         <p class="skills__more" aria-hidden="true">Scroll inside the list for more &darr;</p>
@@ -289,10 +326,10 @@
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience" class="section">
+    <section id="experience" class="section section--alt">
       <div class="container">
         <div class="sechead reveal">
-          <span class="eyebrow">03 &mdash; Experience</span>
+          <span class="eyebrow">04 &mdash; Experience</span>
           <h2 class="sectitle">Where I've worked.</h2>
         </div>
         <div class="timeline">
@@ -339,10 +376,10 @@
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects" class="section section--alt">
+    <section id="projects" class="section">
       <div class="container">
         <div class="sechead reveal">
-          <span class="eyebrow">04 &mdash; Projects</span>
+          <span class="eyebrow">05 &mdash; Projects</span>
           <h2 class="sectitle">Things I've built.</h2>
           <p class="seclead">School and personal projects, plus hands-on security labs from my SOC analyst training. Every lab ran on my own network or on purpose-built vulnerable VMs.</p>
         </div>
@@ -357,10 +394,10 @@
     </section>
 
     <!-- CERTIFICATES -->
-    <section id="certificates" class="section">
+    <section id="certificates" class="section section--alt">
       <div class="container">
         <div class="sechead reveal">
-          <span class="eyebrow">05 &mdash; Certificates</span>
+          <span class="eyebrow">06 &mdash; Certificates</span>
           <h2 class="sectitle">Courses I've <span class="grad">completed.</span></h2>
           <p class="seclead">Security, networking and backend development. Click a certificate to view it, or use the verify link to check it with the issuer.</p>
         </div>
@@ -436,10 +473,10 @@
     </section>
 
     <!-- EDUCATION -->
-    <section id="education" class="section section--alt">
+    <section id="education" class="section">
       <div class="container">
         <div class="sechead reveal">
-          <span class="eyebrow">06 &mdash; Education</span>
+          <span class="eyebrow">07 &mdash; Education</span>
           <h2 class="sectitle">Where I studied.</h2>
         </div>
         <article class="degree reveal tilt">
@@ -460,7 +497,7 @@
       <div class="container">
         <div class="contact__card reveal">
           <div class="contact__glow" aria-hidden="true"></div>
-          <span class="eyebrow">07 &mdash; Contact</span>
+          <span class="eyebrow">08 &mdash; Contact</span>
           <h2 class="contact__title">Let's build something<br /><span class="grad">that runs itself.</span></h2>
           <p>I'm open to Backend Developer and IT Specialist roles. The quickest way to reach me is by email.</p>
           <div class="contact__actions">
