@@ -1,10 +1,13 @@
 /* ---------- Archive pages (projects.html / certificates.html) ----------
+   Also renders the home page's project preview: <div data-archive="projects" data-home="3"> shows the
+   first three projects (default Newest order) as Linear cards, without any filter controls.
    Renders cards from data.js and filters them by category, date order, custom date range and year.
    Filter state lives in the URL (?cat=school&year=2024&sort=oldest) so a filtered view can be shared. */
 (function () {
   const root = document.querySelector("[data-archive]");
   if (!root) return;
   const type = root.dataset.archive; // "projects" | "certificates"
+  const home = Number(root.dataset.home) || 0; // > 0 on the home page preview
   const items = window.PORTFOLIO[type];
 
   const CATEGORIES = {
@@ -39,7 +42,7 @@
   }))].sort().reverse();
 
   /* ----- State <-> URL ----- */
-  const params = new URLSearchParams(location.search);
+  const params = new URLSearchParams(home ? "" : location.search); // the home preview always uses the default filters
   const state = {
     cat: CATEGORIES.some(([v]) => v === params.get("cat")) ? params.get("cat") : "all",
     sort: ["newest", "oldest", "custom"].includes(params.get("sort")) ? params.get("sort") : "newest",
@@ -86,29 +89,31 @@
     toIn.value = state.to;
   }
 
-  yearSel.append(...years.map((y) => new Option(y, y)));
-  yearSel.addEventListener("change", () => {
-    state.year = yearSel.value || null;
-    if (state.year && state.sort === "custom") { state.sort = "newest"; state.from = state.to = ""; } // a year replaces a custom range
-    update();
-  });
+  if (!home) {
+    yearSel.append(...years.map((y) => new Option(y, y)));
+    yearSel.addEventListener("change", () => {
+      state.year = yearSel.value || null;
+      if (state.year && state.sort === "custom") { state.sort = "newest"; state.from = state.to = ""; } // a year replaces a custom range
+      update();
+    });
 
-  sortSel.addEventListener("change", () => {
-    state.sort = sortSel.value;
-    if (state.sort === "custom") {
-      state.year = null; // a custom range replaces the year
-      if (!state.from && !state.to) { state.from = years[years.length - 1] + "-01"; state.to = years[0] + "-12"; }
-    } else {
-      state.from = state.to = "";
-    }
-    update();
-  });
-  fromIn.addEventListener("change", () => { state.from = fromIn.value; update(); });
-  toIn.addEventListener("change", () => { state.to = toIn.value; update(); });
-  clearBtn.addEventListener("click", () => {
-    Object.assign(state, { cat: "all", sort: "newest", year: null, from: "", to: "" });
-    update();
-  });
+    sortSel.addEventListener("change", () => {
+      state.sort = sortSel.value;
+      if (state.sort === "custom") {
+        state.year = null; // a custom range replaces the year
+        if (!state.from && !state.to) { state.from = years[years.length - 1] + "-01"; state.to = years[0] + "-12"; }
+      } else {
+        state.from = state.to = "";
+      }
+      update();
+    });
+    fromIn.addEventListener("change", () => { state.from = fromIn.value; update(); });
+    toIn.addEventListener("change", () => { state.to = toIn.value; update(); });
+    clearBtn.addEventListener("click", () => {
+      Object.assign(state, { cat: "all", sort: "newest", year: null, from: "", to: "" });
+      update();
+    });
+  }
 
   /* ----- Filtering ----- */
   function visible() {
@@ -315,6 +320,11 @@
   }));
 
   function update() {
+    if (home) {
+      grid.dataset.view = "linear";
+      grid.replaceChildren(...visible().slice(0, home).map(card));
+      return;
+    }
     syncUrl();
     grid.dataset.view = state.view;
     viewBtns.forEach((b) => {
