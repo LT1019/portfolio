@@ -46,7 +46,12 @@
     year: years.includes(params.get("year")) ? params.get("year") : null,
     from: /^\d{4}-\d{2}$/.test(params.get("from") || "") ? params.get("from") : "",
     to: /^\d{4}-\d{2}$/.test(params.get("to") || "") ? params.get("to") : "",
+    view: "list",
   };
+  // Layout (projects page): URL wins, then the visitor's last choice, then List
+  let savedView = null;
+  try { savedView = localStorage.getItem("projectsView"); } catch (e) {}
+  state.view = ["list", "linear"].includes(params.get("view")) ? params.get("view") : savedView === "linear" ? "linear" : "list";
   if (state.sort !== "custom") state.from = state.to = "";
 
   function syncUrl() {
@@ -56,6 +61,7 @@
     if (state.year) p.set("year", state.year);
     if (state.from) p.set("from", state.from);
     if (state.to) p.set("to", state.to);
+    if (type === "projects" && state.view !== "list") p.set("view", state.view);
     const q = p.toString();
     history.replaceState(null, "", q ? `?${q}` : location.pathname);
   }
@@ -301,8 +307,21 @@
     return c;
   }
 
+  const viewBtns = [...root.querySelectorAll(".archive__views .viewtoggle__btn")];
+  viewBtns.forEach((b) => b.addEventListener("click", () => {
+    state.view = b.dataset.view;
+    try { localStorage.setItem("projectsView", state.view); } catch (e) {}
+    update();
+  }));
+
   function update() {
     syncUrl();
+    grid.dataset.view = state.view;
+    viewBtns.forEach((b) => {
+      const on = b.dataset.view === state.view;
+      b.classList.toggle("is-active", on);
+      b.setAttribute("aria-checked", on);
+    });
     renderControls();
     const list = visible();
     grid.replaceChildren(...list.map(card));

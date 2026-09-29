@@ -852,6 +852,20 @@ button.acard__media { cursor: zoom-in; }
   border: 1px solid var(--line-strong); background: transparent; transition: border-color 0.2s, background 0.2s, color 0.2s;
 }
 .pbtn svg { width: 17px; height: 17px; flex: none; }
+
+/* Projects page layouts: List (default) and Linear (three per row, details under the image) */
+.archive__views { margin-left: auto; }
+.archive__clear + .archive__views, .archive__clear[hidden] + .archive__views { margin-left: 12px; }
+.archive__clear[hidden] + .archive__views { margin-left: auto; }
+.archive__grid--cases[data-view="linear"] { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.archive__grid--cases[data-view="linear"] .pcase { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+.archive__grid--cases[data-view="linear"] .pcase__media.acard__media { height: auto; min-height: 0; aspect-ratio: 16 / 10; border-right: 0; border-bottom: 1px solid var(--line); }
+.archive__grid--cases[data-view="linear"] .pcase__body { padding: 18px 20px 20px; }
+.archive__grid--cases[data-view="linear"] .pcase h3 { font-size: 1.25rem; }
+.archive__grid--cases[data-view="linear"] .pcase__summary { font-size: 0.9rem; }
+.archive__grid--cases[data-view="linear"] .pcase__actions { grid-template-columns: 1fr; gap: 8px; }
+.archive__grid--cases[data-view="linear"] .pbtn { min-height: 40px; font-size: 0.78rem; }
+@media (max-width: 1100px) { .archive__grid--cases[data-view="linear"] { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 a.pbtn:hover, button.pbtn:hover { border-color: var(--accent); background: var(--accent-tint); }
 .pbtn--primary { border-color: color-mix(in srgb, var(--accent) 60%, var(--line-strong)); }
 .pbtn.is-disabled { color: var(--faint); border-color: var(--line); background: color-mix(in srgb, var(--ground) 40%, transparent); cursor: not-allowed; font-weight: 500; }
@@ -952,6 +966,8 @@ body.is-loading .chatfab { opacity: 0; pointer-events: none; }
   .archive__label--inline { margin-left: 0; }
   .archive__grid, .archive__grid--certs { grid-template-columns: 1fr; }
   .pcase { grid-template-columns: 1fr; }
+  .archive__grid--cases[data-view="linear"] { grid-template-columns: 1fr; }
+  .archive__views { margin-left: 0 !important; }
   .pcase__media.acard__media { min-height: 0; aspect-ratio: 16 / 10; border-right: 0; border-bottom: 1px solid var(--line); }
   .pcase__actions { grid-template-columns: 1fr; }
   .hide-sm { display: none; }
