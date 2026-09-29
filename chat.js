@@ -1,6 +1,6 @@
 /* ---------- "Ask about Hans" chat widget ----------
    Sends the conversation to /api/chat (Claude, via a Vercel function). If that endpoint is
-   missing or not configured (local preview, no API key), it answers from the offline notes below. */
+   missing or not configured (local preview, no API key), it answers with chat-offline.js. */
 (function () {
   const fab = document.querySelector(".chatfab");
   const panel = document.querySelector(".chat");
@@ -17,40 +17,8 @@
   let live = true;    // flips to false after the API reports it is unavailable
   let busy = false;
 
-  /* Offline answers: first rule whose pattern matches the question wins */
-  const OFFLINE = [
-    [/^\s*(hi|hello|hey|yo|good (morning|afternoon|evening)|kumusta|musta|maayong (buntag|hapon|gabii)|magandang (umaga|hapon|gabi))\W*$/i,
-      "Hi! I can tell you about Hans's experience, projects, skills, security labs and certificates. What would you like to know?"],
-    [/ionos|migrat|website admin|current job|recent job|latest job|trabaho karon/i,
-      "At IONOS Philippines (Sep 2025 - Feb 2026) Hans migrated 4,000+ websites from legacy platforms to IONOS infrastructure in 3.5 months, at 3 full-site migrations a day, with no data loss. The work covered DNS, SSL, hosting and email (IMAP/POP3)."],
-    [/lifewood|intern|scrap/i,
-      "As an IT intern at Lifewood Data Technology (Jan - Apr 2025) Hans wrote web scraping scripts, used AI tools and prompt engineering to speed up data processing, and managed large genealogy datasets."],
-    [/cert|nse|fortinet|cisco|udemy|huawei|accenture|course|sertipiko/i,
-      "Hans holds Fortinet NSE 1 and NSE 2 (Certified in Cybersecurity), Cisco Network Defense, Fortinet Cybersecurity and Cloud Fundamentals, Huawei HCIA-Datacom, Accenture Back End Development (138 h), and Udemy courses in Java, Spring Boot, Docker, JUnit, Git and Maven."],
-    [/splunk|wireshark|nmap|kali|soc\b|security|cyber|incident|triage|attack|lab/i,
-      "Hans is training as a Tier 1 SOC analyst:\n- Splunk: a SOC dashboard, detections and a scheduled alert on BOTS v2, plus alert triage\n- Wireshark: traffic analysis and cleartext credential exposure\n- Nmap on Kali Linux: enumeration and NSE vuln scans\n- An incident report mapped to MITRE ATT&CK\nSee the Projects section for screenshots and full write-ups."],
-    [/project|proyekto|capstone|citu|secure|face|opencv|built/i,
-      "- CITU-Secure (2024): a campus visitor management system; Hans built the backend for visitor tracking\n- Real-Time Face Recognition (2023-2024): OpenCV + Python; Hans built the backend and collected training data"],
-    [/speak|english|filipino|cebuano|tagalog/i,
-      "Hans is fluent in English, Filipino and Cebuano."],
-    [/skill|stack|tech|language(s)? (do|does)|program|python|java|react|know|kasanayan|kahibalo|kaya/i,
-      "Java, Python, React.js, HTML/CSS, web scraping and n8n workflow automation; DNS/SSL, hosting and email protocols; prompt engineering and OpenCV; Splunk, Wireshark, Nmap and Kali Linux; plus WordPress, Photoshop and Git."],
-    [/experience|work(ed)? (history|at)|job|career|background|trabaho|karanasan|kasinatian/i,
-      "- IONOS Philippines: Website Administration, migrated 4,000+ websites (Sep 2025 - Feb 2026)\n- Lifewood Data Technology: IT Intern, web scraping and AI-assisted data work (Jan - Apr 2025)"],
-    [/school|stud(y|ied)|educat|degree|universit|college|cit-?u|eskwela|skwelahan|nag-aral|paaralan/i,
-      "Hans studied at Cebu Institute of Technology - University (CIT-U) in Cebu City, 2019-2025."],
-    [/where|locat|based|live|cebu|remote|saan|asa|taga/i,
-      "Hans is based in Mandaue City, Cebu, Philippines."],
-    [/hire|availab|open to|role|looking|position|salary|rate/i,
-      `Hans is open to Backend Developer and IT Specialist roles, and is training toward Tier 1 SOC analyst work. For availability or pay, email Hans at ${EMAIL}.`],
-    [/resume|résumé|\bcv\b|curriculum/i,
-      "You can view or download Hans's résumé from the Résumé button at the top of the page or in the Contact section."],
-    [/contact|email|reach|message|touch|call|phone|linkedin|kontak|kontakon|makontak/i,
-      `The quickest way to reach Hans is email: ${EMAIL}.`],
-  ];
-  const offlineAnswer = (q) =>
-    (OFFLINE.find(([re]) => re.test(q)) || [null,
-      `I'm not sure about that one. Try asking about Hans's experience, projects, skills, security labs or certificates, or email Hans at ${EMAIL}.`])[1];
+  /* Offline answers live in chat-offline.js (English, Tagalog and Cebuano) */
+  const offlineAnswer = (q) => window.HansOffline.answer(q);
 
   /* Render a reply as text: "- " lines become a list, the email becomes a link. Never uses innerHTML. */
   function addText(parent, text) {
