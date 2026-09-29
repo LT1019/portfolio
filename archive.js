@@ -51,10 +51,8 @@
     to: /^\d{4}-\d{2}$/.test(params.get("to") || "") ? params.get("to") : "",
     view: "list",
   };
-  // Layout (projects page): URL wins, then the visitor's last choice, then List
-  let savedView = null;
-  try { savedView = localStorage.getItem("projectsView"); } catch (e) {}
-  state.view = ["list", "linear"].includes(params.get("view")) ? params.get("view") : savedView === "linear" ? "linear" : "list";
+  // Layout (projects page): List unless the URL asks for ?view=linear
+  state.view = params.get("view") === "linear" ? "linear" : "list";
   if (state.sort !== "custom") state.from = state.to = "";
 
   function syncUrl() {
@@ -315,7 +313,6 @@
   const viewBtns = [...root.querySelectorAll(".archive__views .viewtoggle__btn")];
   viewBtns.forEach((b) => b.addEventListener("click", () => {
     state.view = b.dataset.view;
-    try { localStorage.setItem("projectsView", state.view); } catch (e) {}
     update();
   }));
 
