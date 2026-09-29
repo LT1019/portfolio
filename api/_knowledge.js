@@ -28,7 +28,7 @@ export const KNOWLEDGE = `
 - Real-Time Face Recognition (2023 - 2024, Backend & Data Collection): OpenCV + Python system that identifies faces in live video. Hans built the backend and collected the training data that improved accuracy.
 
 ## Skills
-- Programming & automation: Java, Python, React.js, HTML/CSS, web scraping.
+- Programming & automation: Java, Python, React.js, HTML/CSS, web scraping, n8n (workflow automation).
 - Infrastructure: DNS/SSL, web hosting, IMAP/POP3.
 - AI & data: prompt engineering, data processing, OpenCV.
 - Design & tools: WordPress, Photoshop, Illustrator, MS Office, Git/GitHub.

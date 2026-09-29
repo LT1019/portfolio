@@ -34,7 +34,7 @@
     [/speak|english|filipino|cebuano|tagalog/i,
       "Hans is fluent in English, Filipino and Cebuano."],
     [/skill|stack|tech|language(s)? (do|does)|program|python|java|react|know/i,
-      "Java, Python, React.js, HTML/CSS and web scraping; DNS/SSL, hosting and email protocols; prompt engineering and OpenCV; Splunk, Wireshark, Nmap and Kali Linux; plus WordPress, Photoshop and Git."],
+      "Java, Python, React.js, HTML/CSS, web scraping and n8n workflow automation; DNS/SSL, hosting and email protocols; prompt engineering and OpenCV; Splunk, Wireshark, Nmap and Kali Linux; plus WordPress, Photoshop and Git."],
     [/experience|work(ed)? (history|at)|job|career|background/i,
       "- IONOS Philippines: Website Administration, migrated 4,000+ websites (Sep 2025 - Feb 2026)\n- Lifewood Data Technology: IT Intern, web scraping and AI-assisted data work (Jan - Apr 2025)"],
     [/school|stud(y|ied)|educat|degree|universit|college|cit-?u/i,
