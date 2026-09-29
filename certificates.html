@@ -101,32 +101,32 @@
     </figure>
   </dialog>
 
-  <!-- ASK HANS: AI chat about Hans (see chat.js and api/chat.js) -->
-  <button class="chatfab" aria-label="Ask Hans's AI assistant" aria-expanded="false" aria-controls="chat">
+  <!-- ASK ABOUT HANS: AI chat about Hans (see chat.js and api/chat.js) -->
+  <button class="chatfab" aria-label="Ask about Hans: AI assistant" aria-expanded="false" aria-controls="chat">
     <svg class="chatfab__icon" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></svg>
     <svg class="chatfab__close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
-    <span class="chatfab__label">Ask Hans</span>
+    <span class="chatfab__label">Ask about Hans</span>
   </button>
-  <section class="chat" id="chat" role="dialog" aria-label="Ask Hans chat" hidden>
+  <section class="chat" id="chat" role="dialog" aria-label="Ask about Hans chat" hidden>
     <header class="chat__head">
       <div class="chat__avatar"><img src="assets/profile.webp" alt="" width="40" height="40" /></div>
       <div class="chat__who">
-        <strong>Ask Hans</strong>
-        <span><span class="status__dot"></span> AI assistant &middot; answers from his portfolio</span>
+        <strong>Ask about Hans</strong>
+        <span><span class="status__dot"></span> AI assistant &middot; answers from Hans's portfolio</span>
       </div>
       <button class="iconbtn chat__close" aria-label="Close chat"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
     </header>
     <div class="chat__log" aria-live="polite">
-      <div class="chat__msg chat__msg--assistant"><p>Hi! I'm Hans's AI assistant. Ask me about his experience, projects, skills, security labs or certificates.</p></div>
+      <div class="chat__msg chat__msg--assistant"><p>Hi! I'm the AI assistant for Hans's portfolio. Ask anything about Hans's experience, projects, skills or certificates, in any language.</p></div>
     </div>
     <div class="chat__suggest">
-      <button type="button">What did he do at IONOS?</button>
-      <button type="button">What security labs has he done?</button>
-      <button type="button">Which certificates does he have?</button>
-      <button type="button">How can I contact him?</button>
+      <button type="button">What did Hans do at IONOS?</button>
+      <button type="button">What security labs has Hans done?</button>
+      <button type="button">Which certificates does Hans have?</button>
+      <button type="button">How can I contact Hans?</button>
     </div>
     <form class="chat__form">
-      <input class="chat__input" type="text" maxlength="600" placeholder="Ask about Hans..." aria-label="Your question" autocomplete="off" />
+      <input class="chat__input" type="text" maxlength="600" placeholder="Ask about Hans, in any language..." aria-label="Your question" autocomplete="off" />
       <button class="chat__send" type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     </form>
     <p class="chat__foot">AI can make mistakes. For anything important, email Hans.</p>
