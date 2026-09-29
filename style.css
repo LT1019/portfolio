@@ -296,6 +296,9 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 }
 .is-ready .floatchip { opacity: 1; }
 .floatchip:hover { border-color: var(--accent); }
+.floatchip--logo .tool__icon { width: 28px; height: 28px; pointer-events: none; }
+.floatchip--logo .tool__icon--line { stroke: #22c55e; stroke-width: 2; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .floatchip.is-dragging { cursor: grabbing; animation-play-state: paused; border-color: var(--accent); z-index: 6; }
 @keyframes floatbob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -14px; } }
 
@@ -1015,6 +1018,7 @@ body.is-loading .chatfab { opacity: 0; pointer-events: none; }
   .hero { padding-top: 100px; }
   .hero__visual { max-width: 260px; }
   .floatchip { width: 46px; height: 46px; font-size: 12px; border-radius: 13px; }
+  .floatchip--logo .tool__icon { width: 22px; height: 22px; }
   .scrollcue { display: none; }
   .bento { grid-template-columns: 1fr; }
   .capgrid { grid-template-columns: 1fr; }

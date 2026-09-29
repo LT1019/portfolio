@@ -102,6 +102,14 @@
 
   // Home page: skill and experience chips get the icon in front of the label,
   // and experience entries get the company logo (data-logo on .tl__org)
+  // Hero: the floating chips around the photo show the tool's logo instead of text
+  document.querySelectorAll(".floatchip[data-tool]").forEach((chip) => {
+    const svg = toolIcon(chip.dataset.tool);
+    if (!svg) return;
+    chip.innerHTML = svg + '<span class="visually-hidden">' + chip.textContent.trim() + "</span>";
+    chip.title = chip.dataset.tool;
+    chip.classList.add("floatchip--logo");
+  });
   document.querySelectorAll(".tl__org[data-logo]").forEach((org) => {
     const svg = toolIcon(org.dataset.logo);
     if (svg) { org.insertAdjacentHTML("afterbegin", svg); org.classList.add("has-icon"); }
