@@ -864,6 +864,7 @@ button.acard__media { cursor: zoom-in; }
 }
 .pcase:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); box-shadow: var(--shadow-lg); }
 .pcase__media.acard__media img[src*="assets/projects/"] { object-position: center; }
+.acard__media img[src$="projects/roxy.webp"] { object-fit: contain; object-position: center; background: #1e1f22; }
 .pcase__media.acard__media { aspect-ratio: auto; height: 100%; min-height: 300px; border-bottom: 0; border-right: 1px solid var(--line); }
 .pcase__body { display: flex; flex-direction: column; padding: 24px 26px 26px; min-width: 0; }
 .pcase__top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 14px; margin-bottom: 16px; border-bottom: 1px solid var(--line); }

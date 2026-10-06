@@ -7,11 +7,12 @@
 window.PORTFOLIO = {
   projects: [
     {
-      id: "roxy", category: "project", status: "Live", start: "2025-06", end: "2026-09", dateLabel: "Jun 2025 – Sep 2026",
-      title: "Roxy", org: "Discord bot",
-      summary: "A Discord bot that tracks members' gaming sessions, Spotify listening and messages, and turns them into XP, levels, leaderboards, achievements and profile cards, with slash commands, admin tools, backups and Patreon supporter perks.",
-      tags: ["Python", "discord.py", "SQLite", "Patreon"],
-      image: "assets/projects/roxy.webp", doc: "https://github.com/LT1019/Roxy-Docs", github: "https://github.com/LT1019/Roxy-Backup"
+      id: "roxy", category: "project", status: "Live", start: "2025-06", end: "2026-10", dateLabel: "Jun 2025 – Present",
+      title: "Roxy", org: "Discord stats bot",
+      summary: "A Discord bot that turns chat, voice, gaming, app and Spotify activity into XP, levels, profiles and leaderboards, automatically. Live in 23 servers with 1,600+ members and 21,000+ recorded sessions, with an anti-spam XP system, role-based permissions and crash recovery.",
+      tags: ["Python", "discord.py", "SQLite", "aiosqlite", "openpyxl"],
+      image: "assets/projects/roxy.webp", gallery: { key: "roxy", start: 0 },
+      doc: "https://github.com/LT1019/Roxy-Backup/tree/main/docs", github: "https://github.com/LT1019/Roxy-Backup", caseStudy: "https://github.com/LT1019/Roxy-Backup/blob/main/docs/CASE_STUDY.md"
     },
     {
       id: "soc-dashboard", category: "project", start: "2026-09", dateLabel: "Sep 2026",

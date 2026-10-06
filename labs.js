@@ -1,7 +1,14 @@
 /* Image galleries for the Security and Certificates sections, opened by [data-gallery] buttons.
    A shot is either a caption (image at dir/NN.webp) or { src, cap }. */
 window.LAB_GALLERIES = {
-  wireshark: {
+  roxy: {
+    title: "Roxy · Discord stats bot",
+    shots: [
+      { src: "assets/projects/roxy/profile.webp", cap: "rr profile · level, activity, time tracked, live status and achievements" },
+      { src: "assets/projects/roxy/leaderboard.webp", cap: "rr top · messages leaderboard with category menu, pages and a Global toggle" },
+      { src: "assets/projects/roxy/help.webp", cap: "rr help · command center with page and view-mode menus and link buttons" }
+    ]
+  },  wireshark: {
     title: "Wireshark Lab Series",
     dir: "assets/labs/wireshark/",
     shots: [

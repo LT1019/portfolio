@@ -50,6 +50,7 @@
     check: '<circle cx="12" cy="12" r="8.5"/><path d="m8 12.5 2.8 2.8L16.5 9.5"/>',
     cpu: '<rect x="6.5" y="6.5" width="11" height="11" rx="1.5"/><path d="M9.5 3v3.5M14.5 3v3.5M9.5 17.5V21M14.5 17.5V21M3 9.5h3.5M3 14.5h3.5M17.5 9.5H21M17.5 14.5H21"/>',
     eye: '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>',
+    document: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
     building: '<path d="M4 21V5.5L12 3v18M12 8.5l8 2.5v10M3 21h18M7.5 8h1.5M7.5 12h1.5M7.5 16h1.5M15.5 14h1.5M15.5 17.5h1.5"/>',
     users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18.5 20a6.5 6.5 0 0 0-3-5.5"/>',
   };
@@ -61,7 +62,7 @@
     "photoshop": "tile:photoshop", "illustrator": "tile:illustrator", "ms office": "tile:msoffice",
     "splunk": "brand:splunk", "wireshark": "custom:wireshark", "nmap": "custom:nmap", "kali linux": "brand:kali linux",
     "fortinet nse 1–3": "brand:fortinet", "curl": "brand:curl", "virtualbox": "brand:virtualbox", "virustotal": "brand:virustotal",
-    "vercel": "brand:vercel", "claude api": "brand:claude", "ionos": "brand:ionos", "github": "brand:github", "n8n": "brand:n8n", "discord.py": "brand:discord", "discord": "brand:discord", "sqlite": "brand:sqlite", "patreon": "brand:patreon",
+    "vercel": "brand:vercel", "claude api": "brand:claude", "ionos": "brand:ionos", "github": "brand:github", "n8n": "brand:n8n", "discord.py": "brand:discord", "discord": "brand:discord", "sqlite": "brand:sqlite", "aiosqlite": "brand:sqlite", "openpyxl": "line:document", "patreon": "brand:patreon",
     "spring boot": "brand:spring boot", "docker": "brand:docker", "junit": "brand:junit", "maven": "brand:maven",
     "git / github": "brand:git", "hibernate": "brand:hibernate", "claude": "brand:claude",
     "web scraping": "line:scrape", "dns / ssl": "line:globe", "web hosting": "line:server", "imap / pop3": "line:mail",
