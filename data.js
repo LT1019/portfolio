@@ -1,17 +1,17 @@
 /* Everything shown on the Projects and Certificates archive pages (projects.html, certificates.html).
    Dates are "YYYY-MM" (projects) or "YYYY-MM-DD" (certificates); `end` is omitted for single-date items.
-   `category` drives the category filter (work / school / project / personal for projects); `featured` items also appear on the home page.
+   `category` drives the category filter (work / school / project for projects); `status: "Live"` shows a blinking green light; `featured` items also appear on the home page.
    Project buttons: `live` (URL) or `doc` (PDF) -> Live Demo / View Documentation; `video` (URL) or `gallery` -> Video Demo / Screenshots;
    `github` (URL, or "private"); `caseStudy` (URL). Anything missing shows as a disabled "Unavailable" button.
    `tags` are the tool chips; names matching icons.js get that tool's icon. */
 window.PORTFOLIO = {
   projects: [
     {
-      id: "roxy", category: "personal", start: "2025-06", end: "2026-09", dateLabel: "Jun 2025 – Sep 2026",
-      title: "Roxy", org: "Discord bot · Personal project",
+      id: "roxy", category: "project", status: "Live", start: "2025-06", end: "2026-09", dateLabel: "Jun 2025 – Sep 2026",
+      title: "Roxy", org: "Discord bot",
       summary: "A Discord bot that tracks members' gaming sessions, Spotify listening and messages, and turns them into XP, levels, leaderboards, achievements and profile cards, with slash commands, admin tools, backups and Patreon supporter perks.",
       tags: ["Python", "discord.py", "SQLite", "Patreon"],
-      image: "assets/projects/roxy.webp", doc: "https://github.com/LT1019/Roxy-Docs", github: "private"
+      image: "assets/projects/roxy.webp", doc: "https://github.com/LT1019/Roxy-Docs", github: "https://github.com/LT1019/Roxy-Backup"
     },
     {
       id: "soc-dashboard", category: "project", start: "2026-09", dateLabel: "Sep 2026",
@@ -56,8 +56,8 @@ window.PORTFOLIO = {
       visual: { icon: "hook", label: "Purple team" }
     },
     {
-      id: "portfolio", category: "personal", start: "2026-09", dateLabel: "Sep 2026", featured: true,
-      title: "This Portfolio + Ask Hans AI", org: "Personal project",
+      id: "portfolio", category: "project", start: "2026-09", dateLabel: "Sep 2026", featured: true,
+      title: "This Portfolio + Ask Hans AI", org: "Web project",
       summary: "The site you're on: hand-written HTML, CSS and JavaScript with a screenshot viewer, filterable archives, and an AI chat assistant powered by Claude through a Vercel serverless function.",
       tags: ["HTML5", "CSS", "JavaScript", "Vercel", "Claude API"],
       image: "assets/projects/portfolio.webp", github: "private"

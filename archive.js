@@ -11,7 +11,7 @@
   const items = window.PORTFOLIO[type];
 
   const CATEGORIES = {
-    projects: [["all", "All"], ["work", "Work"], ["school", "School"], ["project", "Project"], ["personal", "Personal"]],
+    projects: [["all", "All"], ["work", "Work"], ["school", "School"], ["project", "Project"]],
     certificates: [["all", "All"], ["security", "Security"], ["networking", "Networking"], ["development", "Development"]],
   }[type];
 
@@ -184,7 +184,7 @@
       m.append(el("span", "acard__visual-label mono", it.visual.label));
     }
     if (type === "projects") m.append(el("span", "pcard__tagline", catLabel(it.category)));
-    if (it.status) m.append(el("span", "acard__status", it.status));
+    if (it.status && it.status !== "Live") m.append(el("span", "acard__status", it.status));
     return m;
   }
 
@@ -229,8 +229,17 @@
     return chip;
   }
 
+  // project/01 is the oldest project and the highest number the newest. Sorted by when the work ended
+  // (or started); equal dates fall back to data.js order, which lists newer work first.
+  const CHRONO = type === "projects"
+    ? items.slice().sort((x, y) => {
+        const kx = x.end || x.start || "", ky = y.end || y.start || "";
+        return kx < ky ? -1 : kx > ky ? 1 : items.indexOf(y) - items.indexOf(x);
+      })
+    : [];
+
   function projectCard(it) {
-    const no = String(items.indexOf(it) + 1).padStart(2, "0");
+    const no = String(CHRONO.indexOf(it) + 1).padStart(2, "0");
     const c = el("article", "pcase");
     const m = media(it);
     m.classList.add("pcase__media");
@@ -239,7 +248,15 @@
 
     const body = el("div", "pcase__body");
     const top = el("div", "pcase__top");
-    top.append(el("span", "pcase__no mono", `project/${no}`), el("span", "pcase__tag mono", `[${catLabel(it.category).toLowerCase()}]`));
+    const left = el("div", "pcase__id");
+    left.append(el("span", "pcase__no mono", `project/${no}`));
+    if (it.status === "Live") {
+      const live = el("span", "livebadge mono");
+      live.append(el("span", "livebadge__dot"), "Live");
+      live.title = "Live and running";
+      left.append(live);
+    }
+    top.append(left, el("span", "pcase__tag mono", `[${catLabel(it.category).toLowerCase()}]`));
     body.append(top);
     body.append(el("span", "pcase__cat mono", `${it.org} · ${it.dateLabel}`));
     body.append(el("h3", null, it.title));

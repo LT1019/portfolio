@@ -24,7 +24,7 @@ export const KNOWLEDGE = `
   - Design and backend data entry for genealogy-focused web projects; managed large genealogy datasets.
 
 ## Projects
-- Roxy (personal project, Jun 2025 - Sep 2026, Hans's latest project): a Discord bot in Python (discord.py, SQLite via aiosqlite) that tracks members' gaming sessions, Spotify listening and message counts and turns them into XP, levels, server leaderboards, achievements and profile cards. It has slash commands (/profile, /userinfo), admin tools (backups, logs, Excel exports, system stats) and Patreon supporter perks. The code is private; its Privacy Policy and Terms of Service are public at https://github.com/LT1019/Roxy-Docs.
+- Roxy (project, Jun 2025 - Sep 2026, Hans's latest project, currently live): a Discord bot in Python (discord.py, SQLite via aiosqlite) that tracks members' gaming sessions, Spotify listening and message counts and turns them into XP, levels, server leaderboards, achievements and profile cards. It has slash commands (/profile, /userinfo), admin tools (backups, logs, Excel exports, system stats) and Patreon supporter perks. Code: https://github.com/LT1019/Roxy-Backup. Documentation (Privacy Policy and Terms of Service): https://github.com/LT1019/Roxy-Docs.
 - CITU-Secure (capstone, Jan 2024 - Dec 2024, Backend Developer): a visitor management system for the CIT-U campus that tracks each visitor's personal information, purpose of visit, and entry/exit times. Hans built the backend for visitor management and tracking.
 - Real-Time Face Recognition (2023 - 2024, Backend & Data Collection): OpenCV + Python system that identifies faces in live video. Hans built the backend and collected the training data that improved accuracy.
 
