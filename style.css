@@ -774,7 +774,8 @@ button.pcard__media { width: 100%; padding: 0; cursor: zoom-in; }
 .degree--current { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 .degree--current .degree__icon:not(.degree__icon--logo) { background: var(--accent); color: #fff; }
 .degree__icon--logo { background: #fff !important; padding: 6px; }
-.degree__icon--logo img { width: 100%; height: 100%; object-fit: contain; }
+.degree__icon--logo { overflow: hidden; }
+.degree__icon--logo img { width: 52px; height: 52px; object-fit: contain; }
 
 /* ============ ARCHIVE PAGES (projects.html / certificates.html) ============ */
 .skiplink { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 16px; border-radius: 10px; background: var(--accent); color: #fff; font-weight: 700; }
