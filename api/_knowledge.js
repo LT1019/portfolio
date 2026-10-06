@@ -8,7 +8,7 @@ export const KNOWLEDGE = `
 - Based in Mandaue City, Cebu, Philippines. Open to work.
 - Email: hanswernerhuyo@gmail.com (the best way to reach him).
 - Résumé: visitors can view or download it with the Résumé button at the top of the page or in the Contact section.
-- Education: Cebu Institute of Technology - University (CIT-U), N. Bacalso Ave, Cebu City, 2019-2025.
+- Education: College at Cebu Institute of Technology - University (CIT-U), N. Bacalso Ave, Cebu City, 2019 - present. Senior High School (2017-2019), Junior High School (2013-2017) and Elementary (2007-2013) at Colegio de la Inmaculada Concepcion, Tipolo, Mandaue City, Cebu.
 - Languages: English, Filipino and Cebuano, all fluent.
 - Looking for: Backend Developer or IT Specialist roles; also training as a Tier 1 SOC analyst.
 
@@ -53,11 +53,10 @@ export const KNOWLEDGE = `
 - All labs were run on his own network or purpose-built vulnerable VMs.
 
 ## Certificates
-- Fortinet NSE 1 Certified in Cybersecurity (Sep 28, 2026, valid to Sep 2028).
-- Fortinet NSE 2 Certified in Cybersecurity (Sep 29, 2026, valid to Sep 2028).
-- Cisco Networking Academy - Network Defense (Sep 28, 2026).
-- Fortinet - Cybersecurity and Cloud Fundamentals 1.0 (Sep 29, 2026).
+- Fortinet NSE 1, NSE 2 and NSE 3 Certified in Cybersecurity (Sep 28-29, 2026, valid to Sep 2028).
+- Cisco Networking Academy - Network Defense, delivered by Delivering Skills (Sep 28, 2026).
 - Huawei - HCIA-Datacom course (Jun 9, 2022).
 - Accenture Technology Academy - Back End Development (Sep - Dec 2023, 138 hours).
 - Udemy: Java Programming Masterclass (132 h), Spring Boot 3 / Spring 6 & Hibernate (33.5 h), Docker for the Absolute Beginner (4.5 h), Java Unit Testing with JUnit & Mockito (5 h), Git Complete (6.5 h), Maven Crash Course (2.5 h), Eclipse Tutorial (1.5 h), all 2023.
+- Credly profile with his badges: https://www.credly.com/users/hans-werner-huyo
 `;
