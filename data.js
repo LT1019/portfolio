@@ -7,6 +7,13 @@
 window.PORTFOLIO = {
   projects: [
     {
+      id: "roxy", category: "personal", start: "2025-06", end: "2026-09", dateLabel: "Jun 2025 – Sep 2026",
+      title: "Roxy", org: "Discord bot · Personal project",
+      summary: "A Discord bot that tracks members' gaming sessions, Spotify listening and messages, and turns them into XP, levels, leaderboards, achievements and profile cards, with slash commands, admin tools, backups and Patreon supporter perks.",
+      tags: ["Python", "discord.py", "SQLite", "Patreon"],
+      image: "assets/projects/roxy.webp", doc: "https://github.com/LT1019/Roxy-Docs", github: "private"
+    },
+    {
       id: "soc-dashboard", category: "project", start: "2026-09", dateLabel: "Sep 2026",
       title: "SOC Overview Dashboard", org: "Splunk Enterprise · BOTS v2 dataset",
       summary: "A filterable Splunk dashboard with KPI, breakdown and detail panels tied to shared Sourcetype, Host and Time inputs, plus three detection panels and a scheduled email alert.",
