@@ -50,12 +50,7 @@ function startTyping() {
   })();
 }
 
-/* ---------- Theme toggle (default dark, remembered) ---------- */
-document.querySelector(".themebtn").addEventListener("click", () => {
-  const next = root.dataset.theme === "dark" ? "light" : "dark";
-  root.dataset.theme = next;
-  try { localStorage.setItem("theme", next); } catch (e) {}
-});
+/* ---------- Theme: handled by theme.js (System / Light / Dark) ---------- */
 
 /* ---------- Mobile menu ---------- */
 const menuBtn = document.querySelector(".menubtn");

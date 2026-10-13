@@ -340,14 +340,3 @@
 
   update();
 })();
-
-/* ---------- Theme toggle for the archive pages (same storage key as the home page) ---------- */
-(function () {
-  const btn = document.querySelector("[data-archive-page] .themebtn");
-  if (!btn) return;
-  btn.addEventListener("click", () => {
-    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
-    try { localStorage.setItem("theme", next); } catch (e) {}
-  });
-})();
