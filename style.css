@@ -944,6 +944,26 @@ a.pbtn:hover, button.pbtn:hover { border-color: var(--accent); background: var(-
 .pbtn--primary { border-color: color-mix(in srgb, var(--accent) 60%, var(--line-strong)); }
 .pbtn.is-disabled { color: var(--faint); border-color: var(--line); background: color-mix(in srgb, var(--ground) 40%, transparent); cursor: not-allowed; font-weight: 500; }
 
+/* List view (default): compact horizontal cards */
+.archive__grid--cases[data-view="list"] { gap: 16px; }
+.archive__grid--cases[data-view="list"] .pcase { grid-template-columns: 340px minmax(0, 1fr); }
+.archive__grid--cases[data-view="list"] .pcase__media.acard__media { min-height: 0; }
+.archive__grid--cases[data-view="list"] .pcase__body { padding: 16px 20px 18px; }
+.archive__grid--cases[data-view="list"] .pcase__top { padding-bottom: 10px; margin-bottom: 10px; }
+.archive__grid--cases[data-view="list"] .pcase__cat { font-size: 0.7rem; }
+.archive__grid--cases[data-view="list"] .pcase h3 { font-size: 1.3rem; margin: 4px 0 6px; }
+.archive__grid--cases[data-view="list"] .pcase__summary {
+  font-size: 0.9rem; margin-bottom: 12px;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.archive__grid--cases[data-view="list"] .pcase__tools { gap: 6px; padding-top: 10px; }
+.archive__grid--cases[data-view="list"] .tool { padding: 4px 9px; font-size: 0.72rem; }
+.archive__grid--cases[data-view="list"] .tool__icon { width: 14px; height: 14px; }
+.archive__grid--cases[data-view="list"] .pcase__actions { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+.archive__grid--cases[data-view="list"] .pbtn { min-height: 36px; padding: 6px 8px; gap: 6px; font-size: 0.68rem; line-height: 1.2; }
+.archive__grid--cases[data-view="list"] .pbtn svg { width: 14px; height: 14px; }
+@media (max-width: 1100px) { .archive__grid--cases[data-view="list"] .pcase__actions { grid-template-columns: 1fr 1fr; } }
+
 /* ============ ASK HANS CHAT ============ */
 .chatfab {
   position: fixed; right: 20px; bottom: 20px; z-index: 70; display: inline-flex; align-items: center; gap: 10px;
@@ -1041,7 +1061,7 @@ body.is-loading .chatfab { opacity: 0; pointer-events: none; }
   .archive__label { width: 100%; }
   .archive__label--inline { margin-left: 0; }
   .archive__grid, .archive__grid--certs { grid-template-columns: 1fr; }
-  .pcase { grid-template-columns: 1fr; }
+  .pcase, .archive__grid--cases[data-view="list"] .pcase { grid-template-columns: 1fr; }
   .archive__grid--cases[data-view="linear"] { grid-template-columns: 1fr; }
   .archive__views { margin-left: 0 !important; }
   .pcase__media.acard__media { min-height: 0; aspect-ratio: 16 / 10; border-right: 0; border-bottom: 1px solid var(--line); }
