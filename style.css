@@ -741,6 +741,18 @@ button.pcard__media { width: 100%; padding: 0; cursor: zoom-in; }
 .lightbox__nav--prev { left: 12px; }
 .lightbox__nav--next { right: 12px; }
 
+/* LinkedIn / GitHub buttons in the contact card */
+.socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 0 0 22px; }
+.socialbtn {
+  display: inline-flex; align-items: center; gap: 10px; padding: 11px 20px; border-radius: 14px; font-weight: 700;
+  color: var(--ink); background: color-mix(in srgb, var(--surface) 60%, transparent); border: 1px solid var(--line-strong);
+  transition: transform 0.25s var(--ease), border-color 0.25s, background 0.25s;
+}
+.socialbtn svg { width: 22px; height: 22px; stroke: none; }
+.socialbtn:hover { transform: translateY(-2px); }
+.socialbtn--linkedin:hover { border-color: #0A66C2; background: color-mix(in srgb, #0A66C2 14%, transparent); }
+.socialbtn--github:hover { border-color: var(--ink); }
+
 /* Résumé call-out in the contact card */
 .resumebox {
   display: flex; align-items: center; gap: 16px; max-width: 620px; margin: 0 auto 22px; padding: 16px 18px; text-align: left;
