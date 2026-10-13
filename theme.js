@@ -1,7 +1,7 @@
 /* ---------- Theme: System (default), Light or Dark ----------
-   The choice is stored as localStorage "theme" = "system" | "light" | "dark". "System" follows the
-   device's light/dark setting and updates live if it changes. The inline script in each page's <head>
-   applies the theme before first paint; this file wires up the switch in the navbar. */
+   Every page load starts on "System", which follows the device's light/dark setting and updates live
+   if it changes. Light and Dark override it until the next reload (the choice is not saved).
+   The inline script in each page's <head> applies the theme before first paint. */
 (function () {
   const root = document.documentElement;
   const media = window.matchMedia("(prefers-color-scheme: dark)");
@@ -9,8 +9,6 @@
   const metaColor = document.querySelector('meta[name="theme-color"]');
 
   let pref = "system";
-  try { pref = localStorage.getItem("theme") || "system"; } catch (e) {}
-  if (!["system", "light", "dark"].includes(pref)) pref = "system";
 
   function apply() {
     const resolved = pref === "system" ? (media.matches ? "dark" : "light") : pref;
@@ -27,7 +25,6 @@
   buttons.forEach((b) =>
     b.addEventListener("click", () => {
       pref = b.dataset.themeChoice;
-      try { localStorage.setItem("theme", pref); } catch (e) {}
       apply();
     })
   );

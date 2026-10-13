@@ -4,13 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#08090c" />
-  <!-- Apply the saved theme before paint to avoid a flash: System (default) follows the device -->
+  <!-- Apply the theme before paint to avoid a flash: every load starts on System, which follows the device -->
   <script>
     (function () {
-      var t = null;
-      try { t = localStorage.getItem("theme"); } catch (e) {}
-      if (t !== "light" && t !== "dark") t = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-      document.documentElement.dataset.theme = t;
+      try { localStorage.removeItem("theme"); } catch (e) {}
+      var light = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+      document.documentElement.dataset.theme = light ? "light" : "dark";
     })();
   </script>
   <title>Projects | Hans Werner A. Huyo</title>
