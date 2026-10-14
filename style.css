@@ -621,14 +621,19 @@ button.pcard__media { width: 100%; padding: 0; cursor: zoom-in; }
 /* ============ FOOTER ============ */
 .footer { position: relative; z-index: 1; padding-top: 48px; border-top: 1px solid var(--line); overflow: hidden; }
 .footer__top, .footer__bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-.footer__totop { color: var(--muted); font-weight: 500; transition: color 0.2s; }
-.footer__totop:hover { color: var(--ink); }
+.footer__top { position: relative; z-index: 2; }
+.footer__totop {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 999px;
+  color: var(--ink-soft); font-weight: 700; border: 1px solid var(--line-strong);
+  background: color-mix(in srgb, var(--surface) 70%, transparent); transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.footer__totop:hover { color: var(--ink); border-color: var(--accent); background: var(--accent-tint); }
 .footer__wordmark {
   font-family: var(--font-display); font-weight: 900; text-align: center; line-height: 0.8;
   font-size: clamp(90px, 27vw, 380px); letter-spacing: -0.05em; margin: 28px 0 8px;
   background: linear-gradient(180deg, var(--line-strong), transparent 90%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
-  user-select: none;
+  user-select: none; pointer-events: none;
 }
 .footer__bottom { padding: 18px 16px 26px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.88rem; }
 
