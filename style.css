@@ -199,7 +199,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round
 @keyframes drift { to { transform: translate(-8vmax, 6vmax) scale(1.1); } }
 
 .hero__inner {
-  position: relative; z-index: 1; width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 16px;
+  position: relative; z-index: 3; width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 16px;
   display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: center;
 }
 .status {
@@ -1012,11 +1012,38 @@ a.pbtn:hover, button.pbtn:hover { border-color: var(--accent); background: var(-
   :root[data-nav="side"] .themeswitch { flex-direction: column; }
   :root[data-nav="side"] .settings__panel { right: auto; left: calc(100% + 18px); top: auto; bottom: 0; }
 }
-@media (max-width: 760px) { .settings { display: none; } }
+/* Phones and tablets: settings stay available */
+@media (max-width: 760px) {
+  .settings__btn { width: 38px; height: 38px; }
+  .settings__panel { position: fixed; top: 72px; left: 10px; right: 10px; width: auto; }
+  .topbar__right { gap: 6px; }
+
+  /* Side view on phones: a slim icon rail on the left */
+  :root[data-nav="side"] body { padding-left: 62px; }
+  :root[data-nav="side"] .topbar { top: 8px; bottom: 8px; left: 8px; right: auto; width: 50px; padding: 0; }
+  :root[data-nav="side"] .topbar__inner { height: 100%; flex-direction: column; justify-content: flex-start; gap: 10px; padding: 12px 0; border-radius: 16px; }
+  :root[data-nav="side"] .brand { font-size: 0.78rem; }
+  :root[data-nav="side"] .topbar__links,
+  :root[data-nav="side"] .topbar__links.is-open {
+    position: static; flex-direction: column; align-items: center; gap: 2px; padding: 0; flex: 1; justify-content: center;
+    background: none; border: 0; box-shadow: none; opacity: 1; transform: none; pointer-events: auto; backdrop-filter: none; -webkit-backdrop-filter: none;
+  }
+  :root[data-nav="side"] .topbar__links a { width: 38px; height: 38px; padding: 0; display: grid; place-items: center; border-radius: 10px; }
+  :root[data-nav="side"] .navic { display: block; width: 18px; height: 18px; }
+  :root[data-nav="side"] .navlabel { display: none; }
+  :root[data-nav="side"] .menubtn { display: none !important; }
+  :root[data-nav="side"] .topbar__right { flex-direction: column; gap: 6px; }
+  :root[data-nav="side"] .themeswitch { flex-direction: column; }
+  :root[data-nav="side"] .settings__panel { left: 66px; right: 10px; top: auto; bottom: 10px; }
+}
 
 /* Hover top bar: the bar slides away until the pointer reaches the screen edge (wide screens with a mouse) */
 .topbar { transition: transform 0.35s var(--ease); }
 .navhotzone { display: none; }
+@media (hover: none), (max-width: 760px) {
+  :root[data-navhover="on"] .topbar.is-scrollhidden { transform: translateY(calc(-100% - 24px)); }
+  :root[data-navhover="on"][data-nav="side"] .topbar.is-scrollhidden { transform: translateX(calc(-100% - 24px)); }
+}
 @media (min-width: 761px) and (hover: hover) {
   :root[data-navhover="on"] .navhotzone { display: block; position: fixed; z-index: 49; top: 0; left: 0; right: 0; height: 16px; }
   :root[data-navhover="on"] .topbar:not(.is-peek) { transform: translateY(calc(-100% - 24px)); }
@@ -1028,14 +1055,13 @@ a.pbtn:hover, button.pbtn:hover { border-color: var(--accent); background: var(-
 /* Hero résumé menu: View or Download */
 .resumemenu { position: relative; display: inline-block; }
 .resumemenu__chev { width: 16px !important; height: 16px !important; transition: transform 0.25s var(--ease); }
-.resumemenu__chev { transform: rotate(180deg); }
-.resumemenu.is-open .resumemenu__chev { transform: none; }
+.resumemenu.is-open .resumemenu__chev { transform: rotate(180deg); }
 .resumemenu__list {
-  position: absolute; left: 0; bottom: calc(100% + 8px); z-index: 20; min-width: 250px; padding: 6px; border-radius: 14px;
+  position: absolute; left: 0; top: calc(100% + 8px); z-index: 20; min-width: 250px; padding: 6px; border-radius: 14px;
   background: var(--surface); border: 1px solid var(--line-strong); box-shadow: var(--shadow-lg); animation: menuIn 0.18s var(--ease);
 }
 .resumemenu__list[hidden] { display: none; }
-@keyframes menuIn { from { opacity: 0; transform: translateY(6px); } }
+@keyframes menuIn { from { opacity: 0; transform: translateY(-6px); } }
 .resumemenu__list a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; font-weight: 700; color: var(--ink); }
 .resumemenu__list a:hover, .resumemenu__list a:focus-visible { background: var(--accent-tint); color: var(--accent-ink); }
 .resumemenu__list svg { width: 18px; height: 18px; flex: none; }

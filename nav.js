@@ -1,7 +1,9 @@
 /* ---------- Navbar settings (gear menu) ----------
    - Navigation: Top View (default) or Side View (icon sidebar)  -> <html data-nav="top|side">
    - Hover top bar: Off (default) or On (the bar hides until you point at the screen edge) -> <html data-navhover="off|on">
-   Every page load starts on Top / Off, like the theme starts on System. Both only apply on wide screens. */
+   Every page load starts on Top / Off, like the theme starts on System. Works on every device:
+   with a mouse the bar reappears at the screen edge; on touch screens it hides while scrolling down
+   and comes back when scrolling up. */
 (function () {
   const root = document.documentElement;
   const topbar = document.querySelector(".topbar");
@@ -53,9 +55,24 @@
   function setHover(on) {
     root.dataset.navhover = on ? "on" : "off";
     hoverToggle.setAttribute("aria-checked", on);
+    if (!on) topbar.classList.remove("is-scrollhidden");
     if (on) topbar.classList.add("is-peek"); // stays shown while the settings are open, hides once you move away
   }
   hoverToggle.addEventListener("click", () => setHover(root.dataset.navhover !== "on"));
+
+  // Touch screens / phones: hide on scroll down, show on scroll up
+  const touchMode = () => window.matchMedia("(hover: none), (max-width: 760px)").matches;
+  let lastY = window.scrollY;
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+    if (root.dataset.navhover === "on" && touchMode() && panel.hidden) {
+      if (y > lastY + 6 && y > 80) topbar.classList.add("is-scrollhidden");
+      else if (y < lastY - 6 || y <= 80) topbar.classList.remove("is-scrollhidden");
+    } else {
+      topbar.classList.remove("is-scrollhidden");
+    }
+    lastY = y;
+  }, { passive: true });
 
   setView("top");
   setHover(false);

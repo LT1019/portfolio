@@ -310,7 +310,10 @@ if (resumeMenu) {
   const btn = resumeMenu.querySelector(".resumemenu__btn");
   const list = resumeMenu.querySelector(".resumemenu__list");
   const setOpen = (open) => { list.hidden = !open; btn.setAttribute("aria-expanded", open); resumeMenu.classList.toggle("is-open", open); };
-  btn.addEventListener("click", () => setOpen(list.hidden));
+  btn.addEventListener("click", () => {
+    setOpen(list.hidden);
+    if (!list.hidden) list.scrollIntoView({ block: "nearest", behavior: reduceMotion ? "auto" : "smooth" }); // short screens: bring the options into view
+  });
   list.addEventListener("click", () => setOpen(false));
   document.addEventListener("click", (e) => { if (!resumeMenu.contains(e.target)) setOpen(false); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !list.hidden) { setOpen(false); btn.focus(); } });
