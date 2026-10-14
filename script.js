@@ -318,3 +318,12 @@ if (resumeMenu) {
   document.addEventListener("click", (e) => { if (!resumeMenu.contains(e.target)) setOpen(false); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !list.hidden) { setOpen(false); btn.focus(); } });
 }
+
+/* ---------- Back to top / HWH logo: always scroll to the very top, without leaving #top in the address ---------- */
+document.querySelectorAll('a[href="#top"]').forEach((a) =>
+  a.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  })
+);
