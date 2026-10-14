@@ -964,6 +964,53 @@ a.pbtn:hover, button.pbtn:hover { border-color: var(--accent); background: var(-
 .archive__grid--cases[data-view="list"] .pbtn svg { width: 14px; height: 14px; }
 @media (max-width: 1100px) { .archive__grid--cases[data-view="list"] .pcase__actions { grid-template-columns: 1fr 1fr; } }
 
+/* ============ NAV LAYOUT: Top View (default) / Side View (icon sidebar) ============ */
+.navic { display: none; width: 20px; height: 20px; }
+.navswitch { display: inline-flex; gap: 2px; padding: 3px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.navswitch__btn { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; color: var(--muted); transition: color 0.2s, background 0.2s; }
+.navswitch__btn svg { width: 17px; height: 17px; }
+.navswitch__btn:hover { color: var(--ink); }
+.navswitch__btn.is-active { color: var(--accent-ink); background: var(--accent-tint); }
+
+@media (min-width: 761px) {
+  :root[data-nav="side"] body { padding-left: 92px; }
+  :root[data-nav="side"] .topbar { top: 14px; bottom: 14px; left: 14px; right: auto; width: 68px; padding: 0; }
+  :root[data-nav="side"] .topbar__inner {
+    height: 100%; max-width: none; flex-direction: column; justify-content: flex-start; gap: 18px; padding: 18px 0;
+  }
+  :root[data-nav="side"] .brand { font-size: 1rem; }
+  :root[data-nav="side"] .topbar__links { flex-direction: column; gap: 6px; flex: 1; justify-content: center; }
+  :root[data-nav="side"] .topbar__links a { position: relative; width: 44px; height: 44px; padding: 0; display: grid; place-items: center; border-radius: 12px; }
+  :root[data-nav="side"] .navic { display: block; }
+  :root[data-nav="side"] .navlabel {
+    position: absolute; left: calc(100% + 14px); top: 50%; transform: translate(-6px, -50%); white-space: nowrap; pointer-events: none;
+    padding: 6px 10px; border-radius: 8px; font-size: 0.82rem; font-weight: 600; color: var(--ground); background: var(--ink);
+    opacity: 0; transition: opacity 0.15s, transform 0.15s;
+  }
+  :root[data-nav="side"] .topbar__links a:hover .navlabel,
+  :root[data-nav="side"] .topbar__links a:focus-visible .navlabel { opacity: 1; transform: translate(0, -50%); }
+  :root[data-nav="side"] .topbar__right { flex-direction: column; gap: 10px; }
+  :root[data-nav="side"] .navswitch, :root[data-nav="side"] .themeswitch { flex-direction: column; }
+}
+@media (max-width: 760px) { .navswitch { display: none; } }
+
+/* Hero résumé menu: View or Download */
+.resumemenu { position: relative; display: inline-block; }
+.resumemenu__chev { width: 16px !important; height: 16px !important; transition: transform 0.25s var(--ease); }
+.resumemenu.is-open .resumemenu__chev { transform: rotate(180deg); }
+.resumemenu__list {
+  position: absolute; left: 0; top: calc(100% + 8px); z-index: 20; min-width: 250px; padding: 6px; border-radius: 14px;
+  background: var(--surface); border: 1px solid var(--line-strong); box-shadow: var(--shadow-lg); animation: menuIn 0.18s var(--ease);
+}
+.resumemenu__list[hidden] { display: none; }
+@keyframes menuIn { from { opacity: 0; transform: translateY(-6px); } }
+.resumemenu__list a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; font-weight: 700; color: var(--ink); }
+.resumemenu__list a:hover, .resumemenu__list a:focus-visible { background: var(--accent-tint); color: var(--accent-ink); }
+.resumemenu__list svg { width: 18px; height: 18px; flex: none; }
+.resumemenu__list span { display: flex; flex-direction: column; line-height: 1.3; }
+.resumemenu__list small { font-weight: 500; font-size: 0.78rem; color: var(--muted); }
+
+
 /* ============ ASK HANS CHAT ============ */
 .chatfab {
   position: fixed; right: 20px; bottom: 20px; z-index: 70; display: inline-flex; align-items: center; gap: 10px;

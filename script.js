@@ -303,3 +303,15 @@ if (skillGrid && viewBtns.length) {
   try { saved = localStorage.getItem("skillsView"); } catch (e) {}
   if (viewBtns.some((b) => b.dataset.view === saved)) setView(saved, false);
 }
+
+/* ---------- Hero résumé menu: View or Download ---------- */
+const resumeMenu = document.querySelector(".resumemenu");
+if (resumeMenu) {
+  const btn = resumeMenu.querySelector(".resumemenu__btn");
+  const list = resumeMenu.querySelector(".resumemenu__list");
+  const setOpen = (open) => { list.hidden = !open; btn.setAttribute("aria-expanded", open); resumeMenu.classList.toggle("is-open", open); };
+  btn.addEventListener("click", () => setOpen(list.hidden));
+  list.addEventListener("click", () => setOpen(false));
+  document.addEventListener("click", (e) => { if (!resumeMenu.contains(e.target)) setOpen(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !list.hidden) { setOpen(false); btn.focus(); } });
+}
