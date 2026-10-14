@@ -992,7 +992,6 @@ a.pbtn:hover, button.pbtn:hover { border-color: var(--accent); background: var(-
 .navswitch__btn.is-active { color: var(--accent-ink); background: var(--accent-tint); }
 
 @media (min-width: 761px) {
-  :root[data-nav="side"] body { padding-left: 92px; }
   :root[data-nav="side"] .topbar { top: 14px; bottom: 14px; left: 14px; right: auto; width: 68px; padding: 0; }
   :root[data-nav="side"] .topbar__inner {
     height: 100%; max-width: none; flex-direction: column; justify-content: flex-start; gap: 18px; padding: 18px 0;
@@ -1019,7 +1018,6 @@ a.pbtn:hover, button.pbtn:hover { border-color: var(--accent); background: var(-
   .topbar__right { gap: 6px; }
 
   /* Side view on phones: a slim icon rail on the left */
-  :root[data-nav="side"] body { padding-left: 62px; }
   :root[data-nav="side"] .topbar { top: 8px; bottom: 8px; left: 8px; right: auto; width: 50px; padding: 0; }
   :root[data-nav="side"] .topbar__inner { height: 100%; flex-direction: column; justify-content: flex-start; gap: 10px; padding: 12px 0; border-radius: 16px; }
   :root[data-nav="side"] .brand { font-size: 0.78rem; }
@@ -1049,7 +1047,6 @@ a.pbtn:hover, button.pbtn:hover { border-color: var(--accent); background: var(-
   :root[data-navhover="on"] .topbar:not(.is-peek) { transform: translateY(calc(-100% - 24px)); }
   :root[data-navhover="on"][data-nav="side"] .navhotzone { right: auto; bottom: 0; width: 16px; height: auto; }
   :root[data-navhover="on"][data-nav="side"] .topbar:not(.is-peek) { transform: translateX(calc(-100% - 24px)); }
-  :root[data-navhover="on"][data-nav="side"] body { padding-left: 0; }
 }
 
 /* Hero résumé menu: View or Download */
