@@ -146,6 +146,18 @@ window.LAB_GALLERIES = {
         {
               "src": "assets/certs/udemy-eclipse.webp",
               "cap": "Udemy · in28Minutes · Eclipse Tutorial: Learn Java IDE in 10 Steps · Sep 27, 2023 · 1.5 hrs"
+        },
+        {
+              "src": "assets/certs/fortinet-exam-nse1-ccf.webp",
+              "cap": "Fortinet · NSE 1 exam · Cybersecurity and Cloud Fundamentals 1.0 · Sep 28, 2026"
+        },
+        {
+              "src": "assets/certs/fortinet-exam-nse2-ngfw.webp",
+              "cap": "Fortinet · NSE 2 exam · Introduction to the Next Generation Firewall 1.0 · Sep 29, 2026"
+        },
+        {
+              "src": "assets/certs/fortinet-exam-nse3-fortigate.webp",
+              "cap": "Fortinet · NSE 3 exam · FortiGate 7.6 Operator · Sep 29, 2026"
         }
   ]
   }

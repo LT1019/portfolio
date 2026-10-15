@@ -58,6 +58,8 @@ export const KNOWLEDGE = `
 ## Certificates
 - Fortinet NSE 1, NSE 2 and NSE 3 Certified in Cybersecurity (Sep 28-29, 2026, valid to Sep 2028).
 - Cisco Networking Academy - Network Defense, delivered by Delivering Skills (Sep 28, 2026).
+- Fortinet exam badges on Credly: Cybersecurity and Cloud Fundamentals 1.0 (NSE 1 exam, Sep 28, 2026), Introduction to the Next Generation Firewall 1.0 (NSE 2 exam, Sep 29, 2026), FortiGate 7.6 Operator (NSE 3 exam, Sep 29, 2026).
+- 16 certificates and badges in total.
 - Huawei - HCIA-Datacom course (Jun 9, 2022).
 - Accenture Technology Academy - Back End Development (Sep - Dec 2023, 138 hours).
 - Udemy: Java Programming Masterclass (132 h), Spring Boot 3 / Spring 6 & Hibernate (33.5 h), Docker for the Absolute Beginner (4.5 h), Java Unit Testing with JUnit & Mockito (5 h), Git Complete (6.5 h), Maven Crash Course (2.5 h), Eclipse Tutorial (1.5 h), all 2023.
